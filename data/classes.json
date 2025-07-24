@@ -1,0 +1,484 @@
+[
+  {
+    "nome": "Bárbaro",
+    "dado_vida": "1d12",
+    "proficiencias": [
+      "Armaduras: leves, médias, escudos",
+      "Armas: simples e marciais",
+      "Testes de resistência: Força, Constituição",
+      "Perícias: escolha 2 entre Adestrar Animais, Atletismo, Intimidação, Natureza, Percepção, Sobrevivência"
+    ],
+    "equipamentos_iniciais": [
+      "(a) machado grande ou (b) qualquer arma marcial corpo a corpo",
+      "(a) dois machados de mão ou (b) qualquer arma simples",
+      "Pacote de explorador",
+      "Quatro javalis"
+    ],
+    "niveis": [
+      {
+        "nivel": 1,
+        "habilidades": [
+          {
+            "nome": "Fúria",
+            "descricao": "Dano bônus, resistência a dano físico, vantagem em testes de Força.",
+            "nivel": 1
+          },
+          {
+            "nome": "Defesa sem Armadura",
+            "descricao": "CA = 10 + Destreza + Constituição.",
+            "nivel": 1
+          }
+        ]
+      },
+      {
+        "nivel": 3,
+        "habilidades": [
+          {
+            "nome": "Caminho Primitivo",
+            "descricao": "Escolha uma trilha: Berserker ou Guerreiro Totêmico (Urso, Águia, Lobo...).",
+            "nivel": 3
+          }
+        ]
+      },
+      {
+        "nivel": 5,
+        "habilidades": [
+          {
+            "nome": "Ataque Desarmado",
+            "descricao": "Ataque desarmado aprimorado.",
+            "nivel": 5
+          },
+          {
+            "nome": "Ataque Extra",
+            "descricao": "Pode atacar duas vezes ao invés de uma ao realizar a ação de ataque.",
+            "nivel": 5
+          },
+          {
+            "nome": "Movimento Rápido",
+            "descricao": "Deslocamento aumenta enquanto não estiver usando armadura pesada.",
+            "nivel": 5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nome": "Bardo",
+    "dado_vida": "1d8",
+    "proficiencias": [
+      "Armaduras: leves",
+      "Armas: simples, bestas de mão, espadas longas, rapieiras, espadas curtas",
+      "Ferramentas: três instrumentos musicais",
+      "Testes de resistência: Destreza, Carisma",
+      "Perícias: escolha 3 quaisquer"
+    ],
+    "equipamentos_iniciais": [
+      "(a) rapieira, (b) espada longa ou (c) qualquer arma simples",
+      "(a) pacote de diplomata ou (b) pacote de artista",
+      "(a) laúde ou (b) qualquer instrumento musical",
+      "Couro",
+      "Adaga"
+    ],
+    "niveis": [
+      {
+        "nivel": 1,
+        "habilidades": [
+          {
+            "nome": "Inspiração Bárdica",
+            "descricao": "Dado bônus que outros podem usar.",
+            "nivel": 1
+          }
+        ],
+        "magias": ["Truques e magias conhecidos aumentam com o nível"]
+      },
+      {
+        "nivel": 3,
+        "habilidades": [
+          {
+            "nome": "Colégio Bardico",
+            "descricao": "Escolha: Conhecimento ou Valor.",
+            "nivel": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nome": "Clérigo",
+    "dado_vida": "1d8",
+    "proficiencias": [
+      "Armaduras: leves, médias, escudos",
+      "Armas: simples",
+      "Testes de resistência: Sabedoria, Carisma",
+      "Perícias: escolha 2 entre História, Intuição, Medicina, Persuasão, Religião"
+    ],
+    "equipamentos_iniciais": [
+      "(a) maça ou (b) martelo de guerra",
+      "(a) armadura de escamas ou (b) couro ou (c) cota de malha",
+      "(a) besta leve + 20 virotes ou (b) qualquer arma simples",
+      "(a) pacote de sacerdote ou (b) pacote de explorador",
+      "Símbolo sagrado"
+    ],
+    "niveis": [
+      {
+        "nivel": 1,
+        "habilidades": [
+          {
+            "nome": "Domínio Divino",
+            "descricao": "Escolha: Vida, Conhecimento, Luz, Natureza, Tempestade, Engano, Guerra.",
+            "nivel": 1
+          }
+        ],
+        "magias": ["Magias de domínio divino"]
+      }
+    ]
+  },
+  {
+    "nome": "Druida",
+    "dado_vida": "1d8",
+    "proficiencias": [
+      "Armaduras: leves, médias (não metálicas), escudos (não metálicos)",
+      "Armas: bastão, bordão, adaga, dardo, foice, funda, lança",
+      "Ferramentas: kit de herbalismo",
+      "Testes de resistência: Inteligência, Sabedoria",
+      "Perícias: escolha 2 entre Arcanismo, Intuição, Medicina, Natureza, Percepção, Religião, Sobrevivência"
+    ],
+    "equipamentos_iniciais": [
+      "(a) escudo de madeira ou (b) qualquer arma simples",
+      "(a) cimitarra ou (b) qualquer arma corpo a corpo simples",
+      "(a) pacote de explorador ou (b) pacote de sacerdote",
+      "Armadura de couro",
+      "Kit de herbalismo"
+    ],
+    "niveis": [
+      {
+        "nivel": 2,
+        "habilidades": [
+          {
+            "nome": "Forma Selvagem",
+            "descricao": "Transforma-se em besta.",
+            "nivel": 2
+          },
+          {
+            "nome": "Círculo Druídico",
+            "descricao": "Escolha: Círculo da Terra ou Círculo da Lua.",
+            "nivel": 2
+          }
+        ],
+        "magias": ["Foco Druídico"]
+      }
+    ]
+  },
+  {
+    "nome": "Guerreiro",
+    "dado_vida": "1d10",
+    "proficiencias": [
+      "Armaduras: todas, escudos",
+      "Armas: simples e marciais",
+      "Testes de resistência: Força, Constituição",
+      "Perícias: escolha 2 entre Acrobacia, Adestrar Animais, Atletismo, História, Intuição, Intimidação, Percepção, Sobrevivência"
+    ],
+    "equipamentos_iniciais": [
+      "(a) cota de malha ou (b) armadura de couro e arco longo + 20 flechas",
+      "(a) arma marcial + escudo ou (b) duas armas marciais",
+      "(a) besta leve + 20 virotes ou (b) dois machados de mão",
+      "(a) pacote de aventureiro ou (b) pacote de explorador"
+    ],
+    "niveis": [
+      {
+        "nivel": 1,
+        "habilidades": [
+          {
+            "nome": "Estilo de Luta",
+            "descricao": "Escolha um estilo de luta.",
+            "nivel": 1
+          },
+          {
+            "nome": "Recuperar Fôlego",
+            "descricao": "Recupere PV como ação bônus.",
+            "nivel": 1
+          }
+        ]
+      },
+      {
+        "nivel": 3,
+        "habilidades": [
+          {
+            "nome": "Arquétipo Marcial",
+            "descricao": "Escolha: Campeão, Mestre de Batalha, Cavaleiro Arcano.",
+            "nivel": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nome": "Ladino",
+    "dado_vida": "1d8",
+    "proficiencias": [
+      "Armaduras: leves",
+      "Armas: simples, espadas longas, rapieiras, espadas curtas, bestas de mão",
+      "Ferramentas: ferramentas de ladrão",
+      "Testes de resistência: Destreza, Inteligência",
+      "Perícias: escolha 4 entre Acrobacia, Atletismo, Atuação, Furtividade, Intimidação, Intuição, Investigação, Lidar com Animais, Percepção, Persuasão, Prestidigitação"
+    ],
+    "equipamentos_iniciais": [
+      "(a) rapieira ou (b) espada curta",
+      "(a) arco curto + 20 flechas ou (b) espada curta",
+      "(a) pacote de aventureiro ou (b) pacote de explorador",
+      "Armadura de couro",
+      "Ferramentas de ladrão"
+    ],
+    "niveis": [
+      {
+        "nivel": 1,
+        "habilidades": [
+          {
+            "nome": "Ataque Furtivo",
+            "descricao": "Dano extra ao atacar com vantagem ou aliado adjacente.",
+            "nivel": 1
+          },
+          {
+            "nome": "Especialização",
+            "descricao": "Dobra bônus de proficiência em perícias escolhidas.",
+            "nivel": 1
+          }
+        ]
+      },
+      {
+        "nivel": 3,
+        "habilidades": [
+          {
+            "nome": "Arquétipo de Ladino",
+            "descricao": "Escolha: Ladrão, Assassino, Trapaceiro Arcano.",
+            "nivel": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nome": "Mago",
+    "dado_vida": "1d6",
+    "proficiencias": [
+      "Armas: adagas, dardos, fundas, bastões, bestas leves",
+      "Testes de resistência: Inteligência, Sabedoria",
+      "Perícias: escolha 2 entre Arcanismo, História, Intuição, Investigação, Medicina, Religião"
+    ],
+    "equipamentos_iniciais": [
+      "(a) bastão ou (b) adaga",
+      "(a) bolsa de componentes ou (b) foco arcano",
+      "(a) pacote de estudioso ou (b) pacote de aventureiro",
+      "Livro de magias"
+    ],
+    "niveis": [
+      {
+        "nivel": 1,
+        "habilidades": [
+          {
+            "nome": "Recuperação Arcana",
+            "descricao": "Recupere espaços de magia em descanso curto.",
+            "nivel": 1
+          }
+        ],
+        "magias": ["Grimório: magias aprendidas e preparadas"]
+      },
+      {
+        "nivel": 2,
+        "habilidades": [
+          {
+            "nome": "Tradição Arcana",
+            "descricao": "Escolha uma escola de magia: Abjuração, Evocação, Ilusão, Necromancia etc.",
+            "nivel": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nome": "Monge",
+    "dado_vida": "1d8",
+    "proficiencias": [
+      "Armas: simples, espadas curtas",
+      "Ferramentas: uma ferramenta de artesão ou instrumento musical",
+      "Testes de resistência: Força, Destreza",
+      "Perícias: escolha 2 entre Acrobacia, Atletismo, Furtividade, Intuição, História, Religião"
+    ],
+    "equipamentos_iniciais": [
+      "(a) espada curta ou (b) qualquer arma simples",
+      "(a) pacote de aventureiro ou (b) pacote de explorador",
+      "10 dardos"
+    ],
+    "niveis": [
+      {
+        "nivel": 1,
+        "habilidades": [
+          {
+            "nome": "Artes Marciais",
+            "descricao": "Usa Destreza para ataques desarmados e armas de monge.",
+            "nivel": 1
+          },
+          {
+            "nome": "Defesa sem Armadura",
+            "descricao": "CA = 10 + Destreza + Sabedoria.",
+            "nivel": 1
+          }
+        ]
+      },
+      {
+        "nivel": 3,
+        "habilidades": [
+          {
+            "nome": "Tradição Monástica",
+            "descricao": "Escolha: Caminho da Mão Aberta, Caminho da Sombra, Caminho dos Quatro Elementos.",
+            "nivel": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nome": "Paladino",
+    "dado_vida": "1d10",
+    "proficiencias": [
+      "Armaduras: todas, escudos",
+      "Armas: simples e marciais",
+      "Testes de resistência: Sabedoria, Carisma",
+      "Perícias: escolha 2 entre Atletismo, Intuição, Intimidação, Medicina, Persuasão, Religião"
+    ],
+    "equipamentos_iniciais": [
+      "(a) arma marcial e escudo ou (b) duas armas marciais",
+      "(a) cinco lanças ou (b) qualquer arma simples corpo a corpo",
+      "(a) pacote de sacerdote ou (b) pacote de aventureiro",
+      "Cota de malha",
+      "Símbolo sagrado"
+    ],
+    "niveis": [
+      {
+        "nivel": 1,
+        "habilidades": [
+          {
+            "nome": "Sentido Divino",
+            "descricao": "Detecta presença de bem/mal e celestiais, infernais, mortos-vivos.",
+            "nivel": 1
+          },
+          {
+            "nome": "Imposição das Mãos",
+            "descricao": "Cura PV com toque.",
+            "nivel": 1
+          }
+        ]
+      },
+      {
+        "nivel": 3,
+        "habilidades": [
+          {
+            "nome": "Juramento Sagrado",
+            "descricao": "Escolha: Devoção, Antigos, Vingança.",
+            "nivel": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nome": "Patrulheiro",
+    "dado_vida": "1d10",
+    "proficiencias": [
+      "Armaduras: leves, médias, escudos",
+      "Armas: simples e marciais",
+      "Testes de resistência: Força, Destreza",
+      "Perícias: escolha 3 entre Atletismo, Furtividade, Intuição, Investigação, Natureza, Percepção, Sobrevivência"
+    ],
+    "equipamentos_iniciais": [
+      "(a) armadura de escamas ou (b) armadura de couro",
+      "(a) duas espadas curtas ou (b) duas armas simples corpo a corpo",
+      "(a) pacote de explorador ou (b) pacote de aventureiro",
+      "Arco longo e aljava com 20 flechas"
+    ],
+    "niveis": [
+      {
+        "nivel": 1,
+        "habilidades": [
+          {
+            "nome": "Inimigo Favorito",
+            "descricao": "Escolha um tipo de inimigo para bônus em combate e rastreamento.",
+            "nivel": 1
+          },
+          {
+            "nome": "Explorador Natural",
+            "descricao": "Bônus em terreno e sobrevivência.",
+            "nivel": 1
+          }
+        ]
+      },
+      {
+        "nivel": 3,
+        "habilidades": [
+          {
+            "nome": "Arquétipo de Patrulheiro",
+            "descricao": "Escolha: Caçador ou Mestre das Feras.",
+            "nivel": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "nome": "Feiticeiro",
+    "dado_vida": "1d6",
+    "proficiencias": [
+      "Armas: adagas, dardos, fundas, bastões, bestas leves",
+      "Testes de resistência: Constituição, Carisma",
+      "Perícias: escolha 2 entre Arcanismo, Enganação, Intuição, Intimidação, Persuasão, Religião"
+    ],
+    "equipamentos_iniciais": [
+      "(a) besta leve ou (b) qualquer arma simples",
+      "(a) bolsa de componentes ou (b) foco arcano",
+      "(a) pacote de explorador ou (b) pacote de sacerdote",
+      "Duas adagas"
+    ],
+    "niveis": [
+      {
+        "nivel": 1,
+        "habilidades": [
+          {
+            "nome": "Origem de Feitiçaria",
+            "descricao": "Escolha: Linhagem Dracônica ou Magia Selvagem.",
+            "nivel": 1
+          }
+        ],
+        "magias": ["Truques e magias conhecidos aumentam com o nível"]
+      }
+    ]
+  },
+  {
+    "nome": "Bruxo",
+    "dado_vida": "1d8",
+    "proficiencias": [
+      "Armas: simples",
+      "Testes de resistência: Sabedoria, Carisma",
+      "Perícias: escolha 2 entre Arcanismo, Enganação, História, Intimidação, Investigação, Religião"
+    ],
+    "equipamentos_iniciais": [
+      "(a) besta leve ou (b) qualquer arma simples",
+      "(a) bolsa de componentes ou (b) foco arcano",
+      "(a) pacote de estudioso ou (b) pacote de aventureiro",
+      "Armadura de couro",
+      "Adaga"
+    ],
+    "niveis": [
+      {
+        "nivel": 1,
+        "habilidades": [
+          {
+            "nome": "Patrono Extraplanar",
+            "descricao": "Escolha: O Grande Antigo, O Demônio, O Arquifada.",
+            "nivel": 1
+          }
+        ],
+        "magias": ["Magias invocadas e pactos"]
+      }
+    ]
+  }
+]
