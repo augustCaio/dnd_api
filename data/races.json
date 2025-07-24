@@ -23,13 +23,15 @@
     "subracas": [
       {
         "nome": "Anão da Colina",
-        "bonus": "+1 Sabedoria",
-        "descricao": "PV máximo aumenta em 1 por nível"
+        "bonus_habilidade": "+1 Sabedoria",
+        "caracteristicas": ["PV máximo aumenta em 1 por nível"],
+        "descricao": null
       },
       {
         "nome": "Anão da Montanha",
-        "bonus": "+2 Força",
-        "descricao": "Proficiência com armaduras leves e médias"
+        "bonus_habilidade": "+2 Força",
+        "caracteristicas": ["Proficiência com armaduras leves e médias"],
+        "descricao": null
       }
     ]
   },
@@ -51,18 +53,34 @@
     "subracas": [
       {
         "nome": "Alto Elfo",
-        "bonus": "+1 Inteligência",
-        "descricao": "Sabe um truque de mago; idioma extra; proficiência com espada longa, espada curta, arco curto e arco longo"
+        "bonus_habilidade": "+1 Inteligência",
+        "caracteristicas": [
+          "Sabe um truque de mago",
+          "Idioma extra",
+          "Proficiência com espada longa, espada curta, arco curto e arco longo"
+        ],
+        "descricao": null
       },
       {
         "nome": "Elfo da Floresta",
-        "bonus": "+1 Sabedoria",
-        "descricao": "Deslocamento 10,5 m; pode se esconder com cobertura natural; proficiência com armas élficas"
+        "bonus_habilidade": "+1 Sabedoria",
+        "caracteristicas": [
+          "Deslocamento 10,5 m",
+          "Pode se esconder com cobertura natural",
+          "Proficiência com armas élficas"
+        ],
+        "descricao": null
       },
       {
         "nome": "Elfo Negro (Drow)",
-        "bonus": "+1 Carisma",
-        "descricao": "Visão no Escuro 36 m; resistência à magia; proficiência com rapieira, espada curta e besta de mão; sabe Luz, depois ganha Fogo das Fadas e Globos de Escuridão"
+        "bonus_habilidade": "+1 Carisma",
+        "caracteristicas": [
+          "Visão no Escuro 36 m",
+          "Resistência à magia",
+          "Proficiência com rapieira, espada curta e besta de mão",
+          "Sabe Luz, depois ganha Fogo das Fadas e Globos de Escuridão"
+        ],
+        "descricao": null
       }
     ]
   },
@@ -83,13 +101,15 @@
     "subracas": [
       {
         "nome": "Pés-Leves",
-        "bonus": "+1 Carisma",
-        "descricao": "Pode se esconder atrás de criaturas maiores"
+        "bonus_habilidade": "+1 Carisma",
+        "caracteristicas": ["Pode se esconder atrás de criaturas maiores"],
+        "descricao": null
       },
       {
         "nome": "Robusto",
-        "bonus": "+1 Constituição",
-        "descricao": "Resistência a veneno"
+        "bonus_habilidade": "+1 Constituição",
+        "caracteristicas": ["Resistência a veneno"],
+        "descricao": null
       }
     ]
   },
@@ -137,13 +157,21 @@
     "subracas": [
       {
         "nome": "Gnomo da Floresta",
-        "bonus": "+1 Destreza",
-        "descricao": "Sabe um truque; pode se esconder com cobertura natural"
+        "bonus_habilidade": "+1 Destreza",
+        "caracteristicas": [
+          "Sabe um truque",
+          "Pode se esconder com cobertura natural"
+        ],
+        "descricao": null
       },
       {
         "nome": "Gnomo das Rochas",
-        "bonus": "+1 Constituição",
-        "descricao": "Proficiência com ferramentas de artesão; dobrar proficiência em História sobre itens mágicos, alquímicos ou tecnológicos"
+        "bonus_habilidade": "+1 Constituição",
+        "caracteristicas": [
+          "Proficiência com ferramentas de artesão",
+          "Dobrar proficiência em História sobre itens mágicos, alquímicos ou tecnológicos"
+        ],
+        "descricao": null
       }
     ]
   },

@@ -90,6 +90,17 @@ def test_combined_filter_case_accent():
     data = response.json()
     assert all("elfo" in r["nome"].lower() and "médio" in r["tamanho"].lower() for r in data) 
 
+def test_combined_filters():
+    response = client.get("/races?name=elfo&size=médio&bonus=destreza")
+    assert response.status_code == 200
+    data = response.json()
+    assert all(
+        "elfo" in r["nome"].lower() and
+        "médio" in r["tamanho"].lower() and
+        ("destreza" in r["aumento_habilidade"].lower() or "dex" in r["aumento_habilidade"].lower())
+        for r in data
+    )
+
 def test_empty_races_file(tmp_path, monkeypatch):
     # Copia races.json vazio para um diretório temporário e faz monkeypatch do caminho
     empty_file = tmp_path / "races.json"
@@ -100,3 +111,66 @@ def test_empty_races_file(tmp_path, monkeypatch):
     response = client.get("/races")
     assert response.status_code == 200
     assert response.json() == [] 
+
+def test_subrace_fields():
+    response = client.get("/races/2")  # Elfo
+    assert response.status_code == 200
+    data = response.json()
+    assert "subracas" in data
+    for sub in data["subracas"]:
+        assert "nome" in sub
+        assert "bonus_habilidade" in sub
+        assert isinstance(sub.get("caracteristicas"), list)
+        assert "descricao" in sub
+
+def test_subrace_characteristics_content():
+    response = client.get("/races/1")  # Anão
+    assert response.status_code == 200
+    data = response.json()
+    for sub in data.get("subracas", []):
+        assert isinstance(sub.get("caracteristicas"), list)
+        for c in sub["caracteristicas"]:
+            assert isinstance(c, str) 
+
+def test_get_subraces_of_race():
+    response = client.get("/races/2/subraces")  # Elfo
+    assert response.status_code == 200
+    data = response.json()
+    assert isinstance(data, list)
+    assert len(data) > 0
+    assert data[0]["nome"].lower().startswith("alto elfo") or data[0]["nome"].lower().startswith("elfo da floresta")
+
+def test_get_subrace_by_id():
+    response = client.get("/subraces/2_1")  # Alto Elfo
+    assert response.status_code == 200
+    data = response.json()
+    assert data["nome"].lower() == "alto elfo"
+    assert "bonus_habilidade" in data
+    assert isinstance(data["caracteristicas"], list)
+
+def test_search_subraces_by_name():
+    response = client.get("/subraces?name=floresta")
+    assert response.status_code == 200
+    data = response.json()
+    assert any("floresta" in sub["nome"].lower() for sub in data) 
+
+def test_order_by_nome():
+    response = client.get("/races?order=nome")
+    assert response.status_code == 200
+    data = response.json()
+    nomes = [r["nome"] for r in data]
+    assert nomes == sorted(nomes, key=lambda n: n.lower())
+
+def test_filter_by_visao_no_escuro():
+    response = client.get("/races?filter=visao_no_escuro")
+    assert response.status_code == 200
+    data = response.json()
+    assert all(r.get("visao_no_escuro") for r in data)
+    assert len(data) > 0
+
+def test_filter_by_bonus_forca():
+    response = client.get("/races?bonus=forca")
+    assert response.status_code == 200
+    data = response.json()
+    assert all("força" in r["aumento_habilidade"].lower() or "forca" in r["aumento_habilidade"].lower() for r in data)
+    assert len(data) > 0 
