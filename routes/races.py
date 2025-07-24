@@ -33,19 +33,8 @@ def load_all_subraces() -> List[dict]:
                 subraces.append(sub_dict)
     return subraces
 
-@router.get(
-    "/races",
-    response_model=List[Race],
-    summary="Lista todas as raças ou filtra por nome/tamanho",
-    description="Retorna todas as raças disponíveis. Permite busca por nome (parâmetro 'name'), filtro por tamanho (parâmetro 'size'), ordenação por nome (order=nome), filtro por característica (filter=...) e filtro por bônus (bonus=...)."
-)
-def get_races(
-    name: Optional[str] = Query(None, description="Busca parcial pelo nome da raça, ex: 'anão' ou 'anao'"),
-    size: Optional[str] = Query(None, alias="size", description="Filtra raças pelo tamanho, ex: 'médio' ou 'medio'"),
-    order: Optional[str] = Query(None, description="Ordena as raças pelo campo especificado, ex: 'nome'"),
-    filter: Optional[str] = Query(None, description="Filtra raças por característica, ex: 'visao_no_escuro', 'resiliencia', 'proficiencias', etc."),
-    bonus: Optional[str] = Query(None, description="Filtra raças por bônus de habilidade, ex: 'forca', 'destreza', etc.")
-):
+@router.get("/racas", response_model=List[Race], summary="Lista todas as raças ou filtra por nome/tamanho")
+def get_races(name: Optional[str] = Query(None, description="Busca parcial pelo nome da raça, ex: 'anão' ou 'anao'"), size: Optional[str] = Query(None, alias="size", description="Filtra raças pelo tamanho, ex: 'médio' ou 'medio'"), order: Optional[str] = Query(None, description="Ordena as raças pelo campo especificado, ex: 'nome'"), filter: Optional[str] = Query(None, description="Filtra raças por característica, ex: 'visao_no_escuro', 'resiliencia', 'proficiencias', etc."), bonus: Optional[str] = Query(None, description="Filtra raças por bônus de habilidade, ex: 'forca', 'destreza', etc.")):
     """Lista todas as raças ou filtra por nome/tamanho, característica, bônus e permite ordenação."""
     races = load_races()
     if name:
@@ -58,13 +47,10 @@ def get_races(
         filter_norm = normalize(filter)
         filtered = []
         for race in races:
-            # Verifica se o campo existe e não é None
             value = getattr(race, filter, None)
             if value:
-                # Se for lista, verifica se não está vazia
                 if isinstance(value, list) and len(value) > 0:
                     filtered.append(race)
-                # Se for string, verifica se não está vazia
                 elif isinstance(value, str) and value.strip():
                     filtered.append(race)
         races = filtered
@@ -79,21 +65,15 @@ def get_races(
         races = sorted(races, key=lambda r: normalize(r.nome))
     return races
 
-@router.get(
-    "/races/{race_id}",
-    response_model=Race,
-    summary="Detalhes de uma raça específica",
-    description="Retorna todos os detalhes de uma raça a partir do seu ID."
-)
+@router.get("/racas/{race_id}", response_model=Race, summary="Detalhes de uma raça")
 def get_race(race_id: int):
-    """Retorna detalhes de uma raça pelo ID."""
     races = load_races()
     for race in races:
         if race.id == race_id:
             return race
     raise HTTPException(status_code=404, detail="Raça não encontrada")
 
-@router.get("/races/{race_id}/subraces", response_model=List[SubRace], summary="Lista sub-raças de uma raça")
+@router.get("/racas/{race_id}/subracas", response_model=List[SubRace], summary="Lista sub-raças de uma raça")
 def get_subraces_of_race(race_id: int):
     races = load_races()
     for race in races:
@@ -103,7 +83,7 @@ def get_subraces_of_race(race_id: int):
             return race.subracas
     raise HTTPException(status_code=404, detail="Raça não encontrada")
 
-@router.get("/subraces/{subrace_id}", summary="Detalhes de uma sub-raça")
+@router.get("/subracas/{subrace_id}", summary="Detalhes de uma sub-raça")
 def get_subrace_by_id(subrace_id: str):
     subraces = load_all_subraces()
     for sub in subraces:
@@ -111,7 +91,7 @@ def get_subrace_by_id(subrace_id: str):
             return sub
     raise HTTPException(status_code=404, detail="Sub-raça não encontrada")
 
-@router.get("/subraces", summary="Busca sub-raças por nome")
+@router.get("/subracas", summary="Busca sub-raças por nome")
 def search_subraces(name: Optional[str] = Query(None, description="Busca parcial pelo nome da sub-raça")):
     subraces = load_all_subraces()
     if name:
