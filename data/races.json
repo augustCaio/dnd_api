@@ -1,0 +1,196 @@
+[
+  {
+    "id": 1,
+    "nome": "Anão",
+    "aumento_habilidade": "+2 Constituição",
+    "idade": "Adultos aos 50 anos, vivem cerca de 350 anos",
+    "alinhamento": "Tendem ao Leal",
+    "tamanho": "Médio, entre 1,20 m e 1,50 m, 70 a 90 kg",
+    "deslocamento": "7,5 m",
+    "visao_no_escuro": "18 m",
+    "proficiencias": [
+      "Machado de batalha",
+      "Machadinha",
+      "Martelo leve",
+      "Martelo de guerra"
+    ],
+    "resiliencia": "Vantagem contra veneno e resistência a dano de veneno",
+    "outras_caracteristicas": [
+      "Escolha entre ferramentas de ferreiro, cervejeiro ou pedreiro",
+      "Dobra proficiência em História relacionada a construções de pedra"
+    ],
+    "idiomas": ["Comum", "Anão"],
+    "subracas": [
+      {
+        "nome": "Anão da Colina",
+        "bonus": "+1 Sabedoria",
+        "descricao": "PV máximo aumenta em 1 por nível"
+      },
+      {
+        "nome": "Anão da Montanha",
+        "bonus": "+2 Força",
+        "descricao": "Proficiência com armaduras leves e médias"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "nome": "Elfo",
+    "aumento_habilidade": "+2 Destreza",
+    "idade": "Adultos aos 100 anos, vivem até 750 anos",
+    "alinhamento": "Tendem ao Caótico",
+    "tamanho": "Médio, entre 1,50 m e 1,80 m",
+    "deslocamento": "9 m",
+    "visao_no_escuro": "18 m",
+    "proficiencias": ["Percepção"],
+    "outras_caracteristicas": [
+      "Vantagem contra encantamento; imune a sono mágico",
+      "4 horas de meditação substituem 8 horas de sono"
+    ],
+    "idiomas": ["Comum", "Élfico"],
+    "subracas": [
+      {
+        "nome": "Alto Elfo",
+        "bonus": "+1 Inteligência",
+        "descricao": "Sabe um truque de mago; idioma extra; proficiência com espada longa, espada curta, arco curto e arco longo"
+      },
+      {
+        "nome": "Elfo da Floresta",
+        "bonus": "+1 Sabedoria",
+        "descricao": "Deslocamento 10,5 m; pode se esconder com cobertura natural; proficiência com armas élficas"
+      },
+      {
+        "nome": "Elfo Negro (Drow)",
+        "bonus": "+1 Carisma",
+        "descricao": "Visão no Escuro 36 m; resistência à magia; proficiência com rapieira, espada curta e besta de mão; sabe Luz, depois ganha Fogo das Fadas e Globos de Escuridão"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "nome": "Halfling",
+    "aumento_habilidade": "+2 Destreza",
+    "idade": "Adultos aos 20 anos, vivem até 150 anos",
+    "alinhamento": "Tendem ao Leal e Bom",
+    "tamanho": "Pequeno (cerca de 0,90 m e 18 kg)",
+    "deslocamento": "7,5 m",
+    "outras_caracteristicas": [
+      "Rejoga 1 em d20",
+      "Vantagem contra amedrontamento",
+      "Pode mover-se por espaços ocupados por criaturas maiores"
+    ],
+    "idiomas": ["Comum", "Halfling"],
+    "subracas": [
+      {
+        "nome": "Pés-Leves",
+        "bonus": "+1 Carisma",
+        "descricao": "Pode se esconder atrás de criaturas maiores"
+      },
+      {
+        "nome": "Robusto",
+        "bonus": "+1 Constituição",
+        "descricao": "Resistência a veneno"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "nome": "Humano",
+    "aumento_habilidade": "+1 em todos os atributos",
+    "idade": "Adultos por volta de 18 anos, vivem menos de 100 anos",
+    "alinhamento": "Qualquer",
+    "tamanho": "Médio",
+    "deslocamento": "9 m",
+    "idiomas": ["Comum", "Outro à escolha"],
+    "outras_caracteristicas": [
+      "Variante (opcional): +1 em dois atributos; proficiência em uma perícia; um talento (feat)"
+    ]
+  },
+  {
+    "id": 5,
+    "nome": "Draconato",
+    "aumento_habilidade": "+2 Força, +1 Carisma",
+    "idade": "Adultos por volta de 15 anos, vivem até 80",
+    "alinhamento": "Tendem ao extremo (Bem ou Mal)",
+    "tamanho": "Médio",
+    "deslocamento": "9 m",
+    "outras_caracteristicas": [
+      "Escolha um tipo de dragão; define tipo de dano e sopro",
+      "Ação de ataque baseada no tipo de dragão ancestral (Constituição ou Destreza); CD = 8 + bônus de proficiência + modificador de característica relevante",
+      "Resistência ao tipo de dano do ancestral dracônico"
+    ],
+    "idiomas": ["Comum", "Dracônico"]
+  },
+  {
+    "id": 6,
+    "nome": "Gnomo",
+    "aumento_habilidade": "+2 Inteligência",
+    "idade": "Adultos aos 40 anos, vivem até 500 anos",
+    "alinhamento": "Tendem ao Bom",
+    "tamanho": "Pequeno",
+    "deslocamento": "7,5 m",
+    "visao_no_escuro": "18 m",
+    "outras_caracteristicas": [
+      "Vantagem em testes de Inteligência, Sabedoria e Carisma contra magia"
+    ],
+    "idiomas": ["Comum", "Gnômico"],
+    "subracas": [
+      {
+        "nome": "Gnomo da Floresta",
+        "bonus": "+1 Destreza",
+        "descricao": "Sabe um truque; pode se esconder com cobertura natural"
+      },
+      {
+        "nome": "Gnomo das Rochas",
+        "bonus": "+1 Constituição",
+        "descricao": "Proficiência com ferramentas de artesão; dobrar proficiência em História sobre itens mágicos, alquímicos ou tecnológicos"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "nome": "Meio-Elfo",
+    "aumento_habilidade": "+2 Carisma; +1 em dois atributos à escolha",
+    "idade": "Adultos aos 20 anos, vivem até 180 anos",
+    "alinhamento": "Tendem ao Caótico",
+    "tamanho": "Médio",
+    "deslocamento": "9 m",
+    "visao_no_escuro": "18 m",
+    "outras_caracteristicas": [
+      "Vantagem contra encantamento; imune a sono mágico",
+      "Proficiência em duas perícias à escolha"
+    ],
+    "idiomas": ["Comum", "Élfico", "Outro à escolha"]
+  },
+  {
+    "id": 8,
+    "nome": "Meio-Orc",
+    "aumento_habilidade": "+2 Força, +1 Constituição",
+    "idade": "Adultos por volta dos 14 anos, vivem até 75 anos",
+    "alinhamento": "Tendem ao Caótico e Mal",
+    "tamanho": "Médio",
+    "deslocamento": "9 m",
+    "visao_no_escuro": "18 m",
+    "proficiencias": ["Intimidação"],
+    "outras_caracteristicas": [
+      "Quando reduzido a 0 PV, fica com 1 PV uma vez por descanso longo",
+      "Dano crítico com arma corpo a corpo rola um dado adicional"
+    ],
+    "idiomas": ["Comum", "Orc"]
+  },
+  {
+    "id": 9,
+    "nome": "Tiefling",
+    "aumento_habilidade": "+2 Carisma, +1 Inteligência",
+    "idade": "Similar aos humanos, mas vivem mais",
+    "alinhamento": "Tendem ao Caótico",
+    "tamanho": "Médio",
+    "deslocamento": "9 m",
+    "visao_no_escuro": "18 m",
+    "outras_caracteristicas": [
+      "Resistência a dano de fogo",
+      "Sabe Taumaturgia. Níveis 3 e 5: pode conjurar Repreensão Infernal e Escuridão uma vez cada por descanso longo (Carisma como habilidade de conjuração)"
+    ],
+    "idiomas": ["Comum", "Infernal"]
+  }
+]
