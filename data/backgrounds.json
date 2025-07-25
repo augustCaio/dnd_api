@@ -1,0 +1,615 @@
+[
+  {
+    "nome": "Acólito",
+    "descricao": "Você passou sua vida a serviço de um templo específico de um deus ou panteão.",
+    "proficiencias": ["Intuição", "Religião"],
+    "idiomas": ["2 à sua escolha"],
+    "equipamentos": [
+      "Símbolo sagrado",
+      "Livro de orações",
+      "5 varetas de incenso",
+      "Vestes",
+      "Vestes comuns",
+      "15 PO"
+    ],
+    "habilidade": {
+      "nome": "Abrigo dos Fiéis",
+      "descricao": "Você e seus companheiros podem receber cura e abrigo em templos da sua fé."
+    },
+    "personalidade": {
+      "tracos": [
+        "Sou tolerante com outras religiões.",
+        "Sempre vejo um presságio em cada evento.",
+        "Passo tempo pensando em mistérios sagrados.",
+        "Ajudo quem precisa, não importa o custo."
+      ],
+      "ideais": [
+        "Tradição: As antigas tradições devem ser preservadas.",
+        "Caridade: Sempre ajudo quem precisa.",
+        "Mudança: Devemos nos adaptar ao mundo.",
+        "Poder: A fé me dá força."
+      ],
+      "vinculos": [
+        "Fiel a um templo específico.",
+        "Tenho um antigo texto sagrado.",
+        "Quero encontrar um artefato perdido.",
+        "Meu templo é tudo para mim."
+      ],
+      "defeitos": [
+        "Não consigo esconder meu desprezo por outras crenças.",
+        "Sou inflexível em meus dogmas.",
+        "Julgo os outros rapidamente.",
+        "Tenho dificuldade em perdoar."
+      ]
+    }
+  },
+  {
+    "nome": "Artista de Furtos",
+    "descricao": "Você é um mestre em enganar e manipular.",
+    "proficiencias": ["Enganação", "Prestidigitação"],
+    "idiomas": [],
+    "equipamentos": [
+      "Kit de disfarce",
+      "Ferramentas de falsificação",
+      "Cartas marcadas",
+      "Roupas comuns",
+      "15 PO"
+    ],
+    "habilidade": {
+      "nome": "Falsificador",
+      "descricao": "Você pode criar documentos e identidades falsas com facilidade."
+    },
+    "personalidade": {
+      "tracos": [
+        "Sempre tenho um plano para sair de qualquer situação.",
+        "Adoro enganar pessoas com truques simples.",
+        "Sou um contador de histórias nato.",
+        "Tenho um talento para fazer amigos rapidamente."
+      ],
+      "ideais": [
+        "Independência: Faço o que quero, quando quero.",
+        "Criatividade: Sempre busco novas formas de enganar.",
+        "Ganância: Tudo tem um preço.",
+        "Diversão: A vida é uma grande peça de teatro."
+      ],
+      "vinculos": [
+        "Devo um grande favor a um parceiro de golpes.",
+        "Tenho uma identidade falsa que valorizo muito.",
+        "Alguém descobriu meu segredo e me chantageia.",
+        "Quero aplicar o golpe perfeito."
+      ],
+      "defeitos": [
+        "Não resisto a uma aposta.",
+        "Minto mesmo quando não preciso.",
+        "Tenho dificuldade em confiar nos outros.",
+        "Sempre subestimo meus adversários."
+      ]
+    }
+  },
+  {
+    "nome": "Criminoso",
+    "descricao": "Você tem experiência no submundo do crime.",
+    "proficiencias": ["Furtividade", "Enganação"],
+    "idiomas": [],
+    "equipamentos": ["Pé de cabra", "Roupa escura com capuz", "15 PO"],
+    "habilidade": {
+      "nome": "Contatos Criminosos",
+      "descricao": "Você tem uma rede de contatos no submundo."
+    },
+    "personalidade": {
+      "tracos": [
+        "Tenho sempre uma rota de fuga em mente.",
+        "Falo pouco e observo muito.",
+        "Sou leal aos meus companheiros de crime.",
+        "Adoro colecionar segredos."
+      ],
+      "ideais": [
+        "Lealdade: Nunca abandono um parceiro.",
+        "Liberdade: Ninguém manda em mim.",
+        "Ambição: Quero ser o maior do submundo.",
+        "Sobrevivência: Faço o que for preciso para viver."
+      ],
+      "vinculos": [
+        "Tenho uma dívida com um chefe do crime.",
+        "Protejo minha gangue acima de tudo.",
+        "Quero vingar um amigo traído.",
+        "Guardo um objeto roubado muito valioso."
+      ],
+      "defeitos": [
+        "Não resisto a um bom roubo.",
+        "Desconfio de todos.",
+        "Sou impulsivo e tomo decisões arriscadas.",
+        "Tenho um inimigo poderoso no submundo."
+      ]
+    }
+  },
+  {
+    "nome": "Artesão de Guilda",
+    "descricao": "Você pertence a uma guilda de artesãos.",
+    "proficiencias": ["Intuição", "Persuasão"],
+    "idiomas": ["1 à escolha"],
+    "equipamentos": [
+      "Ferramentas",
+      "Carta da guilda",
+      "Roupas de viajante",
+      "15 PO"
+    ],
+    "habilidade": {
+      "nome": "Membro da Guilda",
+      "descricao": "Você tem acesso a recursos e apoio da sua guilda."
+    },
+    "personalidade": {
+      "tracos": [
+        "Sou perfeccionista no meu ofício.",
+        "Gosto de ensinar o que sei.",
+        "Tenho orgulho do meu trabalho.",
+        "Admiro a criatividade dos outros."
+      ],
+      "ideais": [
+        "Comunidade: A guilda é minha família.",
+        "Tradição: Sigo os métodos antigos.",
+        "Ambição: Quero ser reconhecido pelo meu talento.",
+        "Generosidade: Ajudo aprendizes sempre que posso."
+      ],
+      "vinculos": [
+        "Tenho uma peça de arte que é meu maior orgulho.",
+        "Devo minha carreira a um mestre da guilda.",
+        "Quero expandir a influência da minha guilda.",
+        "Tenho um rival que sempre tenta me superar."
+      ],
+      "defeitos": [
+        "Sou teimoso e não aceito críticas.",
+        "Desprezo trabalhos mal feitos.",
+        "Coloco o trabalho acima das pessoas.",
+        "Tenho inveja do sucesso alheio."
+      ]
+    }
+  },
+  {
+    "nome": "Eremita",
+    "descricao": "Você viveu isolado do mundo, buscando respostas.",
+    "proficiencias": ["Medicina", "Religião"],
+    "idiomas": ["1 à escolha"],
+    "equipamentos": [
+      "Estojo de pergaminho",
+      "Cobertor",
+      "Vestes comuns",
+      "5 PO"
+    ],
+    "habilidade": {
+      "nome": "Descoberta",
+      "descricao": "Você fez uma descoberta importante durante seu isolamento."
+    },
+    "personalidade": {
+      "tracos": [
+        "Prefiro o silêncio à conversa.",
+        "Sou curioso sobre os mistérios do universo.",
+        "Tenho hábitos excêntricos.",
+        "Aprecio a solidão."
+      ],
+      "ideais": [
+        "Autoconhecimento: O isolamento traz sabedoria.",
+        "Busca: Sempre procuro respostas.",
+        "Desapego: Não me prendo a bens materiais.",
+        "Compaixão: Ajudo quem busca orientação."
+      ],
+      "vinculos": [
+        "Guardo um segredo perigoso.",
+        "Tenho um diário com minhas descobertas.",
+        "Quero proteger um local sagrado.",
+        "Procuro um discípulo digno."
+      ],
+      "defeitos": [
+        "Sou socialmente desajeitado.",
+        "Desconfio de estranhos.",
+        "Tenho dificuldade em confiar.",
+        "Às vezes, ignoro o mundo ao meu redor."
+      ]
+    }
+  },
+  {
+    "nome": "Herói do Povo",
+    "descricao": "Você é um campeão das pessoas comuns.",
+    "proficiencias": ["Atletismo", "Sobrevivência"],
+    "idiomas": [],
+    "equipamentos": ["Implemento incomum do herói", "Roupas comuns", "10 PO"],
+    "habilidade": {
+      "nome": "Campeão do Povo",
+      "descricao": "Você é reconhecido e ajudado por pessoas comuns."
+    },
+    "personalidade": {
+      "tracos": [
+        "Sou corajoso mesmo diante do perigo.",
+        "Sempre defendo os mais fracos.",
+        "Tenho um senso de justiça inabalável.",
+        "Gosto de contar histórias de meus feitos."
+      ],
+      "ideais": [
+        "Justiça: Todos merecem ser tratados com dignidade.",
+        "Liberdade: Luto contra a opressão.",
+        "Esperança: Nunca perco a fé no povo.",
+        "Sacrifício: Dou tudo pelo bem comum."
+      ],
+      "vinculos": [
+        "Tenho uma família que depende de mim.",
+        "Quero vingar uma injustiça.",
+        "Sou leal a uma vila ou cidade.",
+        "Guardo um símbolo do meu heroísmo."
+      ],
+      "defeitos": [
+        "Sou impulsivo e ajo sem pensar.",
+        "Tenho dificuldade em recusar pedidos de ajuda.",
+        "Desprezo autoridades corruptas.",
+        "Às vezes, me coloco em perigo desnecessário."
+      ]
+    }
+  },
+  {
+    "nome": "Marinheiro",
+    "descricao": "Você passou sua vida no mar.",
+    "proficiencias": ["Atletismo", "Percepção"],
+    "idiomas": [],
+    "equipamentos": ["Corda de 15m", "Amuleto", "Roupas comuns", "10 PO"],
+    "habilidade": {
+      "nome": "Passagem Marítima Gratuita",
+      "descricao": "Você consegue passagem gratuita em navios aliados."
+    },
+    "personalidade": {
+      "tracos": [
+        "Sou supersticioso com o mar.",
+        "Tenho uma música para cada ocasião.",
+        "Adoro contar histórias de viagens.",
+        "Sou destemido em tempestades."
+      ],
+      "ideais": [
+        "Aventura: O mar é minha casa.",
+        "Lealdade: Protejo minha tripulação.",
+        "Liberdade: O oceano não tem donos.",
+        "Ambição: Quero comandar meu próprio navio."
+      ],
+      "vinculos": [
+        "Tenho uma bússola de valor sentimental.",
+        "Quero reencontrar um velho amigo do mar.",
+        "Sou leal a um capitão.",
+        "Guardo rancor de um pirata rival."
+      ],
+      "defeitos": [
+        "Não resisto a uma aposta.",
+        "Tenho medo de ficar em terra firme.",
+        "Sou impulsivo em decisões.",
+        "Às vezes, bebo demais."
+      ]
+    }
+  },
+  {
+    "nome": "Pirata (Variante de Marinheiro)",
+    "descricao": "Você é um marinheiro com reputação de pirata.",
+    "proficiencias": ["Atletismo", "Percepção"],
+    "idiomas": [],
+    "equipamentos": ["Corda de 15m", "Amuleto", "Roupas comuns", "10 PO"],
+    "habilidade": {
+      "nome": "Passagem Marítima Gratuita",
+      "descricao": "Você consegue passagem gratuita em navios aliados, mas tem reputação de pirata."
+    },
+    "personalidade": {
+      "tracos": [
+        "Tenho um olho para tesouros escondidos.",
+        "Sou ousado e provocador.",
+        "Adoro desafios e apostas.",
+        "Tenho um código de honra próprio."
+      ],
+      "ideais": [
+        "Liberdade: Ninguém me prende.",
+        "Ganância: Busco riquezas a qualquer custo.",
+        "Lealdade: Protejo minha tripulação.",
+        "Vingança: Nunca esqueço uma traição."
+      ],
+      "vinculos": [
+        "Tenho um mapa do tesouro.",
+        "Quero vingar um motim.",
+        "Sou leal a um navio específico.",
+        "Guardo um segredo do passado."
+      ],
+      "defeitos": [
+        "Sou desconfiado de todos.",
+        "Tenho fama de traidor.",
+        "Não resisto a uma briga.",
+        "Às vezes, sou cruel sem motivo."
+      ]
+    }
+  },
+  {
+    "nome": "Nobre",
+    "descricao": "Você nasceu em uma família nobre.",
+    "proficiencias": ["História", "Persuasão"],
+    "idiomas": ["1 à escolha"],
+    "equipamentos": [
+      "Símbolo da linhagem",
+      "Carta de genealogia",
+      "Roupas finas",
+      "25 PO"
+    ],
+    "habilidade": {
+      "nome": "Posição de Privilegiado",
+      "descricao": "Você tem acesso a círculos sociais elevados."
+    },
+    "personalidade": {
+      "tracos": [
+        "Sou educado e cortês.",
+        "Tenho um ar de superioridade.",
+        "Gosto de festas e eventos sociais.",
+        "Sou generoso com quem considero digno."
+      ],
+      "ideais": [
+        "Responsabilidade: O poder exige dever.",
+        "Tradição: Honro minha linhagem.",
+        "Justiça: Uso minha influência para o bem.",
+        "Ambição: Quero aumentar o poder da minha família."
+      ],
+      "vinculos": [
+        "Tenho um servo leal.",
+        "Quero restaurar a glória da minha casa.",
+        "Sou protetor de um plebeu.",
+        "Tenho um rival nobre."
+      ],
+      "defeitos": [
+        "Sou arrogante.",
+        "Desprezo quem considero inferior.",
+        "Tenho dificuldade em admitir erros.",
+        "Sou facilmente manipulado por bajuladores."
+      ]
+    }
+  },
+  {
+    "nome": "Cavaleiro (Variante de Nobre)",
+    "descricao": "Você é um nobre com séquito e brasões próprios.",
+    "proficiencias": ["História", "Persuasão"],
+    "idiomas": ["1 à escolha"],
+    "equipamentos": [
+      "Símbolo da linhagem",
+      "Carta de genealogia",
+      "Roupas finas",
+      "25 PO"
+    ],
+    "habilidade": {
+      "nome": "Posição de Privilegiado",
+      "descricao": "Você tem acesso a círculos sociais elevados e séquito próprio."
+    },
+    "personalidade": {
+      "tracos": [
+        "Sou leal ao meu código de cavalaria.",
+        "Tenho orgulho do meu brasão.",
+        "Defendo os fracos.",
+        "Sou disciplinado e pontual."
+      ],
+      "ideais": [
+        "Honra: Nunca quebro minha palavra.",
+        "Coragem: Enfrento qualquer perigo.",
+        "Justiça: Luto pelo que é certo.",
+        "Dever: Sirvo minha casa acima de tudo."
+      ],
+      "vinculos": [
+        "Tenho um escudeiro fiel.",
+        "Quero conquistar terras para minha família.",
+        "Sou devoto a uma ordem de cavalaria.",
+        "Guardo um juramento sagrado."
+      ],
+      "defeitos": [
+        "Sou inflexível.",
+        "Desprezo quem não segue o código.",
+        "Tenho dificuldade em perdoar.",
+        "Sou obcecado por honra."
+      ]
+    }
+  },
+  {
+    "nome": "Forasteiro",
+    "descricao": "Você cresceu longe da civilização.",
+    "proficiencias": ["Atletismo", "Sobrevivência"],
+    "idiomas": ["1 à escolha"],
+    "equipamentos": [
+      "Bastão",
+      "Armadilha de caça",
+      "Troféu de animal",
+      "Roupas de viajante",
+      "10 PO"
+    ],
+    "habilidade": {
+      "nome": "Andarilho",
+      "descricao": "Você conhece mapas, terrenos e pode encontrar comida e água."
+    },
+    "personalidade": {
+      "tracos": [
+        "Sou calado e observador.",
+        "Tenho grande respeito pela natureza.",
+        "Desconfio de cidades grandes.",
+        "Sou autossuficiente."
+      ],
+      "ideais": [
+        "Liberdade: A natureza não tem donos.",
+        "Equilíbrio: Tudo tem seu lugar no mundo.",
+        "Proteção: Defendo os inocentes.",
+        "Aventura: Busco novas terras."
+      ],
+      "vinculos": [
+        "Tenho um animal de estimação fiel.",
+        "Quero proteger minha terra natal.",
+        "Sou leal a uma tribo ou clã.",
+        "Guardo um segredo da floresta."
+      ],
+      "defeitos": [
+        "Sou rude com estranhos.",
+        "Tenho dificuldade em confiar em cidades.",
+        "Sou impulsivo.",
+        "Às vezes, subestimo perigos urbanos."
+      ]
+    }
+  },
+  {
+    "nome": "Sábio",
+    "descricao": "Você dedicou sua vida ao estudo.",
+    "proficiencias": ["Arcanismo", "História"],
+    "idiomas": ["2 à escolha"],
+    "equipamentos": [
+      "Tinta",
+      "Pena",
+      "Pequeno canivete",
+      "Carta de colega",
+      "Vestes comuns",
+      "10 PO"
+    ],
+    "habilidade": {
+      "nome": "Pesquisador",
+      "descricao": "Você pode encontrar informações e contatos acadêmicos."
+    },
+    "personalidade": {
+      "tracos": [
+        "Sou curioso sobre tudo.",
+        "Adoro ler e aprender.",
+        "Tenho memória excelente.",
+        "Gosto de debater ideias."
+      ],
+      "ideais": [
+        "Conhecimento: O saber é o maior poder.",
+        "Lógica: Tudo pode ser explicado.",
+        "Autonomia: Sigo minha própria mente.",
+        "Ensino: Compartilho o que aprendo."
+      ],
+      "vinculos": [
+        "Tenho um livro raro.",
+        "Quero descobrir um segredo antigo.",
+        "Sou leal a uma academia.",
+        "Guardo uma carta importante."
+      ],
+      "defeitos": [
+        "Sou distraído.",
+        "Às vezes, esqueço de comer ou dormir.",
+        "Tenho dificuldade em lidar com ignorância.",
+        "Sou arrogante sobre meu conhecimento."
+      ]
+    }
+  },
+  {
+    "nome": "Soldado",
+    "descricao": "Você serviu em um exército ou milícia.",
+    "proficiencias": ["Atletismo", "Intimidação"],
+    "idiomas": [],
+    "equipamentos": [
+      "Insígnia militar",
+      "Troféu de inimigo",
+      "Dados ou cartas",
+      "Roupas comuns",
+      "10 PO"
+    ],
+    "habilidade": {
+      "nome": "Classificação Militar",
+      "descricao": "Você tem patente e respeito entre soldados."
+    },
+    "personalidade": {
+      "tracos": [
+        "Sou disciplinado e pontual.",
+        "Tenho orgulho do meu uniforme.",
+        "Sigo ordens sem questionar.",
+        "Sou leal aos meus companheiros de armas."
+      ],
+      "ideais": [
+        "Dever: Cumpro minhas obrigações.",
+        "Coragem: Não fujo do perigo.",
+        "Honra: Nunca traio meus aliados.",
+        "Ambição: Quero subir de patente."
+      ],
+      "vinculos": [
+        "Tenho um comandante que admiro.",
+        "Quero vingar um companheiro caído.",
+        "Sou leal a uma unidade específica.",
+        "Guardo um troféu de batalha."
+      ],
+      "defeitos": [
+        "Sou rígido demais.",
+        "Tenho dificuldade em relaxar.",
+        "Desprezo desertores.",
+        "Às vezes, ajo sem pensar."
+      ]
+    }
+  },
+  {
+    "nome": "Trapaceiro (Variante de Charlatão)",
+    "descricao": "Você é um artista de furtos com foco em golpes e disfarces.",
+    "proficiencias": ["Enganação", "Prestidigitação"],
+    "idiomas": [],
+    "equipamentos": [
+      "Kit de disfarce",
+      "Ferramentas de falsificação",
+      "Cartas marcadas",
+      "Roupas comuns",
+      "15 PO"
+    ],
+    "habilidade": {
+      "nome": "Falsificador",
+      "descricao": "Você pode criar documentos e identidades falsas com facilidade."
+    },
+    "personalidade": {
+      "tracos": [
+        "Tenho sempre uma história convincente.",
+        "Adoro assumir novas identidades.",
+        "Sou criativo em enganar.",
+        "Gosto de manipular situações."
+      ],
+      "ideais": [
+        "Liberdade: Ninguém me prende.",
+        "Diversão: A vida é um jogo.",
+        "Ganância: Busco lucro em tudo.",
+        "Lealdade: Protejo meus cúmplices."
+      ],
+      "vinculos": [
+        "Tenho um cúmplice de longa data.",
+        "Quero aplicar o golpe perfeito.",
+        "Sou procurado em uma cidade.",
+        "Guardo um disfarce especial."
+      ],
+      "defeitos": [
+        "Não resisto a um desafio.",
+        "Minto compulsivamente.",
+        "Tenho dificuldade em confiar.",
+        "Às vezes, subestimo meus alvos."
+      ]
+    }
+  },
+  {
+    "nome": "Urbano (Ex-Aprendiz)",
+    "descricao": "Você cresceu nas ruas da cidade, aprendendo a sobreviver.",
+    "proficiencias": ["Furtividade", "Prestidigitação"],
+    "idiomas": [],
+    "equipamentos": ["Mapa da cidade", "Carta", "Roupas comuns", "15 PO"],
+    "habilidade": {
+      "nome": "Contato Urbano",
+      "descricao": "Você tem contatos e informações nas cidades."
+    },
+    "personalidade": {
+      "tracos": [
+        "Conheço atalhos em qualquer cidade.",
+        "Sou desconfiado de estranhos.",
+        "Tenho muitos contatos.",
+        "Adoro ouvir boatos."
+      ],
+      "ideais": [
+        "Sobrevivência: Faço o que for preciso.",
+        "Lealdade: Protejo meus amigos de rua.",
+        "Ambição: Quero subir na vida.",
+        "Liberdade: Ninguém manda em mim."
+      ],
+      "vinculos": [
+        "Tenho uma gangue de infância.",
+        "Quero reencontrar um velho amigo.",
+        "Sou leal a um bairro específico.",
+        "Guardo um objeto de valor sentimental."
+      ],
+      "defeitos": [
+        "Sou impulsivo.",
+        "Tenho dificuldade em confiar.",
+        "Às vezes, sou egoísta.",
+        "Desprezo autoridades."
+      ]
+    }
+  }
+]

@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from routes.races import router as races_router
 from routes.classes import router as classes_router
+from routes.backgrounds import router as backgrounds_router
 from fastapi.responses import JSONResponse
 
 app = FastAPI()
@@ -13,4 +14,5 @@ def root():
     })
 
 app.include_router(races_router)
-app.include_router(classes_router) 
+app.include_router(classes_router)
+app.include_router(backgrounds_router) 
