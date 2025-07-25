@@ -1,0 +1,52 @@
+[
+  {
+    "nome": "Luz Plena",
+    "tipo": "visibilidade",
+    "descricao": "Visão normal.",
+    "efeitos": ["Sem penalidades para percepção."]
+  },
+  {
+    "nome": "Luz Fraca",
+    "tipo": "visibilidade",
+    "descricao": "Desvantagem em Percepção baseada em visão.",
+    "efeitos": ["Desvantagem em testes de Percepção (visão)"]
+  },
+  {
+    "nome": "Escuridão",
+    "tipo": "visibilidade",
+    "descricao": "Cegueira para quem não possui visão no escuro.",
+    "efeitos": ["Cegueira para personagens sem visão no escuro"]
+  },
+  {
+    "nome": "Clima Extremo",
+    "tipo": "clima",
+    "descricao": "Calor ou frio extremos exigem testes de resistência para evitar exaustão.",
+    "efeitos": ["Teste de Constituição para evitar exaustão"]
+  },
+  {
+    "nome": "Terreno Difícil",
+    "tipo": "obstáculo",
+    "descricao": "Reduz a velocidade pela metade.",
+    "efeitos": ["Velocidade reduzida pela metade"]
+  },
+  {
+    "nome": "Ambiente Subterrâneo",
+    "tipo": "especial",
+    "descricao": "Iluminação nula, perigos como desabamentos e gases tóxicos.",
+    "efeitos": [
+      "Necessidade de fontes de luz",
+      "Risco de desabamento",
+      "Gases tóxicos"
+    ]
+  },
+  {
+    "nome": "Ambiente Aquático",
+    "tipo": "especial",
+    "descricao": "Movimento reduzido, risco de afogamento, navegação e suprimentos são vitais.",
+    "efeitos": [
+      "Movimento reduzido",
+      "Risco de afogamento",
+      "Importância de suprimentos"
+    ]
+  }
+]

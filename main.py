@@ -13,6 +13,9 @@ from fastapi.responses import JSONResponse
 from routes.abilities import router as abilities_router
 from routes.skills import router as skills_router
 from routes.rules import router as rules_router
+from routes.travel import router as travel_router
+from routes.rest import router as rest_router
+from routes.environment import router as environment_router
 
 # Definição das tags para Swagger
 openapi_tags = [
@@ -31,13 +34,16 @@ openapi_tags = [
     {"name": "Multiclasse", "description": "Regras e combinações possíveis de multiclasses, requisitos e filtros por classe base e desejada."},
     {"name": "Habilidades", "description": "Consulta das 6 habilidades principais do personagem: Força, Destreza, Constituição, Inteligência, Sabedoria e Carisma. Inclui usos e testes comuns."},
     {"name": "Perícias", "description": "Consulta de todas as perícias do sistema, habilidade associada e descrição. Permite filtro por habilidade."},
-    {"name": "Regras", "description": "Regras gerais aplicáveis: testes, CD, vantagem/desvantagem, passivo, ajuda, testes resistidos, grupo e improvisação."}
+    {"name": "Regras", "description": "Regras gerais aplicáveis: testes, CD, vantagem/desvantagem, passivo, ajuda, testes resistidos, grupo e improvisação."},
+    {"name": "Viagem", "description": "Ritmos de viagem, marcha forçada, navegação e regras de movimentação durante a exploração."},
+    {"name": "Descanso", "description": "Regras de descanso curto, longo, exaustão, fome e sede."},
+    {"name": "Ambiente", "description": "Condições ambientais: terreno, visibilidade, clima, obstáculos e ambientes especiais."}
 ]
 
 app = FastAPI(
     title="D&D 5e API",
     description="API RESTful para consulta de dados do Livro do Jogador de Dungeons & Dragons 5ª Edição.",
-    version="1.4.0",
+    version="1.7.0",
     openapi_tags=openapi_tags
 )
 
@@ -60,4 +66,7 @@ app.include_router(feats_router)
 app.include_router(multiclass_router)
 app.include_router(abilities_router)
 app.include_router(skills_router)
-app.include_router(rules_router) 
+app.include_router(rules_router)
+app.include_router(travel_router)
+app.include_router(rest_router)
+app.include_router(environment_router) 

@@ -1,0 +1,34 @@
+[
+  {
+    "nome": "Descanso Curto",
+    "descricao": "Dura pelo menos 1 hora. Pode usar Dados de Vida para recuperar pontos de vida.",
+    "tipo": "curto",
+    "beneficios": "Recupera pontos de vida usando Dados de Vida.",
+    "requisitos": "Pelo menos 1 hora de descanso contínuo."
+  },
+  {
+    "nome": "Descanso Longo",
+    "descricao": "Dura 8 horas. Restaura todos os pontos de vida e metade dos Dados de Vida. Remove 1 nível de exaustão.",
+    "tipo": "longo",
+    "beneficios": "Restaura todos os pontos de vida, metade dos Dados de Vida e remove 1 nível de exaustão.",
+    "requisitos": "8 horas de descanso, no máximo 2 horas de atividade leve."
+  },
+  {
+    "nome": "Exaustão",
+    "descricao": "Acumula níveis com efeitos cumulativos. 6 níveis = morte.",
+    "tipo": null,
+    "beneficios": null,
+    "requisitos": null,
+    "parametros": {
+      "níveis": "1 a 6",
+      "efeitos": "Penalidades progressivas até morte"
+    }
+  },
+  {
+    "nome": "Fome e Sede",
+    "descricao": "Sem comida: após 3 dias, testes de Constituição diários (CD 10 +1/dia). Sem água: após 1 dia, CD 15; 2 falhas = 1 nível de exaustão.",
+    "tipo": null,
+    "beneficios": null,
+    "requisitos": null
+  }
+]

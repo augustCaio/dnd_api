@@ -1,0 +1,47 @@
+[
+  {
+    "nome": "Ritmo Lento",
+    "descricao": "Movimenta-se a cerca de 3 km/h. Permite mover-se furtivamente.",
+    "ritmo": "lento",
+    "distancia_por_hora": 3.0,
+    "distancia_por_dia": 24.0,
+    "beneficios": "Pode se mover furtivamente.",
+    "penalidades": null
+  },
+  {
+    "nome": "Ritmo Normal",
+    "descricao": "Movimenta-se a cerca de 4 km/h. Nenhum modificador.",
+    "ritmo": "normal",
+    "distancia_por_hora": 4.0,
+    "distancia_por_dia": 32.0,
+    "beneficios": null,
+    "penalidades": null
+  },
+  {
+    "nome": "Ritmo Rápido",
+    "descricao": "Movimenta-se a cerca de 6 km/h. -5 em testes passivos de Sabedoria (Percepção).",
+    "ritmo": "rápido",
+    "distancia_por_hora": 6.0,
+    "distancia_por_dia": 48.0,
+    "beneficios": null,
+    "penalidades": "-5 em testes passivos de Sabedoria (Percepção)"
+  },
+  {
+    "nome": "Marcha Forçada",
+    "descricao": "Cada hora além das 8 horas requer um teste de Constituição (CD 10 + 1 por hora extra). Falha: 1 nível de exaustão.",
+    "ritmo": null,
+    "distancia_por_hora": null,
+    "distancia_por_dia": null,
+    "beneficios": null,
+    "penalidades": "Exaustão em caso de falha no teste."
+  },
+  {
+    "nome": "Navegação e Orientação",
+    "descricao": "Um personagem deve atuar como guia. Terreno difícil reduz a velocidade pela metade. Erros de navegação podem levar a se perder.",
+    "ritmo": null,
+    "distancia_por_hora": null,
+    "distancia_por_dia": null,
+    "beneficios": null,
+    "penalidades": "Redução de velocidade em terreno difícil."
+  }
+]
