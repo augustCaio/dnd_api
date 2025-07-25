@@ -10,6 +10,9 @@ from routes.mounts import router as mounts_router
 from routes.feats import router as feats_router
 from routes.multiclass import router as multiclass_router
 from fastapi.responses import JSONResponse
+from routes.abilities import router as abilities_router
+from routes.skills import router as skills_router
+from routes.rules import router as rules_router
 
 # Definição das tags para Swagger
 openapi_tags = [
@@ -25,7 +28,10 @@ openapi_tags = [
     {"name": "Montarias e Veículos", "description": "Cavalos, mulas, carroças, barcos, selas e equipamentos relacionados."},
     {"name": "Utilidades", "description": "Moedas, serviços, estilos de vida e outras tabelas auxiliares."},
     {"name": "Talentos", "description": "Consulta de talentos (feats), requisitos, efeitos e filtros por classe ou raça."},
-    {"name": "Multiclasse", "description": "Regras e combinações possíveis de multiclasses, requisitos e filtros por classe base e desejada."}
+    {"name": "Multiclasse", "description": "Regras e combinações possíveis de multiclasses, requisitos e filtros por classe base e desejada."},
+    {"name": "Habilidades", "description": "Consulta das 6 habilidades principais do personagem: Força, Destreza, Constituição, Inteligência, Sabedoria e Carisma. Inclui usos e testes comuns."},
+    {"name": "Perícias", "description": "Consulta de todas as perícias do sistema, habilidade associada e descrição. Permite filtro por habilidade."},
+    {"name": "Regras", "description": "Regras gerais aplicáveis: testes, CD, vantagem/desvantagem, passivo, ajuda, testes resistidos, grupo e improvisação."}
 ]
 
 app = FastAPI(
@@ -51,4 +57,7 @@ app.include_router(armor_router)
 app.include_router(tools_router)
 app.include_router(mounts_router)
 app.include_router(feats_router)
-app.include_router(multiclass_router) 
+app.include_router(multiclass_router)
+app.include_router(abilities_router)
+app.include_router(skills_router)
+app.include_router(rules_router) 

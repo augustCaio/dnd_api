@@ -1,0 +1,87 @@
+[
+  {
+    "nome": "Atletismo",
+    "habilidade_associada": "Força",
+    "descricao": "Testes de escalada, natação, saltos e feitos físicos."
+  },
+  {
+    "nome": "Acrobacia",
+    "habilidade_associada": "Destreza",
+    "descricao": "Equilíbrio, saltos mortais, evitar quedas."
+  },
+  {
+    "nome": "Furtividade",
+    "habilidade_associada": "Destreza",
+    "descricao": "Mover-se sem ser percebido, esconder-se."
+  },
+  {
+    "nome": "Prestidigitação",
+    "habilidade_associada": "Destreza",
+    "descricao": "Mãos rápidas, truques, manipulação de objetos pequenos."
+  },
+  {
+    "nome": "Arcanismo",
+    "habilidade_associada": "Inteligência",
+    "descricao": "Conhecimento sobre magia, runas, planos e criaturas mágicas."
+  },
+  {
+    "nome": "História",
+    "habilidade_associada": "Inteligência",
+    "descricao": "Conhecimento sobre eventos, lendas, civilizações e pessoas."
+  },
+  {
+    "nome": "Investigação",
+    "habilidade_associada": "Inteligência",
+    "descricao": "Buscar pistas, deduzir informações, resolver mistérios."
+  },
+  {
+    "nome": "Natureza",
+    "habilidade_associada": "Inteligência",
+    "descricao": "Conhecimento sobre plantas, animais, clima e geografia."
+  },
+  {
+    "nome": "Religião",
+    "habilidade_associada": "Inteligência",
+    "descricao": "Conhecimento sobre deuses, cultos, rituais e símbolos."
+  },
+  {
+    "nome": "Intuição",
+    "habilidade_associada": "Sabedoria",
+    "descricao": "Perceber intenções, mentiras, emoções."
+  },
+  {
+    "nome": "Medicina",
+    "habilidade_associada": "Sabedoria",
+    "descricao": "Diagnosticar doenças, tratar ferimentos, primeiros socorros."
+  },
+  {
+    "nome": "Percepção",
+    "habilidade_associada": "Sabedoria",
+    "descricao": "Notar detalhes, ouvir sons, perceber ameaças."
+  },
+  {
+    "nome": "Sobrevivência",
+    "habilidade_associada": "Sabedoria",
+    "descricao": "Rastrear, encontrar comida, sobreviver na natureza."
+  },
+  {
+    "nome": "Atuação",
+    "habilidade_associada": "Carisma",
+    "descricao": "Cantar, dançar, encenar, entreter plateias."
+  },
+  {
+    "nome": "Enganação",
+    "habilidade_associada": "Carisma",
+    "descricao": "Mentir, blefar, disfarçar intenções."
+  },
+  {
+    "nome": "Intimidação",
+    "habilidade_associada": "Carisma",
+    "descricao": "Amedrontar, coagir, pressionar outros."
+  },
+  {
+    "nome": "Persuasão",
+    "habilidade_associada": "Carisma",
+    "descricao": "Convencer, negociar, inspirar confiança."
+  }
+]

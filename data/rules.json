@@ -1,0 +1,39 @@
+[
+  {
+    "nome": "Teste de Habilidade",
+    "descricao": "Determina se um personagem tem sucesso ao tentar algo difícil ou incerto. Fórmula: 1d20 + modificador da habilidade + bônus adicionais."
+  },
+  {
+    "nome": "Classe de Dificuldade (CD)",
+    "descricao": "Valor-alvo definido pelo Mestre. Exemplos: 5 (Muito fácil), 10 (Fácil), 15 (Moderado), 20 (Difícil), 25 (Muito difícil), 30 (Quase impossível)."
+  },
+  {
+    "nome": "Teste Passivo",
+    "descricao": "Valor usado quando o personagem não está ativamente tentando algo. Fórmula: 10 + modificador da habilidade + bônus relevantes. Exemplo: Percepção Passiva."
+  },
+  {
+    "nome": "Vantagem",
+    "descricao": "Rola 2d20 e usa o maior resultado. Aplica-se a ataques, testes de habilidade e salvaguardas."
+  },
+  {
+    "nome": "Desvantagem",
+    "descricao": "Rola 2d20 e usa o menor resultado. Aplica-se a ataques, testes de habilidade e salvaguardas."
+  },
+  { "nome": "Ajuda", "descricao": "Concede vantagem a um aliado em um teste." },
+  {
+    "nome": "Teste Resistido",
+    "descricao": "Ocorre quando alguém tenta fazer algo que outro tenta evitar diretamente. Exemplo: agarrar (Força vs. Força ou Destreza)."
+  },
+  {
+    "nome": "Teste Contestados",
+    "descricao": "Ambos os lados rolam 1d20 + modificador, quem obtiver o maior resultado vence. Exemplo: Furtividade vs. Percepção."
+  },
+  {
+    "nome": "Teste de Grupo",
+    "descricao": "Todos os membros fazem o teste, o grupo tem sucesso se metade ou mais tiverem sucesso individual."
+  },
+  {
+    "nome": "Improvisação",
+    "descricao": "O Mestre pode solicitar qualquer teste baseado nas ações dos jogadores, mesmo sem uma perícia diretamente ligada."
+  }
+]
