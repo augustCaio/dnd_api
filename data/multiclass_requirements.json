@@ -1,0 +1,37 @@
+[
+  {
+    "classe_base": "Guerreiro",
+    "classe_desejada": "Mago",
+    "requisitos": { "Força": 13, "Inteligência": 13 },
+    "beneficios": "Ganha características da nova classe em níveis posteriores. Não se ganha proficiências completas (consultar tabela). Magias devem seguir regras especiais para conjuradores multiclasses.",
+    "proficiencias": "Tabela define quais proficiências são adquiridas dependendo da classe adicionada.",
+    "magia": "Conjuradores somam níveis de algumas classes para determinar espaços de magia disponíveis. Usam a CD e habilidade de conjuração conforme a classe de origem da magia."
+  },
+  {
+    "classe_base": "Ladino",
+    "classe_desejada": "Bardo",
+    "requisitos": { "Destreza": 13, "Carisma": 13 },
+    "beneficios": "Ganha características da nova classe em níveis posteriores. Não se ganha proficiências completas (consultar tabela). Magias devem seguir regras especiais para conjuradores multiclasses.",
+    "proficiencias": "Tabela define quais proficiências são adquiridas dependendo da classe adicionada.",
+    "magia": "Conjuradores somam níveis de algumas classes para determinar espaços de magia disponíveis. Usam a CD e habilidade de conjuração conforme a classe de origem da magia."
+  },
+  {
+    "classe_base": "Clérigo",
+    "classe_desejada": "Paladino",
+    "requisitos": { "Sabedoria": 13, "Carisma": 13 },
+    "beneficios": "Ganha características da nova classe em níveis posteriores. Não se ganha proficiências completas (consultar tabela). Magias devem seguir regras especiais para conjuradores multiclasses.",
+    "proficiencias": "Tabela define quais proficiências são adquiridas dependendo da classe adicionada.",
+    "magia": "Conjuradores somam níveis de algumas classes para determinar espaços de magia disponíveis. Usam a CD e habilidade de conjuração conforme a classe de origem da magia."
+  },
+  {
+    "classe_base": "Bárbaro",
+    "classe_desejada": "Guerreiro",
+    "requisitos": { "Força": 13 },
+    "beneficios": "Ganha características da nova classe em níveis posteriores. Não se ganha proficiências completas (consultar tabela). Magias devem seguir regras especiais para conjuradores multiclasses.",
+    "proficiencias": "Tabela define quais proficiências são adquiridas dependendo da classe adicionada.",
+    "magia": "Conjuradores somam níveis de algumas classes para determinar espaços de magia disponíveis. Usam a CD e habilidade de conjuração conforme a classe de origem da magia."
+  },
+  {
+    "regras_gerais": "Para multiclassar, o personagem deve atender a pré-requisitos de habilidade (valores mínimos). Ganha características da nova classe em níveis posteriores. Não se ganha proficiências completas (consultar tabela). Magias devem seguir regras especiais para conjuradores multiclasses. Tabela define quais proficiências são adquiridas dependendo da classe adicionada. Conjuradores somam níveis de algumas classes para determinar espaços de magia disponíveis. Usam a CD e habilidade de conjuração conforme a classe de origem da magia."
+  }
+]

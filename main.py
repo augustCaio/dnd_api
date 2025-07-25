@@ -7,6 +7,8 @@ from routes.weapons import router as weapons_router
 from routes.armor import router as armor_router
 from routes.tools import router as tools_router
 from routes.mounts import router as mounts_router
+from routes.feats import router as feats_router
+from routes.multiclass import router as multiclass_router
 from fastapi.responses import JSONResponse
 
 # Definição das tags para Swagger
@@ -21,7 +23,9 @@ openapi_tags = [
     {"name": "Armaduras", "description": "Armaduras leves, médias, pesadas e escudos."},
     {"name": "Ferramentas", "description": "Kits, instrumentos musicais, ferramentas de artesão e ladrão."},
     {"name": "Montarias e Veículos", "description": "Cavalos, mulas, carroças, barcos, selas e equipamentos relacionados."},
-    {"name": "Utilidades", "description": "Moedas, serviços, estilos de vida e outras tabelas auxiliares."}
+    {"name": "Utilidades", "description": "Moedas, serviços, estilos de vida e outras tabelas auxiliares."},
+    {"name": "Talentos", "description": "Consulta de talentos (feats), requisitos, efeitos e filtros por classe ou raça."},
+    {"name": "Multiclasse", "description": "Regras e combinações possíveis de multiclasses, requisitos e filtros por classe base e desejada."}
 ]
 
 app = FastAPI(
@@ -45,4 +49,6 @@ app.include_router(equipment_router)
 app.include_router(weapons_router)
 app.include_router(armor_router)
 app.include_router(tools_router)
-app.include_router(mounts_router) 
+app.include_router(mounts_router)
+app.include_router(feats_router)
+app.include_router(multiclass_router) 

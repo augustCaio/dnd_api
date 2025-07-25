@@ -1,0 +1,32 @@
+[
+  {
+    "nome": "Atirador de Elite",
+    "requisitos": null,
+    "efeito": "Ignora cobertura de meio e três quartos ao atacar à distância. Não sofre desvantagem em ataques à longa distância. Pode reduzir -5 na jogada de ataque para somar +10 no dano.",
+    "fonte": "PHB"
+  },
+  {
+    "nome": "Alerta",
+    "requisitos": null,
+    "efeito": "+5 em iniciativa. Não pode ser surpreendido enquanto estiver consciente. Criaturas invisíveis não ganham vantagem contra você por serem invisíveis.",
+    "fonte": "PHB"
+  },
+  {
+    "nome": "Resiliente",
+    "requisitos": null,
+    "efeito": "+1 em um atributo à sua escolha. Ganha proficiência em testes de resistência desse atributo.",
+    "fonte": "PHB"
+  },
+  {
+    "nome": "Mago de Batalha",
+    "requisitos": { "classe": "Mago" },
+    "efeito": "+1 em Inteligência. Pode conjurar magias sem sofrer ataques de oportunidade ao conjurar em combate corpo a corpo.",
+    "fonte": "PHB"
+  },
+  {
+    "nome": "Regras Gerais de Talentos",
+    "requisitos": null,
+    "efeito": "Ao invés de aumento de habilidade, o jogador pode escolher um talento. O mestre pode permitir ou não seu uso (regra opcional). Cada talento fornece benefícios mecânicos distintos, como bônus, proficiências ou capacidades únicas.",
+    "fonte": "PHB"
+  }
+]
