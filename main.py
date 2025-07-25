@@ -9,7 +9,27 @@ from routes.tools import router as tools_router
 from routes.mounts import router as mounts_router
 from fastapi.responses import JSONResponse
 
-app = FastAPI()
+# Definição das tags para Swagger
+openapi_tags = [
+    {"name": "Root", "description": "Endpoint raiz da API. Status e mensagem de boas-vindas."},
+    {"name": "Raças", "description": "Consulta e filtros avançados para raças e sub-raças do Livro do Jogador."},
+    {"name": "Sub-raças", "description": "Detalhes e busca de sub-raças."},
+    {"name": "Classes", "description": "Consulta de classes, níveis, magias e habilidades."},
+    {"name": "Antecedentes", "description": "Consulta de backgrounds, traços de personalidade, ideais, vínculos e defeitos."},
+    {"name": "Equipamentos", "description": "Itens de aventura, mochilas, cordas, poções, etc."},
+    {"name": "Armas", "description": "Armas simples, marciais, propriedades e categorias."},
+    {"name": "Armaduras", "description": "Armaduras leves, médias, pesadas e escudos."},
+    {"name": "Ferramentas", "description": "Kits, instrumentos musicais, ferramentas de artesão e ladrão."},
+    {"name": "Montarias e Veículos", "description": "Cavalos, mulas, carroças, barcos, selas e equipamentos relacionados."},
+    {"name": "Utilidades", "description": "Moedas, serviços, estilos de vida e outras tabelas auxiliares."}
+]
+
+app = FastAPI(
+    title="D&D 5e API",
+    description="API RESTful para consulta de dados do Livro do Jogador de Dungeons & Dragons 5ª Edição.",
+    version="1.4.0",
+    openapi_tags=openapi_tags
+)
 
 @app.get("/", tags=["Root"], summary="Root", description="Endpoint raiz da API. Retorna status e mensagem de boas-vindas.")
 def root():
