@@ -1,0 +1,51 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+ENV/
+.env/
+.venv/
+
+# Editor/IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test/coverage
+.coverage
+htmlcov/
+.tox/
+.pytest_cache/
+
+# Logs
+*.log
+
+# Data/outputs temporários
+*.sqlite3
+*.db
+*.bak
+*.tmp
+
+# Arquivos de configuração locais
+.env
+.env.*
+
+# Docker
+*.pid
+
+# Outros
+*.swp
+*.bak
+
+# Não versionar arquivos de build
+build/
+dist/
+*.egg-info/ 
