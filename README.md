@@ -17,6 +17,9 @@
 - **Ferramentas** (kits, instrumentos musicais, artesão, etc.)
 - **Montarias e Veículos**
 - **Moedas, Serviços e Estilos de Vida**
+- **Ações de Combate** (atacar, correr, esquivar, ações bônus, reações, etc.)
+- **Condições de Combate** (cego, caído, enfeitiçado, etc.)
+- **Regras detalhadas de Combate** (iniciativa, rodadas, tipos de ataque, dano, morte, cobertura, etc.)
 - **Filtros inteligentes** em quase todos os endpoints
 - **Documentação Swagger interativa e didática**
 - **Testes automatizados cobrindo todas as rotas**
@@ -129,6 +132,84 @@ GET /services
 GET /lifestyles
 ```
 
+### Ações de Combate
+
+```http
+GET /actions
+GET /actions?type=bônus
+```
+
+- Lista todas as ações possíveis no combate (atacar, correr, esquivar, conjurar magia, etc).
+- Filtro por tipo: ação, bônus, reação, movimento...
+
+#### Exemplo de resposta
+
+```json
+[
+  {
+    "nome": "Atacar",
+    "tipo": "ação",
+    "descricao": "Realiza um ataque corpo a corpo ou à distância contra um alvo.",
+    "exemplos": ["Atacar com espada", "Atirar com arco"]
+  },
+  {
+    "nome": "Ação Bônus",
+    "tipo": "ação bônus",
+    "descricao": "Algumas habilidades, magias ou talentos permitem ações bônus.",
+    "exemplos": ["Ataque extra do Guerreiro", "Lançar magia de ação bônus"]
+  }
+]
+```
+
+### Condições de Combate
+
+```http
+GET /conditions
+```
+
+- Lista todas as condições de combate (cego, caído, enfeitiçado, imobilizado, invisível, paralisado, petrificado, surdo, etc).
+
+#### Exemplo de resposta
+
+```json
+[
+  {
+    "nome": "Cego",
+    "efeitos_mecanicos": [
+      "Falha automaticamente em qualquer teste que dependa de visão.",
+      "Testes de ataque contra a criatura têm vantagem.",
+      "Testes de ataque da criatura têm desvantagem."
+    ],
+    "duracao_tipica": "Até curado ou fim do efeito"
+  }
+]
+```
+
+### Regras de Combate
+
+```http
+GET /rules/combat
+GET /rules/combat?type=iniciativa
+```
+
+- Lista regras específicas de combate (iniciativa, rodadas, tipos de ataque, acertos críticos, dano, morte, cobertura, combate montado, subaquático e em massa).
+- Filtro por tipo de regra.
+
+#### Exemplo de resposta
+
+```json
+[
+  {
+    "tipo": "iniciativa",
+    "descricao": "Cada criatura rola 1d20 + modificador de Destreza. A ordem determina quem age primeiro."
+  },
+  {
+    "tipo": "acerto_critico",
+    "descricao": "Um 20 natural no d20 acerta automaticamente e causa dano extra (rola-se o dano duas vezes)."
+  }
+]
+```
+
 ---
 
 ## 🔎 Exemplos de Filtros Inteligentes
@@ -138,6 +219,8 @@ GET /lifestyles
 - **/equipment?cost<=5PO&weight<=1** — Equipamentos baratos e leves.
 - **/tools?category=instrumento musical** — Só instrumentos musicais.
 - **/backgrounds?prof=religião&ideal=tradição** — Antecedentes com proficiência em Religião e ideal Tradição.
+- **/actions?type=bônus** — Todas as ações bônus.
+- **/rules/combat?type=iniciativa** — Apenas regras de iniciativa.
 
 ---
 
@@ -158,6 +241,7 @@ pytest test_api.py
 
 - Acesse `/docs` para explorar todos os endpoints, schemas, exemplos e testar requisições direto do navegador.
 - Schemas detalhados, exemplos reais e descrições em português.
+- **Novos endpoints de combate** já documentados e organizados por categoria!
 
 ---
 
@@ -171,13 +255,82 @@ pytest test_api.py
 
 ---
 
-## 🤝 Contribua!
+## 📦 Schemas dos Novos Recursos de Combate
 
-Pull requests são bem-vindos! Sugestões, correções e novas features são sempre apreciadas.
+### Ações de Combate (`/actions`)
 
-1. Crie uma branch para sua feature/correção
-2. Adicione testes para novas funcionalidades
-3. Descreva claramente sua proposta no PR
+```json
+{
+  "nome": "Atacar",
+  "tipo": "ação",
+  "descricao": "Realiza um ataque corpo a corpo ou à distância contra um alvo.",
+  "exemplos": ["Atacar com espada", "Atirar com arco"]
+}
+```
+
+- **nome**: Nome da ação (ex: "Atacar", "Correr").
+- **tipo**: Tipo da ação (ação, bônus, reação, movimento).
+- **descricao**: Descrição resumida do efeito.
+- **exemplos**: Exemplos de uso.
+
+### Condições de Combate (`/conditions`)
+
+```json
+{
+  "nome": "Cego",
+  "efeitos_mecanicos": [
+    "Falha automaticamente em qualquer teste que dependa de visão.",
+    "Testes de ataque contra a criatura têm vantagem.",
+    "Testes de ataque da criatura têm desvantagem."
+  ],
+  "duracao_tipica": "Até curado ou fim do efeito"
+}
+```
+
+- **nome**: Nome da condição (ex: "Cego").
+- **efeitos_mecanicos**: Lista de efeitos mecânicos.
+- **duracao_tipica**: Duração padrão da condição.
+
+### Regras de Combate (`/rules/combat`)
+
+```json
+{
+  "tipo": "iniciativa",
+  "descricao": "Cada criatura rola 1d20 + modificador de Destreza. A ordem determina quem age primeiro."
+}
+```
+
+- **tipo**: Tipo da regra (ex: "iniciativa", "dano", "acerto_critico").
+- **descricao**: Descrição detalhada da regra.
+
+---
+
+## 🤝 Como contribuir com recursos de combate
+
+1. **Adicione novas ações, condições ou regras**
+
+   - Edite os arquivos JSON em `data/actions.json`, `data/conditions.json` ou `data/combat_rules.json`.
+   - Siga o formato dos exemplos acima.
+   - Mantenha nomes e descrições em português claro e objetivo.
+
+2. **Inclua testes automatizados**
+
+   - Adicione ou edite funções de teste em `test_api.py`.
+   - Teste novos endpoints, filtros ou validações de dados.
+
+3. **Documente no README**
+
+   - Se criar um novo tipo de recurso de combate, adicione exemplos de uso, filtros e schemas nesta documentação.
+
+4. **Abra um Pull Request**
+
+   - Descreva claramente o que foi adicionado ou alterado.
+   - Se possível, inclua exemplos de resposta e instruções de uso.
+
+5. **Dicas para contribuir com recursos de combate**
+   - Use termos do D&D 5e traduzidos fielmente.
+   - Prefira listas e descrições objetivas.
+   - Sempre rode os testes antes de enviar seu PR.
 
 ---
 
