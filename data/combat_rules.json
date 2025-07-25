@@ -1,0 +1,66 @@
+[
+  {
+    "tipo": "iniciativa",
+    "descricao": "Cada criatura rola 1d20 + modificador de Destreza. A ordem determina quem age primeiro."
+  },
+  {
+    "tipo": "rodada",
+    "descricao": "O combate é dividido em rodadas de cerca de 6 segundos. Cada personagem age em seu turno."
+  },
+  {
+    "tipo": "ataque_corpo_a_corpo",
+    "descricao": "Usa Força (ou Destreza para armas com acuidade) para ataques corpo a corpo."
+  },
+  {
+    "tipo": "ataque_a_distancia",
+    "descricao": "Usa Destreza para ataques à distância. Sofre desvantagem em alcance longo e se estiver a 1,5m de um inimigo."
+  },
+  {
+    "tipo": "ataque_magia",
+    "descricao": "Regras específicas conforme a magia usada."
+  },
+  {
+    "tipo": "teste_ataque",
+    "descricao": "1d20 + modificador apropriado + proficiência (se aplicável). Se igualar ou superar a CA do alvo, acerta."
+  },
+  {
+    "tipo": "acerto_critico",
+    "descricao": "Um 20 natural no d20 acerta automaticamente e causa dano extra (rola-se o dano duas vezes)."
+  },
+  {
+    "tipo": "falha_critica",
+    "descricao": "Um 1 natural pode ser considerado falha automática (a critério do Mestre)."
+  },
+  {
+    "tipo": "dano",
+    "descricao": "Aplica o dano indicado pela arma ou magia, subtraindo da Vida (PV) do alvo."
+  },
+  {
+    "tipo": "resistencia_vulnerabilidade",
+    "descricao": "Resistência reduz o dano pela metade, vulnerabilidade dobra o dano."
+  },
+  {
+    "tipo": "morte",
+    "descricao": "Ao chegar a 0 PV, faz testes de resistência contra morte a cada turno (1d20). 3 sucessos = estável, 3 falhas = morte."
+  },
+  {
+    "tipo": "cura",
+    "descricao": "Magias, poções e descanso restauram PVs."
+  },
+  {
+    "tipo": "cobertura",
+    "descricao": "Meia cobertura: +2 na CA e testes de Destreza; 3/4: +5; total: não pode ser atacado diretamente."
+  },
+  {
+    "tipo": "combate_montado",
+    "descricao": "Regras para lutar sobre montarias."
+  },
+  {
+    "tipo": "combate_subaquatico",
+    "descricao": "Penalidades para ataques corpo a corpo e à distância."
+  },
+  {
+    "tipo": "combate_em_massa",
+    "descricao": "Pode ser narrado com abstração ou regras opcionais."
+  }
+]

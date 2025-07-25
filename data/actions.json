@@ -1,0 +1,74 @@
+[
+  {
+    "nome": "Atacar",
+    "tipo": "ação",
+    "descricao": "Realiza um ataque corpo a corpo ou à distância contra um alvo.",
+    "exemplos": ["Atacar com espada", "Atirar com arco"]
+  },
+  {
+    "nome": "Conjurar Magia",
+    "tipo": "ação",
+    "descricao": "Lança uma magia cujo tempo de conjuração é '1 ação'.",
+    "exemplos": ["Lançar Mísseis Mágicos", "Cura das Feridas"]
+  },
+  {
+    "nome": "Correr (Dash)",
+    "tipo": "ação",
+    "descricao": "Dobra sua velocidade de movimento neste turno.",
+    "exemplos": ["Correr para trás de cobertura"]
+  },
+  {
+    "nome": "Desengajar (Disengage)",
+    "tipo": "ação",
+    "descricao": "Evita ataques de oportunidade ao se mover neste turno.",
+    "exemplos": ["Sair do alcance de um inimigo"]
+  },
+  {
+    "nome": "Esquivar (Dodge)",
+    "tipo": "ação",
+    "descricao": "Ataques contra você têm desvantagem, e você tem vantagem em testes de Destreza até o início do seu próximo turno.",
+    "exemplos": ["Preparar-se para evitar ataques"]
+  },
+  {
+    "nome": "Ajudar (Help)",
+    "tipo": "ação",
+    "descricao": "Concede vantagem a um aliado em uma tarefa ou ataque.",
+    "exemplos": ["Ajudar um aliado a escalar", "Ajudar no ataque"]
+  },
+  {
+    "nome": "Esconder-se (Hide)",
+    "tipo": "ação",
+    "descricao": "Tenta se esconder, exigindo um teste de Furtividade.",
+    "exemplos": ["Esconder-se atrás de uma árvore"]
+  },
+  {
+    "nome": "Preparar (Ready)",
+    "tipo": "ação",
+    "descricao": "Define uma ação condicionada a um gatilho específico.",
+    "exemplos": ["Preparar ataque caso um inimigo se aproxime"]
+  },
+  {
+    "nome": "Usar Objeto",
+    "tipo": "ação",
+    "descricao": "Interage com um objeto além da interação livre.",
+    "exemplos": ["Puxar uma alavanca", "Beber uma poção"]
+  },
+  {
+    "nome": "Movimento",
+    "tipo": "movimento",
+    "descricao": "Move-se até o limite do seu deslocamento. Pode dividir o movimento antes e depois da ação.",
+    "exemplos": ["Andar 9 metros", "Dividir movimento antes e depois da ação"]
+  },
+  {
+    "nome": "Ação Bônus",
+    "tipo": "ação bônus",
+    "descricao": "Algumas habilidades, magias ou talentos permitem ações bônus.",
+    "exemplos": ["Ataque extra do Guerreiro", "Lançar magia de ação bônus"]
+  },
+  {
+    "nome": "Reação",
+    "tipo": "reação",
+    "descricao": "Uma vez por rodada, fora do seu turno. Exemplo: ataque de oportunidade ao sair do alcance corpo a corpo.",
+    "exemplos": ["Ataque de oportunidade", "Contra-mágica"]
+  }
+]
