@@ -1,0 +1,32 @@
+[
+  {
+    "nome": "Mochila",
+    "custo": "2 PO",
+    "peso": 2.3,
+    "descricao": "Bolsa resistente para carregar equipamentos e suprimentos."
+  },
+  {
+    "nome": "Corda (15 m)",
+    "custo": "1 PO",
+    "peso": 4.5,
+    "descricao": "Corda de cânhamo resistente, útil para escalada e amarrações."
+  },
+  {
+    "nome": "Poção de Cura",
+    "custo": "50 PO",
+    "peso": 0.2,
+    "descricao": "Poção mágica que restaura pontos de vida ao ser ingerida."
+  },
+  {
+    "nome": "Rações (1 dia)",
+    "custo": "5 PP",
+    "peso": 0.9,
+    "descricao": "Porção de comida seca e nutritiva para um dia de viagem."
+  },
+  {
+    "nome": "Tocha",
+    "custo": "1 PC",
+    "peso": 0.45,
+    "descricao": "Fonte de luz simples, dura cerca de 1 hora acesa."
+  }
+]

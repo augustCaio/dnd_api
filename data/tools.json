@@ -1,0 +1,42 @@
+[
+  {
+    "nome": "Kit de Disfarce",
+    "tipo": "Disfarce",
+    "custo": "25 PO",
+    "peso": 2.2,
+    "descricao": "Contém tintas, pós, roupas e acessórios para criar disfarces convincentes.",
+    "uso": "Permite criar disfarces convincentes para enganar outras pessoas."
+  },
+  {
+    "nome": "Ferramentas de Ladrão",
+    "tipo": "Ladrão",
+    "custo": "25 PO",
+    "peso": 0.5,
+    "descricao": "Conjunto de ferramentas para abrir fechaduras e desarmar armadilhas.",
+    "uso": "Abrir fechaduras, desarmar armadilhas e mecanismos."
+  },
+  {
+    "nome": "Kit de Herbalismo",
+    "tipo": "Herbalismo",
+    "custo": "5 PO",
+    "peso": 1.5,
+    "descricao": "Inclui frascos, tesouras e ervas para criar poções e remédios.",
+    "uso": "Preparar poções, remédios e identificar plantas."
+  },
+  {
+    "nome": "Ferramentas de Artesão (Ferreiro)",
+    "tipo": "Artesão",
+    "custo": "20 PO",
+    "peso": 4.5,
+    "descricao": "Ferramentas especializadas para trabalhar com metal.",
+    "uso": "Forjar, reparar e criar itens de metal."
+  },
+  {
+    "nome": "Instrumento Musical (Flauta)",
+    "tipo": "Instrumento Musical",
+    "custo": "2 PO",
+    "peso": 0.5,
+    "descricao": "Flauta de madeira, usada para apresentações e entretenimento.",
+    "uso": "Tocar música, apresentações e entretenimento."
+  }
+]

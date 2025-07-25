@@ -1,0 +1,32 @@
+[
+  {
+    "estilo": "Miserável",
+    "custo_diario": "0,1 PO",
+    "descricao": "Sobrevivência nas ruas, sem conforto ou segurança."
+  },
+  {
+    "estilo": "Pobre",
+    "custo_diario": "1 PO",
+    "descricao": "Moradia simples, alimentação básica."
+  },
+  {
+    "estilo": "Modesto",
+    "custo_diario": "1 PO",
+    "descricao": "Vida confortável, mas sem luxo."
+  },
+  {
+    "estilo": "Confortável",
+    "custo_diario": "2 PO",
+    "descricao": "Boa alimentação e moradia, algum respeito social."
+  },
+  {
+    "estilo": "Rico",
+    "custo_diario": "4 PO",
+    "descricao": "Vida luxuosa, acesso a círculos sociais elevados."
+  },
+  {
+    "estilo": "Aristocrático",
+    "custo_diario": "10+ PO",
+    "descricao": "O mais alto padrão de vida, influência e prestígio."
+  }
+]

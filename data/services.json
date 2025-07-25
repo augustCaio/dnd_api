@@ -1,0 +1,22 @@
+[
+  {
+    "tipo": "Estalagem (modesta)",
+    "preco": "5 PP/noite",
+    "descricao": "Hospedagem simples, cama e refeição básica."
+  },
+  {
+    "tipo": "Estalagem (rica)",
+    "preco": "2 PO/noite",
+    "descricao": "Hospedagem confortável, quarto privativo e boa comida."
+  },
+  {
+    "tipo": "Refeição simples",
+    "preco": "6 PC",
+    "descricao": "Comida básica em taverna ou estalagem."
+  },
+  {
+    "tipo": "Transporte",
+    "preco": "varia por distância e tipo",
+    "descricao": "Carruagem, barco, montaria ou outros meios de viagem."
+  }
+]

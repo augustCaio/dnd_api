@@ -16,6 +16,7 @@ def load_classes() -> List[Class]:
 @router.get(
     "/classes",
     response_model=List[Class],
+    tags=["Classes"],
     summary="Lista todas as classes",
     description="Lista todas as classes disponíveis. Permite filtrar por magia, dado de vida e proficiência em armaduras."
 )
@@ -24,6 +25,7 @@ def get_classes(
     hit_die: Optional[str] = Query(None, description="Filtra classes pelo dado de vida, ex: '1d10'", examples=["1d10"]),
     armor: Optional[str] = Query(None, description="Filtra classes por proficiência em armaduras, ex: 'leve', 'média', 'todas'", examples=["leve"])
 ):
+    """Lista todas as classes do PHB, com filtros opcionais."""
     classes = load_classes()
     if magic is not None:
         def has_magic(cls):
@@ -42,10 +44,12 @@ def get_classes(
 @router.get(
     "/classes/{class_id}",
     response_model=Class,
+    tags=["Classes"],
     summary="Detalhes de uma classe",
     description="Retorna todos os detalhes de uma classe pelo seu ID."
 )
 def get_class(class_id: int):
+    """Detalhes de uma classe pelo ID."""
     classes = load_classes()
     if 1 <= class_id <= len(classes):
         return classes[class_id - 1]
@@ -54,10 +58,12 @@ def get_class(class_id: int):
 @router.get(
     "/classes/{class_id}/niveis",
     response_model=List[ClassLevel],
+    tags=["Classes"],
     summary="Habilidades por nível",
     description="Lista todas as habilidades e magias adquiridas por nível da classe."
 )
 def get_class_levels(class_id: int):
+    """Lista todas as habilidades e magias adquiridas por nível da classe."""
     classes = load_classes()
     if 1 <= class_id <= len(classes):
         return classes[class_id - 1].niveis
@@ -65,10 +71,12 @@ def get_class_levels(class_id: int):
 
 @router.get(
     "/classes/{class_id}/magias",
+    tags=["Classes"],
     summary="Magias conhecidas da classe",
     description="Lista todas as magias conhecidas pela classe, se aplicável."
 )
 def get_class_spells(class_id: int):
+    """Lista todas as magias conhecidas pela classe, se aplicável."""
     classes = load_classes()
     if 1 <= class_id <= len(classes):
         spells = []

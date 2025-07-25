@@ -1,0 +1,35 @@
+[
+  {
+    "nome": "Peça de Cobre",
+    "sigla": "PC",
+    "valor_em_PO": 0.01,
+    "descricao": "Moeda de menor valor, usada para pequenas transações."
+  },
+  {
+    "nome": "Peça de Prata",
+    "sigla": "PP",
+    "valor_em_PO": 0.1,
+    "descricao": "Moeda comum para transações cotidianas."
+  },
+  {
+    "nome": "Peça de Electrum",
+    "sigla": "PE",
+    "valor_em_PO": 0.5,
+    "descricao": "Moeda menos comum, vale meio PO."
+  },
+  {
+    "nome": "Peça de Ouro",
+    "sigla": "PO",
+    "valor_em_PO": 1.0,
+    "descricao": "Moeda padrão de valor em D&D."
+  },
+  {
+    "nome": "Peça de Platina",
+    "sigla": "PL",
+    "valor_em_PO": 10.0,
+    "descricao": "Moeda de maior valor, usada em grandes transações."
+  },
+  {
+    "conversoes": ["10 PC = 1 PP", "5 PP = 1 PO", "2 PE = 1 PO", "10 PO = 1 PL"]
+  }
+]

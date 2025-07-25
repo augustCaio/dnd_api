@@ -1,0 +1,146 @@
+[
+  {
+    "nome": "Cavalo",
+    "tipo": "Montaria",
+    "velocidade": "60 ft.",
+    "capacidade": "240 kg",
+    "custo": "75 PO",
+    "peso": 400.0,
+    "descricao": "Cavalo treinado para transporte de pessoas e cargas leves."
+  },
+  {
+    "nome": "Cavalo de Guerra",
+    "tipo": "Montaria",
+    "velocidade": "60 ft.",
+    "capacidade": "250 kg",
+    "custo": "400 PO",
+    "peso": 420.0,
+    "descricao": "Cavalo treinado para combate, mais robusto e caro."
+  },
+  {
+    "nome": "Camelo",
+    "tipo": "Montaria",
+    "velocidade": "50 ft.",
+    "capacidade": "220 kg",
+    "custo": "50 PO",
+    "peso": 300.0,
+    "descricao": "Montaria ideal para desertos."
+  },
+  {
+    "nome": "Mula",
+    "tipo": "Montaria",
+    "velocidade": "40 ft.",
+    "capacidade": "210 kg",
+    "custo": "8 PO",
+    "peso": 250.0,
+    "descricao": "Animal robusto, ideal para transporte de cargas pesadas."
+  },
+  {
+    "nome": "Pônei",
+    "tipo": "Montaria",
+    "velocidade": "40 ft.",
+    "capacidade": "110 kg",
+    "custo": "30 PO",
+    "peso": 200.0,
+    "descricao": "Montaria pequena, adequada para halflings e gnomos."
+  },
+  {
+    "nome": "Carroça",
+    "tipo": "Veículo Terrestre",
+    "velocidade": "Variante (puxada por animal)",
+    "capacidade": "400 kg",
+    "custo": "15 PO",
+    "peso": 100.0,
+    "descricao": "Veículo simples de duas rodas, usado para transporte de cargas."
+  },
+  {
+    "nome": "Carruagem",
+    "tipo": "Veículo Terrestre",
+    "velocidade": "Variante (puxada por animal)",
+    "capacidade": "600 kg",
+    "custo": "100 PO",
+    "peso": 200.0,
+    "descricao": "Veículo fechado, confortável para passageiros."
+  },
+  {
+    "nome": "Trenó",
+    "tipo": "Veículo Terrestre",
+    "velocidade": "Variante (puxado por animal)",
+    "capacidade": "300 kg",
+    "custo": "20 PO",
+    "peso": 50.0,
+    "descricao": "Usado em regiões nevadas."
+  },
+  {
+    "nome": "Canoa",
+    "tipo": "Veículo Aquático",
+    "velocidade": "Variante (remada)",
+    "capacidade": "250 kg",
+    "custo": "50 PO",
+    "peso": 20.0,
+    "descricao": "Embarcação pequena, ideal para rios e lagos."
+  },
+  {
+    "nome": "Galé",
+    "tipo": "Veículo Aquático",
+    "velocidade": "Variante (vela e remos)",
+    "capacidade": "50.000 kg",
+    "custo": "30.000 PO",
+    "peso": 20000.0,
+    "descricao": "Grande navio de guerra ou transporte."
+  },
+  {
+    "nome": "Navio Mercante",
+    "tipo": "Veículo Aquático",
+    "velocidade": "Variante (vela)",
+    "capacidade": "100.000 kg",
+    "custo": "25.000 PO",
+    "peso": 30000.0,
+    "descricao": "Navio grande para transporte de mercadorias."
+  },
+  {
+    "nome": "Sela Comum",
+    "tipo": "Equipamento",
+    "velocidade": "-",
+    "capacidade": "-",
+    "custo": "5 PO",
+    "peso": 5.0,
+    "descricao": "Sela padrão para montarias."
+  },
+  {
+    "nome": "Sela de Carga",
+    "tipo": "Equipamento",
+    "velocidade": "-",
+    "capacidade": "-",
+    "custo": "5 PO",
+    "peso": 7.5,
+    "descricao": "Sela reforçada para transporte de cargas."
+  },
+  {
+    "nome": "Sela Exótica",
+    "tipo": "Equipamento",
+    "velocidade": "-",
+    "capacidade": "-",
+    "custo": "60 PO",
+    "peso": 6.5,
+    "descricao": "Sela especial para montarias incomuns."
+  },
+  {
+    "nome": "Arreios",
+    "tipo": "Equipamento",
+    "velocidade": "-",
+    "capacidade": "-",
+    "custo": "2 PO",
+    "peso": 2.5,
+    "descricao": "Equipamento para prender montarias a veículos."
+  },
+  {
+    "nome": "Estribos",
+    "tipo": "Equipamento",
+    "velocidade": "-",
+    "capacidade": "-",
+    "custo": "1 PO",
+    "peso": 1.0,
+    "descricao": "Apoio para os pés do cavaleiro."
+  }
+]

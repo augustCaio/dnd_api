@@ -1,0 +1,32 @@
+[
+  {
+    "nome": "Espada Curta",
+    "dano": "1d6",
+    "tipo": "Perfurante",
+    "propriedades": ["Acuidade", "Leve"],
+    "categoria": "Simples",
+    "peso": 0.9,
+    "custo": "10 PO",
+    "descricao": "Uma lâmina curta e leve, ideal para ataques rápidos e precisos."
+  },
+  {
+    "nome": "Machado Grande",
+    "dano": "1d12",
+    "tipo": "Cortante",
+    "propriedades": ["Duas Mãos"],
+    "categoria": "Marcial",
+    "peso": 3.2,
+    "custo": "30 PO",
+    "descricao": "Machado pesado, usado com as duas mãos para causar grande dano."
+  },
+  {
+    "nome": "Besta Leve",
+    "dano": "1d8",
+    "tipo": "Perfurante",
+    "propriedades": ["Carregamento", "Alcance 80/320"],
+    "categoria": "Simples",
+    "peso": 2.3,
+    "custo": "25 PO",
+    "descricao": "Arma de disparo mecânico, eficaz a médias distâncias."
+  }
+]

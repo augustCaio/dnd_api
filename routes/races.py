@@ -33,7 +33,7 @@ def load_all_subraces() -> List[dict]:
                 subraces.append(sub_dict)
     return subraces
 
-@router.get("/racas", response_model=List[Race], summary="Lista todas as raças ou filtra por nome/tamanho")
+@router.get("/racas", response_model=List[Race], tags=["Raças"], summary="Lista todas as raças ou filtra por nome/tamanho", description="Lista todas as raças do PHB ou filtra por nome, tamanho, característica, bônus e permite ordenação.")
 def get_races(name: Optional[str] = Query(None, description="Busca parcial pelo nome da raça, ex: 'anão' ou 'anao'"), size: Optional[str] = Query(None, alias="size", description="Filtra raças pelo tamanho, ex: 'médio' ou 'medio'"), order: Optional[str] = Query(None, description="Ordena as raças pelo campo especificado, ex: 'nome'"), filter: Optional[str] = Query(None, description="Filtra raças por característica, ex: 'visao_no_escuro', 'resiliencia', 'proficiencias', etc."), bonus: Optional[str] = Query(None, description="Filtra raças por bônus de habilidade, ex: 'forca', 'destreza', etc.")):
     """Lista todas as raças ou filtra por nome/tamanho, característica, bônus e permite ordenação."""
     races = load_races()
@@ -65,16 +65,18 @@ def get_races(name: Optional[str] = Query(None, description="Busca parcial pelo 
         races = sorted(races, key=lambda r: normalize(r.nome))
     return races
 
-@router.get("/racas/{race_id}", response_model=Race, summary="Detalhes de uma raça")
+@router.get("/racas/{race_id}", response_model=Race, tags=["Raças"], summary="Detalhes de uma raça", description="Retorna todos os detalhes de uma raça específica pelo seu ID.")
 def get_race(race_id: int):
+    """Detalhes de uma raça pelo ID."""
     races = load_races()
     for race in races:
         if race.id == race_id:
             return race
     raise HTTPException(status_code=404, detail="Raça não encontrada")
 
-@router.get("/racas/{race_id}/subracas", response_model=List[SubRace], summary="Lista sub-raças de uma raça")
+@router.get("/racas/{race_id}/subracas", response_model=List[SubRace], tags=["Raças"], summary="Lista sub-raças de uma raça", description="Lista todas as sub-raças de uma raça específica pelo ID.")
 def get_subraces_of_race(race_id: int):
+    """Lista todas as sub-raças de uma raça pelo ID."""
     races = load_races()
     for race in races:
         if race.id == race_id:
@@ -83,16 +85,18 @@ def get_subraces_of_race(race_id: int):
             return race.subracas
     raise HTTPException(status_code=404, detail="Raça não encontrada")
 
-@router.get("/subracas/{subrace_id}", summary="Detalhes de uma sub-raça")
+@router.get("/subracas/{subrace_id}", tags=["Sub-raças"], summary="Detalhes de uma sub-raça", description="Retorna todos os detalhes de uma sub-raça específica pelo seu ID.")
 def get_subrace_by_id(subrace_id: str):
+    """Detalhes de uma sub-raça pelo ID."""
     subraces = load_all_subraces()
     for sub in subraces:
         if sub["subrace_id"] == subrace_id:
             return sub
     raise HTTPException(status_code=404, detail="Sub-raça não encontrada")
 
-@router.get("/subracas", summary="Busca sub-raças por nome")
+@router.get("/subracas", tags=["Sub-raças"], summary="Busca sub-raças por nome", description="Busca sub-raças do PHB por nome.")
 def search_subraces(name: Optional[str] = Query(None, description="Busca parcial pelo nome da sub-raça")):
+    """Busca sub-raças por nome."""
     subraces = load_all_subraces()
     if name:
         name_norm = normalize(name)

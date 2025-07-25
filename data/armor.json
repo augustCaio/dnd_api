@@ -1,0 +1,42 @@
+[
+  {
+    "nome": "Couro",
+    "tipo": "Leve",
+    "ca": 11,
+    "forca_minima": 0,
+    "penalidade_furtividade": false,
+    "peso": 2.3,
+    "custo": "10 PO",
+    "descricao": "Armadura leve feita de couro endurecido, oferece mobilidade e proteção básica."
+  },
+  {
+    "nome": "Escamas",
+    "tipo": "Média",
+    "ca": 14,
+    "forca_minima": 0,
+    "penalidade_furtividade": true,
+    "peso": 20.4,
+    "custo": "50 PO",
+    "descricao": "Armadura composta por pequenas placas de metal costuradas em uma base de couro."
+  },
+  {
+    "nome": "Cota de Malha",
+    "tipo": "Pesada",
+    "ca": 16,
+    "forca_minima": 13,
+    "penalidade_furtividade": true,
+    "peso": 24.8,
+    "custo": "75 PO",
+    "descricao": "A cota de malha é composta por anéis de metal entrelaçados, oferecendo grande proteção."
+  },
+  {
+    "nome": "Escudo",
+    "tipo": "Escudo",
+    "ca": 2,
+    "forca_minima": 0,
+    "penalidade_furtividade": false,
+    "peso": 2.7,
+    "custo": "10 PO",
+    "descricao": "Escudo de madeira ou metal, aumenta a CA em +2 quando empunhado."
+  }
+]
