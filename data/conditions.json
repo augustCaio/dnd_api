@@ -1,0 +1,70 @@
+[
+  {
+    "nome": "Cego",
+    "efeitos_mecanicos": [
+      "Falha automaticamente em qualquer teste que dependa de visão.",
+      "Testes de ataque contra a criatura têm vantagem.",
+      "Testes de ataque da criatura têm desvantagem."
+    ],
+    "duracao_tipica": "Até curado ou fim do efeito"
+  },
+  {
+    "nome": "Caído",
+    "efeitos_mecanicos": [
+      "Só pode rastejar, a menos que se levante.",
+      "Testes de ataque corpo a corpo contra você têm vantagem.",
+      "Testes de ataque à distância contra você têm desvantagem."
+    ],
+    "duracao_tipica": "Até gastar movimento para levantar ou fim do efeito"
+  },
+  {
+    "nome": "Enfeitiçado",
+    "efeitos_mecanicos": [
+      "Não pode atacar o encantador ou alvo de habilidades hostis.",
+      "O encantador tem vantagem em testes sociais contra a criatura."
+    ],
+    "duracao_tipica": "Conforme magia ou efeito"
+  },
+  {
+    "nome": "Imobilizado",
+    "efeitos_mecanicos": [
+      "Deslocamento se torna 0.",
+      "Não pode se beneficiar de bônus de deslocamento."
+    ],
+    "duracao_tipica": "Conforme efeito"
+  },
+  {
+    "nome": "Invisível",
+    "efeitos_mecanicos": [
+      "Não pode ser visto sem magia ou sentido especial.",
+      "Testes de ataque contra você têm desvantagem.",
+      "Seus testes de ataque têm vantagem."
+    ],
+    "duracao_tipica": "Conforme magia ou efeito"
+  },
+  {
+    "nome": "Paralisado",
+    "efeitos_mecanicos": [
+      "Incapaz de agir ou se mover.",
+      "Falha automaticamente em testes de Força e Destreza.",
+      "Testes de ataque contra você têm vantagem."
+    ],
+    "duracao_tipica": "Conforme efeito"
+  },
+  {
+    "nome": "Petrificado",
+    "efeitos_mecanicos": [
+      "Transformado em pedra.",
+      "Incapaz de agir ou se mover.",
+      "Imune a veneno e doenças."
+    ],
+    "duracao_tipica": "Até curado"
+  },
+  {
+    "nome": "Surdo",
+    "efeitos_mecanicos": [
+      "Falha automaticamente em testes que dependam de audição."
+    ],
+    "duracao_tipica": "Até curado ou fim do efeito"
+  }
+]

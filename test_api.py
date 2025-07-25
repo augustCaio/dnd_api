@@ -1193,7 +1193,121 @@ def test_special_character_encoding():
     resp = client.get("/racas?nome=Anão%20💎")
     assert resp.status_code == 200
 
-# ============================================================================\n# TESTES DE VIAGEM\n# ============================================================================\n\ndef test_get_travel():\n    """Testa listagem de todos os ritmos de viagem."""\n    resp = client.get("/travel")\n    assert resp.status_code == 200\n    travel = resp.json()\n    assert isinstance(travel, list)\n    assert len(travel) > 0\n    assert "nome" in travel[0]\n    assert "descricao" in travel[0]\n\ndef test_travel_filter_by_pace():\n    """Testa filtro de ritmos de viagem por pace."""\n    resp = client.get("/travel?pace=lento")\n    assert resp.status_code == 200\n    travel = resp.json()\n    for t in travel:\n        assert t.get("ritmo", "").lower() == "lento"\n\n# ============================================================================\n# TESTES DE DESCANSO\n# ============================================================================\n\ndef test_get_rest():\n    """Testa listagem de regras de descanso."""\n    resp = client.get("/rest")\n    assert resp.status_code == 200\n    rest = resp.json()\n    assert isinstance(rest, list)\n    assert len(rest) > 0\n    assert "nome" in rest[0]\n    assert "descricao" in rest[0]\n\n# ============================================================================\n# TESTES DE AMBIENTE\n# ============================================================================\n\ndef test_get_environment():\n    """Testa listagem de condições ambientais."""\n    resp = client.get("/environment")\n    assert resp.status_code == 200\n    env = resp.json()\n    assert isinstance(env, list)\n    assert len(env) > 0\n    assert "nome" in env[0]\n    assert "descricao" in env[0]\n\n# ============================================================================\n# TESTES DE REGRAS COM FILTRO\n# ============================================================================\n\ndef test_rules_filter_by_type():\n    """Testa filtro de regras por tipo (palavra-chave)."""\n    resp = client.get("/rules?type=exaustao")\n    assert resp.status_code == 200\n    rules = resp.json()\n    for rule in rules:\n        assert "exaust" in rule["nome"].lower()\n
+# ============================================================================
+# TESTES DE VIAGEM
+# ============================================================================
+
+def test_get_travel():
+    """Testa listagem de todos os ritmos de viagem."""
+    resp = client.get("/travel")
+    assert resp.status_code == 200
+    travel = resp.json()
+    assert isinstance(travel, list)
+    assert len(travel) > 0
+    assert "nome" in travel[0]
+    assert "descricao" in travel[0]
+
+# ============================================================================
+# TESTES DE DESCANSO
+# ============================================================================
+
+def test_get_rest():
+    """Testa listagem de regras de descanso."""
+    resp = client.get("/rest")
+    assert resp.status_code == 200
+    rest = resp.json()
+    assert isinstance(rest, list)
+    assert len(rest) > 0
+    assert "nome" in rest[0]
+    assert "descricao" in rest[0]
+
+# ============================================================================
+# TESTES DE AMBIENTE
+# ============================================================================
+
+def test_get_environment():
+    """Testa listagem de condições ambientais."""
+    resp = client.get("/environment")
+    assert resp.status_code == 200
+    env = resp.json()
+    assert isinstance(env, list)
+    assert len(env) > 0
+    assert "nome" in env[0]
+    assert "descricao" in env[0]
+
+# ============================================================================
+# TESTES DE REGRAS COM FILTRO
+# ============================================================================
+
+def test_rules_filter_by_type():
+    """Testa filtro de regras por tipo (palavra-chave)."""
+    resp = client.get("/rules?type=exaustao")
+    assert resp.status_code == 200
+    rules = resp.json()
+    for rule in rules:
+        assert "exaust" in rule["nome"].lower()
+
+# ============================================================================
+# TESTES DE AÇÕES DE COMBATE
+# ============================================================================
+
+def test_get_actions():
+    """Testa listagem de todas as ações de combate."""
+    resp = client.get("/actions")
+    assert resp.status_code == 200
+    actions = resp.json()
+    assert isinstance(actions, list)
+    assert len(actions) > 0
+    assert "nome" in actions[0]
+    assert "tipo" in actions[0]
+    assert "descricao" in actions[0]
+
+
+def test_get_actions_filter_by_type():
+    """Testa filtro de ações de combate por tipo (ex: bônus)."""
+    resp = client.get("/actions?type=bônus")
+    assert resp.status_code == 200
+    actions = resp.json()
+    for action in actions:
+        assert "bônus" in action["tipo"].lower() or "bonus" in action["tipo"].lower()
+
+# ============================================================================
+# TESTES DE CONDIÇÕES DE COMBATE
+# ============================================================================
+
+def test_get_conditions():
+    """Testa listagem de todas as condições de combate."""
+    resp = client.get("/conditions")
+    assert resp.status_code == 200
+    conditions = resp.json()
+    assert isinstance(conditions, list)
+    assert len(conditions) > 0
+    assert "nome" in conditions[0]
+    assert "efeitos_mecanicos" in conditions[0]
+    assert "duracao_tipica" in conditions[0]
+
+# ============================================================================
+# TESTES DE REGRAS DE COMBATE
+# ============================================================================
+
+def test_get_combat_rules():
+    """Testa listagem de todas as regras de combate."""
+    resp = client.get("/rules/combat")
+    assert resp.status_code == 200
+    rules = resp.json()
+    assert isinstance(rules, list)
+    assert len(rules) > 0
+    assert "tipo" in rules[0]
+    assert "descricao" in rules[0]
+
+
+def test_get_combat_rules_filter_by_type():
+    """Testa filtro de regras de combate por tipo (ex: iniciativa)."""
+    resp = client.get("/rules/combat?type=iniciativa")
+    assert resp.status_code == 200
+    rules = resp.json()
+    for rule in rules:
+        assert "iniciativa" in rule["tipo"].lower()
 
 print("✅ Todos os testes foram definidos!")
 print("📊 Cobertura de testes:")

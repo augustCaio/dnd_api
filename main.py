@@ -16,6 +16,8 @@ from routes.rules import router as rules_router
 from routes.travel import router as travel_router
 from routes.rest import router as rest_router
 from routes.environment import router as environment_router
+from routes.actions import router as actions_router
+from routes.conditions import router as conditions_router
 
 # Definição das tags para Swagger
 openapi_tags = [
@@ -37,13 +39,16 @@ openapi_tags = [
     {"name": "Regras", "description": "Regras gerais aplicáveis: testes, CD, vantagem/desvantagem, passivo, ajuda, testes resistidos, grupo e improvisação."},
     {"name": "Viagem", "description": "Ritmos de viagem, marcha forçada, navegação e regras de movimentação durante a exploração."},
     {"name": "Descanso", "description": "Regras de descanso curto, longo, exaustão, fome e sede."},
-    {"name": "Ambiente", "description": "Condições ambientais: terreno, visibilidade, clima, obstáculos e ambientes especiais."}
+    {"name": "Ambiente", "description": "Condições ambientais: terreno, visibilidade, clima, obstáculos e ambientes especiais."},
+    {"name": "Ações", "description": "Ações de combate disponíveis: atacar, correr, esquivar, usar objeto, ações bônus, reações, etc. Permite filtro por tipo."},
+    {"name": "Condições", "description": "Condições de combate: cego, caído, enfeitiçado, imobilizado, invisível, paralisado, petrificado, surdo, etc. Inclui efeitos e duração típica."},
+    {"name": "Regras de Combate", "description": "Regras específicas de combate: iniciativa, rodadas, tipos de ataque, acertos críticos, dano, morte, cobertura, combate montado, subaquático e em massa."}
 ]
 
 app = FastAPI(
     title="D&D 5e API",
     description="API RESTful para consulta de dados do Livro do Jogador de Dungeons & Dragons 5ª Edição.",
-    version="1.7.0",
+    version="1.8.0",
     openapi_tags=openapi_tags
 )
 
@@ -69,4 +74,6 @@ app.include_router(skills_router)
 app.include_router(rules_router)
 app.include_router(travel_router)
 app.include_router(rest_router)
-app.include_router(environment_router) 
+app.include_router(environment_router)
+app.include_router(actions_router)
+app.include_router(conditions_router) 
