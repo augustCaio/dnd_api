@@ -1,0 +1,70 @@
+[
+  {
+    "nome": "Força",
+    "descricao": "Mede o poder físico bruto, capacidade de levantar, empurrar, arremessar e resistir fisicamente.",
+    "usos": [
+      "Ataques corpo a corpo",
+      "Testes de Atletismo",
+      "Levantar/Puxar objetos pesados"
+    ],
+    "testes_comuns": ["Atletismo", "Quebrar portas", "Agarrar"]
+  },
+  {
+    "nome": "Destreza",
+    "descricao": "Reflete agilidade, reflexos, equilíbrio e coordenação.",
+    "usos": [
+      "Ataques à distância",
+      "Testes de Acrobacia, Furtividade e Prestidigitação",
+      "Evitar armadilhas"
+    ],
+    "testes_comuns": [
+      "Acrobacia",
+      "Furtividade",
+      "Prestidigitação",
+      "Desviar de ataques"
+    ]
+  },
+  {
+    "nome": "Constituição",
+    "descricao": "Determina saúde, vigor e resistência física.",
+    "usos": [
+      "Testes de resistência a venenos",
+      "Manter concentração em magias",
+      "Sobrevivência física"
+    ],
+    "testes_comuns": ["Resistir a doenças", "Resistir a fadiga"]
+  },
+  {
+    "nome": "Inteligência",
+    "descricao": "Capacidade de raciocínio, memória e análise lógica.",
+    "usos": [
+      "Testes de Arcanismo, História, Investigação, Natureza, Religião",
+      "Resolver enigmas"
+    ],
+    "testes_comuns": [
+      "Arcanismo",
+      "História",
+      "Investigação",
+      "Natureza",
+      "Religião"
+    ]
+  },
+  {
+    "nome": "Sabedoria",
+    "descricao": "Percepção, intuição e bom senso.",
+    "usos": [
+      "Testes de Intuição, Medicina, Percepção, Sobrevivência",
+      "Percepção Passiva"
+    ],
+    "testes_comuns": ["Intuição", "Medicina", "Percepção", "Sobrevivência"]
+  },
+  {
+    "nome": "Carisma",
+    "descricao": "Força de personalidade, persuasão e liderança.",
+    "usos": [
+      "Testes de Atuação, Enganação, Intimidação, Persuasão",
+      "Liderar multidões"
+    ],
+    "testes_comuns": ["Atuação", "Enganação", "Intimidação", "Persuasão"]
+  }
+]
