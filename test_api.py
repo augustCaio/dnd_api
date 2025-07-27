@@ -1371,8 +1371,68 @@ def test_get_conditions():
     assert isinstance(conditions, list)
     assert len(conditions) > 0
     assert "nome" in conditions[0]
-    assert "efeitos_mecanicos" in conditions[0]
-    assert "duracao_tipica" in conditions[0]
+    assert "descricao" in conditions[0]
+    assert "efeitos" in conditions[0]
+    assert "interacoes" in conditions[0]
+    assert "fontes_comuns" in conditions[0]
+
+def test_get_condition_by_id():
+    """Testa busca de condição por ID."""
+    resp = client.get("/conditions/1")
+    assert resp.status_code == 200
+    condition = resp.json()
+    assert "nome" in condition
+    assert "descricao" in condition
+    assert "efeitos" in condition
+
+def test_get_condition_by_id_not_found():
+    """Testa busca de condição por ID inexistente."""
+    resp = client.get("/conditions/999")
+    assert resp.status_code == 404
+
+def test_conditions_filter_by_effect():
+    """Testa filtro de condições por efeito."""
+    resp = client.get("/conditions?effect=desvantagem")
+    assert resp.status_code == 200
+    conditions = resp.json()
+    assert isinstance(conditions, list)
+    # Verifica se pelo menos algumas condições têm o efeito desvantagem
+    desvantagem_conditions = [c for c in conditions if any("desvantagem" in efeito.lower() for efeito in c["efeitos"])]
+    assert len(desvantagem_conditions) > 0, "Deve haver pelo menos uma condição com desvantagem"
+
+def test_conditions_filter_by_source():
+    """Testa filtro de condições por fonte."""
+    resp = client.get("/conditions?source=magia")
+    assert resp.status_code == 200
+    conditions = resp.json()
+    assert isinstance(conditions, list)
+    # Verifica se pelo menos algumas condições têm magia como fonte
+    magia_conditions = [c for c in conditions if c["fontes_comuns"] and any("magia" in fonte.lower() for fonte in c["fontes_comuns"])]
+    assert len(magia_conditions) > 0, "Deve haver pelo menos uma condição causada por magia"
+
+def test_conditions_multiple_filters():
+    """Testa múltiplos filtros de condições."""
+    resp = client.get("/conditions?effect=ataque&source=veneno")
+    assert resp.status_code == 200
+    conditions = resp.json()
+    assert isinstance(conditions, list)
+
+def test_search_conditions_by_name():
+    """Testa busca de condições por nome."""
+    resp = client.get("/conditions/busca/cego")
+    assert resp.status_code == 200
+    conditions = resp.json()
+    assert isinstance(conditions, list)
+    assert len(conditions) > 0
+    assert any("cego" in condition["nome"].lower() for condition in conditions)
+
+def test_search_conditions_by_name_not_found():
+    """Testa busca de condições por nome inexistente."""
+    resp = client.get("/conditions/busca/xyz123")
+    assert resp.status_code == 200
+    conditions = resp.json()
+    assert isinstance(conditions, list)
+    assert len(conditions) == 0
 
 # ============================================================================
 # TESTES DE REGRAS DE COMBATE

@@ -42,15 +42,50 @@ openapi_tags = [
     {"name": "Descanso", "description": "Regras de descanso curto, longo, exaustão, fome e sede."},
     {"name": "Ambiente", "description": "Condições ambientais: terreno, visibilidade, clima, obstáculos e ambientes especiais."},
     {"name": "Ações", "description": "Ações de combate disponíveis: atacar, correr, esquivar, usar objeto, ações bônus, reações, etc. Permite filtro por tipo."},
-    {"name": "Condições", "description": "Condições de combate: cego, caído, enfeitiçado, imobilizado, invisível, paralisado, petrificado, surdo, etc. Inclui efeitos e duração típica."},
+    {"name": "Condições", "description": "Sistema completo de condições de combate com 14 condições do PHB. Inclui filtros por efeito e fonte, busca por nome, e documentação detalhada com exemplos práticos para uso durante o jogo."},
     {"name": "Regras de Combate", "description": "Regras específicas de combate: iniciativa, rodadas, tipos de ataque, acertos críticos, dano, morte, cobertura, combate montado, subaquático e em massa."},
     {"name": "Magias", "description": "Consulta de magias por nível, escola, classe conjuradora, componentes, ritual, concentração e outros critérios. Inclui truques e magias de 1º a 9º nível."}
 ]
 
 app = FastAPI(
     title="D&D 5e API",
-    description="API RESTful para consulta de dados do Livro do Jogador de Dungeons & Dragons 5ª Edição.",
-    version="1.9.0",
+    description="""API RESTful para consulta de dados do Livro do Jogador de Dungeons & Dragons 5ª Edição.
+
+## 🎯 Versão 2.0 - Novidades
+
+### ✨ Sistema de Condições Completo
+- **14 condições** do PHB com efeitos detalhados
+- **Filtros avançados** por efeito e fonte
+- **Busca inteligente** por nome
+- **Documentação completa** com exemplos
+
+### 🔮 Sistema de Magias Aprimorado
+- **25 magias** traduzidas do PHB
+- **Filtros múltiplos** por nível, escola, classe
+- **Endpoints especializados** para rituais e concentração
+- **Regras de conjuração** detalhadas
+
+### 📚 Documentação Swagger Melhorada
+- **Exemplos práticos** para cada endpoint
+- **Categorização** por tipo de funcionalidade
+- **Guias de uso** para jogadores e mestres
+- **Casos de teste** comuns
+
+### 🚀 Funcionalidades Principais
+- **Raças e Classes:** Consulta completa com filtros
+- **Equipamentos:** Armas, armaduras, ferramentas
+- **Regras:** Combate, viagem, descanso, ambiente
+- **Condições:** 14 condições com efeitos mecânicos
+- **Magias:** Sistema completo de conjuração
+
+### 🎮 Uso Recomendado
+- **Durante o jogo:** Consulta rápida de regras
+- **Criação de personagens:** Referência completa
+- **Mestres:** Ferramenta de consulta durante sessões
+- **Desenvolvedores:** API para aplicações D&D
+
+**Acesse /docs para documentação interativa completa!**""",
+    version="2.0.0",
     openapi_tags=openapi_tags
 )
 
@@ -58,7 +93,15 @@ app = FastAPI(
 def root():
     return JSONResponse({
         "status": "ok",
-        "mensagem": "API D&D 5e está funcionando e pronta para uso! Veja /docs para documentação."
+        "version": "2.0.0",
+        "mensagem": "🎲 API D&D 5e v2.0 está funcionando! ✨",
+        "features": {
+            "conditions": "14 condições com filtros avançados",
+            "spells": "25 magias com sistema completo",
+            "documentation": "Swagger aprimorado com exemplos"
+        },
+        "docs": "/docs",
+        "redoc": "/redoc"
     })
 
 app.include_router(races_router)
