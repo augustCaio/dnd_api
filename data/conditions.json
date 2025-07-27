@@ -1,70 +1,278 @@
 [
   {
     "nome": "Cego",
-    "efeitos_mecanicos": [
-      "Falha automaticamente em qualquer teste que dependa de visão.",
-      "Testes de ataque contra a criatura têm vantagem.",
-      "Testes de ataque da criatura têm desvantagem."
+    "descricao": "Uma criatura cega não consegue ver e automaticamente falha em qualquer teste que dependa de visão.",
+    "efeitos": [
+      "Falha automaticamente em testes de habilidade que dependam da visão",
+      "Ataques contra ela têm vantagem",
+      "Seus ataques têm desvantagem"
     ],
-    "duracao_tipica": "Até curado ou fim do efeito"
+    "interacoes": [
+      "Pode ser curado com magias de cura",
+      "Não afeta criaturas que não dependem de visão",
+      "Pode ser removida com Remove Maldição"
+    ],
+    "fontes_comuns": [
+      "Cegueira/Deafness",
+      "Névoa Obscurecente",
+      "Efeitos de veneno",
+      "Trauma físico"
+    ]
   },
   {
     "nome": "Caído",
-    "efeitos_mecanicos": [
-      "Só pode rastejar, a menos que se levante.",
-      "Testes de ataque corpo a corpo contra você têm vantagem.",
-      "Testes de ataque à distância contra você têm desvantagem."
+    "descricao": "Uma criatura caída está prostrada no chão. A única movimentação possível é rastejar, a menos que a criatura se levante.",
+    "efeitos": [
+      "A única movimentação possível é rastejar, a menos que se levante",
+      "A criatura tem desvantagem em ataques à distância",
+      "Ataques corpo a corpo contra ela têm vantagem"
     ],
-    "duracao_tipica": "Até gastar movimento para levantar ou fim do efeito"
-  },
-  {
-    "nome": "Enfeitiçado",
-    "efeitos_mecanicos": [
-      "Não pode atacar o encantador ou alvo de habilidades hostis.",
-      "O encantador tem vantagem em testes sociais contra a criatura."
+    "interacoes": [
+      "Pode ser causado por empurrar ou derrubar",
+      "Pode ser removido gastando movimento",
+      "Interage com habilidades de combate corpo a corpo"
     ],
-    "duracao_tipica": "Conforme magia ou efeito"
-  },
-  {
-    "nome": "Imobilizado",
-    "efeitos_mecanicos": [
-      "Deslocamento se torna 0.",
-      "Não pode se beneficiar de bônus de deslocamento."
-    ],
-    "duracao_tipica": "Conforme efeito"
-  },
-  {
-    "nome": "Invisível",
-    "efeitos_mecanicos": [
-      "Não pode ser visto sem magia ou sentido especial.",
-      "Testes de ataque contra você têm desvantagem.",
-      "Seus testes de ataque têm vantagem."
-    ],
-    "duracao_tipica": "Conforme magia ou efeito"
-  },
-  {
-    "nome": "Paralisado",
-    "efeitos_mecanicos": [
-      "Incapaz de agir ou se mover.",
-      "Falha automaticamente em testes de Força e Destreza.",
-      "Testes de ataque contra você têm vantagem."
-    ],
-    "duracao_tipica": "Conforme efeito"
-  },
-  {
-    "nome": "Petrificado",
-    "efeitos_mecanicos": [
-      "Transformado em pedra.",
-      "Incapaz de agir ou se mover.",
-      "Imune a veneno e doenças."
-    ],
-    "duracao_tipica": "Até curado"
+    "fontes_comuns": [
+      "Empurrar",
+      "Derrubar",
+      "Magias de controle",
+      "Efeitos de terreno"
+    ]
   },
   {
     "nome": "Surdo",
-    "efeitos_mecanicos": [
-      "Falha automaticamente em testes que dependam de audição."
+    "descricao": "Uma criatura surda não consegue ouvir e automaticamente falha em qualquer teste que dependa de audição.",
+    "efeitos": [
+      "A criatura não pode ouvir",
+      "Falha automaticamente em testes que dependam de audição"
     ],
-    "duracao_tipica": "Até curado ou fim do efeito"
+    "interacoes": [
+      "Pode ser curado com magias de cura",
+      "Não afeta comunicação telepática",
+      "Pode ser removida com Remove Maldição"
+    ],
+    "fontes_comuns": [
+      "Cegueira/Deafness",
+      "Explosões",
+      "Trauma físico",
+      "Efeitos sonoros"
+    ]
+  },
+  {
+    "nome": "Enfeitiçado",
+    "descricao": "Uma criatura enfeitiçada não pode atacar o encantador nem usar habilidades hostis contra ele.",
+    "efeitos": [
+      "A criatura não pode atacar o encantador nem usar habilidades hostis contra ele",
+      "O encantador tem vantagem em testes sociais (Carisma) contra a criatura"
+    ],
+    "interacoes": [
+      "Pode ser removida com Remove Maldição",
+      "Não afeta criaturas imunes a encantamento",
+      "Pode ser quebrada por dano ao encantador"
+    ],
+    "fontes_comuns": ["Charme Pessoa", "Dominação", "Sussurro", "Hipnotismo"]
+  },
+  {
+    "nome": "Envenenado",
+    "descricao": "A criatura sofre desvantagem em jogadas de ataque e testes de habilidade.",
+    "efeitos": [
+      "Desvantagem em testes de habilidade",
+      "Desvantagem em jogadas de ataque"
+    ],
+    "interacoes": [
+      "Pode ser curado com magias de cura",
+      "Pode ser removido com Neutralizar Veneno",
+      "Não afeta criaturas imunes a veneno"
+    ],
+    "fontes_comuns": [
+      "Magia - Raio Envenenado",
+      "Condição de armadilhas",
+      "Veneno de criaturas",
+      "Alimentos contaminados"
+    ]
+  },
+  {
+    "nome": "Esgrimado",
+    "descricao": "Uma criatura esgrimada tem sua velocidade reduzida a 0 e não pode se mover voluntariamente.",
+    "efeitos": [
+      "A velocidade da criatura se torna 0",
+      "Não pode se mover voluntariamente",
+      "Termina se o agarrador for incapacitado ou sair do alcance"
+    ],
+    "interacoes": [
+      "Pode ser quebrado com testes de Força",
+      "Pode ser removido com magias de liberação",
+      "Interage com habilidades de combate corpo a corpo"
+    ],
+    "fontes_comuns": [
+      "Agarre de criaturas",
+      "Magias de controle",
+      "Habilidades de combate",
+      "Efeitos de tentáculos"
+    ]
+  },
+  {
+    "nome": "Exausto",
+    "descricao": "A condição possui 6 níveis cumulativos. Os efeitos se acumulam conforme o nível aumenta.",
+    "efeitos": [
+      "Nível 1: Desvantagem em testes de habilidade",
+      "Nível 2: Velocidade reduzida à metade",
+      "Nível 3: Desvantagem em jogadas de ataque e testes de resistência",
+      "Nível 4: PV máximo reduzido à metade",
+      "Nível 5: Velocidade reduzida a 0",
+      "Nível 6: Morte"
+    ],
+    "interacoes": [
+      "Acumula níveis de exaustão",
+      "Pode ser removido com descanso",
+      "Nível 6 causa morte automática"
+    ],
+    "fontes_comuns": [
+      "Falta de descanso",
+      "Magias de exaustão",
+      "Condições ambientais",
+      "Efeitos de veneno"
+    ]
+  },
+  {
+    "nome": "Incapacitado",
+    "descricao": "Uma criatura incapacitada não pode realizar ações nem reações.",
+    "efeitos": ["A criatura não pode realizar ações nem reações"],
+    "interacoes": [
+      "Pode ser curado com magias de cura",
+      "Não afeta consciência",
+      "Pode ser causado por várias condições"
+    ],
+    "fontes_comuns": [
+      "Paralisar Pessoa",
+      "Efeitos de atordoamento",
+      "Veneno incapacitante",
+      "Trauma físico"
+    ]
+  },
+  {
+    "nome": "Impedido",
+    "descricao": "Uma criatura impedida tem sua velocidade reduzida a 0 e sofre penalidades em ataques.",
+    "efeitos": [
+      "A velocidade se torna 0",
+      "Ataques contra têm vantagem",
+      "Seus ataques têm desvantagem",
+      "Desvantagem em testes de Destreza"
+    ],
+    "interacoes": [
+      "Pode ser removido com magias de liberação",
+      "Pode ser quebrado com testes de Força",
+      "Interage com habilidades de combate"
+    ],
+    "fontes_comuns": [
+      "Enredar",
+      "Imobilizar Pessoa",
+      "Cordas mágicas",
+      "Efeitos de gelo"
+    ]
+  },
+  {
+    "nome": "Invisível",
+    "descricao": "Uma criatura invisível não pode ser vista sem magia ou sentido especial.",
+    "efeitos": [
+      "A criatura não pode ser vista sem magia ou sentido especial",
+      "É considerada escondida (vantagem em ataques)",
+      "Ataques contra ela têm desvantagem"
+    ],
+    "interacoes": [
+      "Pode ser detectada por sentidos especiais",
+      "Pode ser revelada por magias de detecção",
+      "Não afeta criaturas com visão verdadeira"
+    ],
+    "fontes_comuns": [
+      "Invisibilidade",
+      "Sombra Maior",
+      "Pó de invisibilidade",
+      "Anel de invisibilidade"
+    ]
+  },
+  {
+    "nome": "Paralisado",
+    "descricao": "Uma criatura paralisada está incapacitada e não pode se mover ou falar.",
+    "efeitos": [
+      "A criatura está incapacitada e não pode se mover ou falar",
+      "Falha automaticamente em testes de Força e Destreza",
+      "Ataques contra ela têm vantagem",
+      "Se estiver a 1,5m, ataques que acertarem são críticos"
+    ],
+    "interacoes": [
+      "Pode ser removido com magias de cura",
+      "Não afeta criaturas imunes a paralisia",
+      "Pode ser quebrado com testes de Constituição"
+    ],
+    "fontes_comuns": [
+      "Paralisar Pessoa",
+      "Veneno de paralisia",
+      "Toque de paralisia",
+      "Efeitos de medo"
+    ]
+  },
+  {
+    "nome": "Petrificado",
+    "descricao": "Uma criatura petrificada se transforma em pedra e está incapacitada e inconsciente.",
+    "efeitos": [
+      "A criatura se transforma em pedra",
+      "Está incapacitada e inconsciente",
+      "Imune a veneno e doenças",
+      "Resiste a dano, mas vulnerável a certos efeitos mágicos"
+    ],
+    "interacoes": [
+      "Pode ser revertido com Pedra para Carne",
+      "Não afeta criaturas imunes a petrificação",
+      "Pode ser permanente se não curado"
+    ],
+    "fontes_comuns": [
+      "Olhar da Medusa",
+      "Basilisco",
+      "Pedra para Carne (reverso)",
+      "Magias de petrificação"
+    ]
+  },
+  {
+    "nome": "Atordoado",
+    "descricao": "Uma criatura atordoada está incapacitada, não pode se mover e só fala de forma arrastada.",
+    "efeitos": [
+      "A criatura está incapacitada, não pode se mover e só fala de forma arrastada",
+      "Falha automaticamente em testes de Força e Destreza",
+      "Ataques contra ela têm vantagem"
+    ],
+    "interacoes": [
+      "Pode ser removido com magias de cura",
+      "Não afeta criaturas imunes a atordoamento",
+      "Pode ser quebrado com testes de Constituição"
+    ],
+    "fontes_comuns": [
+      "Golpe Atordoante",
+      "Palavra de Poder Atordoar",
+      "Efeitos de concussão",
+      "Trauma na cabeça"
+    ]
+  },
+  {
+    "nome": "Inconsciente",
+    "descricao": "Uma criatura inconsciente está inconsciente, incapacitada e não percebe o ambiente.",
+    "efeitos": [
+      "A criatura está inconsciente, incapacitada e não percebe o ambiente",
+      "Solta o que estiver segurando e cai no chão",
+      "Falha em testes de resistência",
+      "Ataques contra ela têm vantagem",
+      "Se o atacante estiver a 1,5m, o ataque é um crítico automático"
+    ],
+    "interacoes": [
+      "Pode ser curado com magias de cura",
+      "Pode ser causado por dano excessivo",
+      "Pode ser removido com descanso"
+    ],
+    "fontes_comuns": [
+      "Dano excessivo",
+      "Efeitos de sono",
+      "Trauma físico",
+      "Magias de sono"
+    ]
   }
 ]

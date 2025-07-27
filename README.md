@@ -1,343 +1,240 @@
-# D&D 5e API — Equipamentos, Raças, Classes, Antecedentes e Mais!
+# 🎲 D&D 5e API - Versão 2.0
 
-![D&D 5e](https://img.shields.io/badge/D%26D-5e-red?style=for-the-badge) ![FastAPI](https://img.shields.io/badge/FastAPI-async%20python-green?style=for-the-badge) ![Testes Automatizados](https://img.shields.io/badge/Testes%20Automatizados-Pytest-blue?style=for-the-badge)
+API RESTful completa para consulta de dados do Livro do Jogador de Dungeons & Dragons 5ª Edição.
 
-> **API RESTful completa para consulta de dados do Livro do Jogador de Dungeons & Dragons 5ª Edição.**
+## 🚀 Novidades da Versão 2.0
 
----
+### ✨ Sistema de Condições Completo
 
-## ✨ O que esta API oferece?
+- **14 condições** do PHB com efeitos detalhados
+- **Filtros avançados** por efeito e fonte
+- **Busca inteligente** por nome
+- **Documentação completa** com exemplos práticos
 
-- **Raças** e **Sub-raças** (com filtros avançados)
-- **Classes** (com níveis, magias e habilidades)
-- **Antecedentes** (com traços de personalidade, ideais, vínculos e defeitos)
-- **Equipamentos de aventura**
-- **Armas** (com propriedades e categorias)
-- **Armaduras** (com tipos, CA, força mínima, penalidade)
-- **Ferramentas** (kits, instrumentos musicais, artesão, etc.)
-- **Montarias e Veículos**
-- **Moedas, Serviços e Estilos de Vida**
-- **Ações de Combate** (atacar, correr, esquivar, ações bônus, reações, etc.)
-- **Condições de Combate** (cego, caído, enfeitiçado, etc.)
-- **Regras detalhadas de Combate** (iniciativa, rodadas, tipos de ataque, dano, morte, cobertura, etc.)
-- **Filtros inteligentes** em quase todos os endpoints
-- **Documentação Swagger interativa e didática**
-- **Testes automatizados cobrindo todas as rotas**
+### 🔮 Sistema de Magias Aprimorado
 
----
+- **25 magias** traduzidas do PHB
+- **Filtros múltiplos** por nível, escola, classe
+- **Endpoints especializados** para rituais e concentração
+- **Regras de conjuração** detalhadas
 
-## 🚀 Como rodar localmente
+### 📚 Documentação Swagger Melhorada
+
+- **Exemplos práticos** para cada endpoint
+- **Categorização** por tipo de funcionalidade
+- **Guias de uso** para jogadores e mestres
+- **Casos de teste** comuns
+
+## 🎯 Funcionalidades Principais
+
+### 🏃‍♂️ Raças e Classes
+
+- Consulta completa de raças e sub-raças
+- Classes com habilidades e progressão
+- Filtros avançados por características
+- Sistema de multiclasse
+
+### ⚔️ Equipamentos
+
+- **Armas:** Simples, marciais, propriedades especiais
+- **Armaduras:** Leves, médias, pesadas, escudos
+- **Ferramentas:** Kits, instrumentos, ferramentas especializadas
+- **Montarias:** Cavalos, carroças, barcos
+
+### 📖 Regras e Mecânicas
+
+- **Combate:** Iniciativa, ações, cobertura
+- **Viagem:** Ritmos, navegação, marcha forçada
+- **Descanso:** Curto, longo, exaustão
+- **Ambiente:** Terreno, clima, visibilidade
+
+### 🎭 Condições (NOVO!)
+
+- **14 condições** do PHB
+- **Filtros por efeito:** desvantagem, vantagem, ataque, movimento
+- **Filtros por fonte:** magia, veneno, trauma
+- **Busca por nome:** case-insensitive com suporte a acentos
+
+### 🔮 Magias (APRIMORADO!)
+
+- **25 magias** traduzidas
+- **Filtros múltiplos:** nível, escola, classe, componentes
+- **Endpoints especializados:** rituais, concentração, por classe
+- **Regras de conjuração:** componentes, espaços, CD
+
+## 🛠️ Tecnologias
+
+- **FastAPI** - Framework web moderno
+- **Pydantic** - Validação de dados
+- **Python 3.13** - Linguagem principal
+- **JSON** - Armazenamento de dados
+
+## 🚀 Instalação e Uso
+
+### Pré-requisitos
+
+- Python 3.13+
+- pip
+
+### Instalação
 
 ```bash
 # Clone o repositório
-$ git clone <repo-url>
-$ cd dnd_api
+git clone https://github.com/augustCaio/dnd_api.git
+cd dnd_api
 
-# (Opcional) Crie e ative um ambiente virtual
-$ python -m venv venv
-$ venv\Scripts\activate  # Windows
+# Crie um ambiente virtual
+python -m venv venv
+
+# Ative o ambiente virtual
+# Windows:
+venv\Scripts\activate
+# Linux/Mac:
+source venv/bin/activate
 
 # Instale as dependências
-$ pip install -r requirements.txt
-
-# Rode o servidor
-$ uvicorn main:app --reload
+pip install -r requirements.txt
 ```
 
-Acesse: [http://localhost:8000/docs](http://localhost:8000/docs) para explorar a documentação interativa!
-
----
-
-## 📚 Endpoints Principais
-
-### Root
-
-```http
-GET /
-```
-
-- Status e mensagem de boas-vindas.
-
-### Raças
-
-```http
-GET /racas?name=elfo&size=médio
-GET /racas/{race_id}
-GET /racas/{race_id}/subracas
-GET /subracas?name=alto
-GET /subracas/{subrace_id}
-```
-
-- Filtros: nome, tamanho, característica, bônus, ordenação.
-
-### Classes
-
-```http
-GET /classes
-GET /classes/{class_id}
-GET /classes/{class_id}/niveis
-GET /classes/{class_id}/magias
-```
-
-- Filtros: magia, dado de vida, proficiência em armaduras.
-
-### Antecedentes
-
-```http
-GET /backgrounds?name=acólito&prof=religião&ideal=tradição
-GET /backgrounds/{id}
-GET /backgrounds/{id}/traits
-```
-
-### Equipamentos
-
-```http
-GET /equipment?cost<=5PO&weight<=1
-GET /equipment/{id}
-```
-
-### Armas
-
-```http
-GET /weapons?type=marcial&property=leve
-GET /weapons/{id}
-```
-
-### Armaduras
-
-```http
-GET /armor?type=leve
-GET /armor/{id}
-```
-
-### Ferramentas
-
-```http
-GET /tools?category=instrumento musical
-GET /tools/{id}
-```
-
-### Montarias e Veículos
-
-```http
-GET /mounts
-GET /mounts/{id}
-```
-
-### Moedas, Serviços e Estilos de Vida
-
-```http
-GET /currency
-GET /services
-GET /lifestyles
-```
-
-### Ações de Combate
-
-```http
-GET /actions
-GET /actions?type=bônus
-```
-
-- Lista todas as ações possíveis no combate (atacar, correr, esquivar, conjurar magia, etc).
-- Filtro por tipo: ação, bônus, reação, movimento...
-
-#### Exemplo de resposta
-
-```json
-[
-  {
-    "nome": "Atacar",
-    "tipo": "ação",
-    "descricao": "Realiza um ataque corpo a corpo ou à distância contra um alvo.",
-    "exemplos": ["Atacar com espada", "Atirar com arco"]
-  },
-  {
-    "nome": "Ação Bônus",
-    "tipo": "ação bônus",
-    "descricao": "Algumas habilidades, magias ou talentos permitem ações bônus.",
-    "exemplos": ["Ataque extra do Guerreiro", "Lançar magia de ação bônus"]
-  }
-]
-```
-
-### Condições de Combate
-
-```http
-GET /conditions
-```
-
-- Lista todas as condições de combate (cego, caído, enfeitiçado, imobilizado, invisível, paralisado, petrificado, surdo, etc).
-
-#### Exemplo de resposta
-
-```json
-[
-  {
-    "nome": "Cego",
-    "efeitos_mecanicos": [
-      "Falha automaticamente em qualquer teste que dependa de visão.",
-      "Testes de ataque contra a criatura têm vantagem.",
-      "Testes de ataque da criatura têm desvantagem."
-    ],
-    "duracao_tipica": "Até curado ou fim do efeito"
-  }
-]
-```
-
-### Regras de Combate
-
-```http
-GET /rules/combat
-GET /rules/combat?type=iniciativa
-```
-
-- Lista regras específicas de combate (iniciativa, rodadas, tipos de ataque, acertos críticos, dano, morte, cobertura, combate montado, subaquático e em massa).
-- Filtro por tipo de regra.
-
-#### Exemplo de resposta
-
-```json
-[
-  {
-    "tipo": "iniciativa",
-    "descricao": "Cada criatura rola 1d20 + modificador de Destreza. A ordem determina quem age primeiro."
-  },
-  {
-    "tipo": "acerto_critico",
-    "descricao": "Um 20 natural no d20 acerta automaticamente e causa dano extra (rola-se o dano duas vezes)."
-  }
-]
-```
-
----
-
-## 🔎 Exemplos de Filtros Inteligentes
-
-- **/weapons?type=marcial&property=leve** — Todas as armas marciais com propriedade "leve".
-- **/armor?type=leve** — Todas as armaduras leves.
-- **/equipment?cost<=5PO&weight<=1** — Equipamentos baratos e leves.
-- **/tools?category=instrumento musical** — Só instrumentos musicais.
-- **/backgrounds?prof=religião&ideal=tradição** — Antecedentes com proficiência em Religião e ideal Tradição.
-- **/actions?type=bônus** — Todas as ações bônus.
-- **/rules/combat?type=iniciativa** — Apenas regras de iniciativa.
-
----
-
-## 🧪 Testes Automatizados
-
-- Testes com **pytest** cobrindo todas as rotas, filtros e integridade dos dados.
-- Para rodar:
+### Execução
 
 ```bash
-pytest test_api.py
+# Inicie o servidor
+python main.py
+
+# Acesse a documentação
+# http://localhost:8000/docs
+# http://localhost:8000/redoc
 ```
 
-- Todos os testes devem passar sem warnings!
+## 📚 Documentação da API
 
----
+### Endpoints Principais
 
-## 🖥️ Documentação Interativa
+#### 🎭 Condições (NOVO!)
 
-- Acesse `/docs` para explorar todos os endpoints, schemas, exemplos e testar requisições direto do navegador.
-- Schemas detalhados, exemplos reais e descrições em português.
-- **Novos endpoints de combate** já documentados e organizados por categoria!
-
----
-
-## 💡 Diferenciais
-
-- **Filtros avançados** em quase todos os recursos
-- **Modelos Pydantic** com exemplos e descrições para Swagger
-- **Dados fiéis ao Livro do Jogador (PHB)**, traduzidos e organizados
-- **Pronto para deploy** (Dockerfile incluso)
-- **Código limpo, modular e fácil de expandir**
-
----
-
-## 📦 Schemas dos Novos Recursos de Combate
-
-### Ações de Combate (`/actions`)
-
-```json
-{
-  "nome": "Atacar",
-  "tipo": "ação",
-  "descricao": "Realiza um ataque corpo a corpo ou à distância contra um alvo.",
-  "exemplos": ["Atacar com espada", "Atirar com arco"]
-}
+```http
+GET /conditions                    # Lista todas as condições
+GET /conditions?effect=desvantagem # Filtra por efeito
+GET /conditions?source=magia       # Filtra por fonte
+GET /conditions/1                  # Detalhes da condição
+GET /conditions/busca/cego         # Busca por nome
 ```
 
-- **nome**: Nome da ação (ex: "Atacar", "Correr").
-- **tipo**: Tipo da ação (ação, bônus, reação, movimento).
-- **descricao**: Descrição resumida do efeito.
-- **exemplos**: Exemplos de uso.
+#### 🔮 Magias
 
-### Condições de Combate (`/conditions`)
-
-```json
-{
-  "nome": "Cego",
-  "efeitos_mecanicos": [
-    "Falha automaticamente em qualquer teste que dependa de visão.",
-    "Testes de ataque contra a criatura têm vantagem.",
-    "Testes de ataque da criatura têm desvantagem."
-  ],
-  "duracao_tipica": "Até curado ou fim do efeito"
-}
+```http
+GET /spells                        # Lista todas as magias
+GET /spells?level=3&class=mago     # Filtros múltiplos
+GET /spells/ritual                 # Magias rituais
+GET /spells/concentracao           # Magias de concentração
+GET /spells/classes/mago           # Magias por classe
 ```
 
-- **nome**: Nome da condição (ex: "Cego").
-- **efeitos_mecanicos**: Lista de efeitos mecânicos.
-- **duracao_tipica**: Duração padrão da condição.
+#### 🏃‍♂️ Raças e Classes
 
-### Regras de Combate (`/rules/combat`)
-
-```json
-{
-  "tipo": "iniciativa",
-  "descricao": "Cada criatura rola 1d20 + modificador de Destreza. A ordem determina quem age primeiro."
-}
+```http
+GET /racas                         # Lista todas as raças
+GET /classes                       # Lista todas as classes
+GET /backgrounds                   # Lista todos os antecedentes
 ```
 
-- **tipo**: Tipo da regra (ex: "iniciativa", "dano", "acerto_critico").
-- **descricao**: Descrição detalhada da regra.
+#### ⚔️ Equipamentos
+
+```http
+GET /weapons                       # Lista todas as armas
+GET /armor                         # Lista todas as armaduras
+GET /equipment                     # Lista todos os equipamentos
+```
+
+### Exemplos de Uso
+
+#### Buscar condições que causam desvantagem
+
+```bash
+curl "http://localhost:8000/conditions?effect=desvantagem"
+```
+
+#### Buscar magias de evocação do mago
+
+```bash
+curl "http://localhost:8000/spells?school=Evocação&class=mago"
+```
+
+#### Buscar armas corpo a corpo
+
+```bash
+curl "http://localhost:8000/weapons?type=Corpo a Corpo"
+```
+
+## 🧪 Testes
+
+Execute os testes automatizados:
+
+```bash
+pytest test_api.py -v
+```
+
+## 📊 Estrutura do Projeto
+
+```
+dnd_api/
+├── data/                 # Dados JSON
+│   ├── conditions.json   # 14 condições do PHB
+│   ├── spells.json       # 25 magias traduzidas
+│   ├── races.json        # Raças e sub-raças
+│   └── ...
+├── models/               # Modelos Pydantic
+│   ├── condition.py      # Modelo de condições
+│   ├── spell.py          # Modelo de magias
+│   └── ...
+├── routes/               # Endpoints da API
+│   ├── conditions.py     # Rotas de condições
+│   ├── spells.py         # Rotas de magias
+│   └── ...
+├── main.py              # Aplicação principal
+├── test_api.py          # Testes automatizados
+└── requirements.txt     # Dependências
+```
+
+## 🎮 Casos de Uso
+
+### Para Jogadores
+
+- **Durante o combate:** Consulta rápida de condições e efeitos
+- **Criação de personagens:** Referência completa de raças, classes e equipamentos
+- **Preparação de magias:** Sistema completo de magias com filtros
+
+### Para Mestres
+
+- **Consultas rápidas:** Regras de combate, viagem, descanso
+- **Referência:** Condições, magias, equipamentos
+- **Ferramenta de jogo:** API para aplicações D&D
+
+### Para Desenvolvedores
+
+- **API RESTful:** Endpoints bem documentados
+- **Dados estruturados:** JSON com validação Pydantic
+- **Documentação interativa:** Swagger/OpenAPI
+
+## 🤝 Contribuição
+
+Contribuições são bem-vindas! Por favor:
+
+1. Fork o projeto
+2. Crie uma branch para sua feature
+3. Commit suas mudanças
+4. Push para a branch
+5. Abra um Pull Request
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
+
+## 🎲 Sobre D&D 5e
+
+Esta API é baseada no Livro do Jogador de Dungeons & Dragons 5ª Edição. Todos os dados são traduzidos e adaptados para uso em aplicações D&D.
 
 ---
 
-## 🤝 Como contribuir com recursos de combate
-
-1. **Adicione novas ações, condições ou regras**
-
-   - Edite os arquivos JSON em `data/actions.json`, `data/conditions.json` ou `data/combat_rules.json`.
-   - Siga o formato dos exemplos acima.
-   - Mantenha nomes e descrições em português claro e objetivo.
-
-2. **Inclua testes automatizados**
-
-   - Adicione ou edite funções de teste em `test_api.py`.
-   - Teste novos endpoints, filtros ou validações de dados.
-
-3. **Documente no README**
-
-   - Se criar um novo tipo de recurso de combate, adicione exemplos de uso, filtros e schemas nesta documentação.
-
-4. **Abra um Pull Request**
-
-   - Descreva claramente o que foi adicionado ou alterado.
-   - Se possível, inclua exemplos de resposta e instruções de uso.
-
-5. **Dicas para contribuir com recursos de combate**
-   - Use termos do D&D 5e traduzidos fielmente.
-   - Prefira listas e descrições objetivas.
-   - Sempre rode os testes antes de enviar seu PR.
-
----
-
-## 📜 Licença
-
-Este projeto é open-source, feito para a comunidade de RPG e sem fins lucrativos.
-
----
-
-Bons jogos e ótimas aventuras! 🎲🧙‍♂️🐉
+**🎯 Versão 2.0 - Sistema completo de condições e magias aprimorado!** ✨
