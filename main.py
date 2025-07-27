@@ -18,6 +18,7 @@ from routes.rest import router as rest_router
 from routes.environment import router as environment_router
 from routes.actions import router as actions_router
 from routes.conditions import router as conditions_router
+from routes.spells import router as spells_router
 
 # Definição das tags para Swagger
 openapi_tags = [
@@ -42,13 +43,14 @@ openapi_tags = [
     {"name": "Ambiente", "description": "Condições ambientais: terreno, visibilidade, clima, obstáculos e ambientes especiais."},
     {"name": "Ações", "description": "Ações de combate disponíveis: atacar, correr, esquivar, usar objeto, ações bônus, reações, etc. Permite filtro por tipo."},
     {"name": "Condições", "description": "Condições de combate: cego, caído, enfeitiçado, imobilizado, invisível, paralisado, petrificado, surdo, etc. Inclui efeitos e duração típica."},
-    {"name": "Regras de Combate", "description": "Regras específicas de combate: iniciativa, rodadas, tipos de ataque, acertos críticos, dano, morte, cobertura, combate montado, subaquático e em massa."}
+    {"name": "Regras de Combate", "description": "Regras específicas de combate: iniciativa, rodadas, tipos de ataque, acertos críticos, dano, morte, cobertura, combate montado, subaquático e em massa."},
+    {"name": "Magias", "description": "Consulta de magias por nível, escola, classe conjuradora, componentes, ritual, concentração e outros critérios. Inclui truques e magias de 1º a 9º nível."}
 ]
 
 app = FastAPI(
     title="D&D 5e API",
     description="API RESTful para consulta de dados do Livro do Jogador de Dungeons & Dragons 5ª Edição.",
-    version="1.8.0",
+    version="1.9.0",
     openapi_tags=openapi_tags
 )
 
@@ -76,4 +78,5 @@ app.include_router(travel_router)
 app.include_router(rest_router)
 app.include_router(environment_router)
 app.include_router(actions_router)
-app.include_router(conditions_router) 
+app.include_router(conditions_router)
+app.include_router(spells_router) 

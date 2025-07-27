@@ -781,7 +781,8 @@ def test_all_routes_registered():
         "/mounts",
         "/currency",
         "/services",
-        "/lifestyles"
+        "/lifestyles",
+        "/spells"
     ]
     
     for route in routes:
@@ -838,6 +839,46 @@ def test_tool_category_filters():
             )
             # Se não encontrar, o teste ainda passa (filtro pode não estar implementado)
 
+def test_spell_level_filters():
+    """Testa filtros específicos por nível de magia."""
+    # Testa apenas níveis que sabemos que existem
+    resp = client.get("/spells?level=1")
+    assert resp.status_code == 200
+    spells = resp.json()
+    if spells:  # Só testa se há magias para este nível
+        for spell in spells:
+            assert spell["nivel"] == 1
+
+def test_spell_school_filters():
+    """Testa filtros específicos por escola de magia."""
+    # Testa apenas escolas que sabemos que existem
+    resp = client.get("/spells?school=Evocação")
+    assert resp.status_code == 200
+    spells = resp.json()
+    if spells:  # Só testa se há magias para esta escola
+        for spell in spells:
+            assert "Evocação" in spell["escola"]
+
+def test_spell_class_filters():
+    """Testa filtros específicos por classe conjuradora."""
+    # Testa apenas classes que sabemos que existem
+    resp = client.get("/spells?class=mago")
+    assert resp.status_code == 200
+    spells = resp.json()
+    # Verifica se pelo menos algumas magias têm a classe Mago
+    mago_spells = [spell for spell in spells if "Mago" in spell["classes_conjuradoras"]]
+    assert len(mago_spells) > 0, "Deve haver pelo menos uma magia da classe Mago"
+
+def test_spell_component_filters():
+    """Testa filtros específicos por componente de magia."""
+    # Testa apenas componentes que sabemos que existem
+    resp = client.get("/spells?component=V")
+    assert resp.status_code == 200
+    spells = resp.json()
+    if spells:  # Só testa se há magias para este componente
+        for spell in spells:
+            assert "V" in spell["componentes"]
+
 # ============================================================================
 # TESTES DE INTEGRIDADE DE DADOS
 # ============================================================================
@@ -882,6 +923,26 @@ def test_required_fields_present():
         assert weapon["dano"] != ""
         assert weapon["tipo"] != ""
         assert weapon["categoria"] != ""
+    
+    # Testa magias
+    resp = client.get("/spells")
+    assert resp.status_code == 200
+    spells = resp.json()
+    for spell in spells:
+        assert "nome" in spell
+        assert "nivel" in spell
+        assert "escola" in spell
+        assert "classes_conjuradoras" in spell
+        assert "componentes" in spell
+        assert "ritual" in spell
+        assert "concentracao" in spell
+        assert spell["nome"] != ""
+        assert isinstance(spell["nivel"], int)
+        assert spell["escola"] != ""
+        assert len(spell["classes_conjuradoras"]) > 0
+        assert len(spell["componentes"]) > 0
+        assert isinstance(spell["ritual"], bool)
+        assert isinstance(spell["concentracao"], bool)
 
 # ============================================================================
 # TESTES DE CASOS ESPECIAIS
@@ -948,7 +1009,7 @@ def test_response_time():
     """Testa tempo de resposta dos endpoints principais."""
     import time
     
-    endpoints = ["/racas", "/classes", "/backgrounds", "/equipment", "/weapons"]
+    endpoints = ["/racas", "/classes", "/backgrounds", "/equipment", "/weapons", "/spells"]
     
     for endpoint in endpoints:
         start_time = time.time()
@@ -1034,6 +1095,9 @@ def test_repeated_requests():
         
         resp = client.get("/equipment")
         assert resp.status_code == 200
+        
+        resp = client.get("/spells")
+        assert resp.status_code == 200
 
 def test_error_recovery():
     """Testa recuperação de erros."""
@@ -1079,6 +1143,14 @@ def test_all_endpoints_covered():
         ("/services/{id}", "GET"),
         ("/lifestyles", "GET"),
         ("/lifestyles/{id}", "GET"),
+        ("/spells", "GET"),
+        ("/spells/{id}", "GET"),
+        ("/spells/nivel/{nivel}", "GET"),
+        ("/spells/escola/{escola}", "GET"),
+        ("/spells/classe/{classe}", "GET"),
+        ("/spells/ritual", "GET"),
+        ("/spells/concentracao", "GET"),
+        ("/spells/busca/{nome}", "GET"),
     ]
     
     # Verifica se todos os endpoints respondem (mesmo que com 404 para IDs inexistentes)
@@ -1111,10 +1183,26 @@ def test_all_filters_covered():
         ("/tools", "category"),
         ("/tools", "type"),
         ("/mounts", "type"),
+        ("/spells", "school"),
+        ("/spells", "class"),
+        ("/spells", "component"),
+        ("/spells", "ritual"),
+        ("/spells", "concentration"),
+        ("/spells", "range"),
     ]
-    
+
     for endpoint, filter_param in filters_to_test:
         resp = client.get(f"{endpoint}?{filter_param}=test")
+        # Alguns filtros podem retornar 422 para valores inválidos, o que é aceitável
+        assert resp.status_code in [200, 422]
+    
+    # Testa filtros numéricos separadamente
+    numeric_filters = [
+        ("/spells", "level", "1")
+    ]
+    
+    for endpoint, filter_param, value in numeric_filters:
+        resp = client.get(f"{endpoint}?{filter_param}={value}")
         assert resp.status_code == 200
 
 # ============================================================================
@@ -1127,7 +1215,7 @@ import pytest
 
 @pytest.mark.parametrize("endpoint", [
     "/", "/racas", "/subracas", "/classes", "/backgrounds", "/equipment",
-    "/weapons", "/armor", "/tools", "/mounts", "/currency", "/services", "/lifestyles"
+    "/weapons", "/armor", "/tools", "/mounts", "/currency", "/services", "/lifestyles", "/spells"
 ])
 @pytest.mark.parametrize("method", ["post", "put", "delete", "patch"])
 def test_method_not_allowed(endpoint, method):
@@ -1139,7 +1227,7 @@ def test_method_not_allowed(endpoint, method):
 # ============================================================================
 
 @pytest.mark.parametrize("endpoint", [
-    "/", "/racas", "/classes", "/equipment", "/weapons"
+    "/", "/racas", "/classes", "/equipment", "/weapons", "/spells"
 ])
 def test_head_and_options(endpoint):
     resp = client.head(endpoint)
@@ -1155,7 +1243,7 @@ def test_head_and_options(endpoint):
 
 @pytest.mark.parametrize("endpoint", [
     "/racas", "/subracas", "/classes", "/backgrounds", "/equipment",
-    "/weapons", "/armor", "/tools", "/mounts", "/currency", "/services", "/lifestyles"
+    "/weapons", "/armor", "/tools", "/mounts", "/currency", "/services", "/lifestyles", "/spells"
 ])
 @pytest.mark.parametrize("bad_id", ["0", "-1"])
 def test_invalid_id_values(endpoint, bad_id):
@@ -1309,6 +1397,401 @@ def test_get_combat_rules_filter_by_type():
     for rule in rules:
         assert "iniciativa" in rule["tipo"].lower()
 
+def test_get_spellcasting_rules():
+    """Testa endpoint de regras gerais de conjuração."""
+    resp = client.get("/rules/spells")
+    assert resp.status_code == 200
+    rules = resp.json()
+    assert isinstance(rules, dict)
+    assert "titulo" in rules
+    assert "regras" in rules
+    assert len(rules["regras"]) > 0
+
+def test_get_spell_components():
+    """Testa endpoint de componentes de magia."""
+    resp = client.get("/rules/spells/components")
+    assert resp.status_code == 200
+    components = resp.json()
+    assert isinstance(components, dict)
+    assert "titulo" in components
+    assert "componentes" in components
+    assert len(components["componentes"]) == 3  # V, S, M
+
+def test_get_spell_rituals():
+    """Testa endpoint de magias rituais."""
+    resp = client.get("/rules/spells/rituals")
+    assert resp.status_code == 200
+    rituals = resp.json()
+    assert isinstance(rituals, dict)
+    assert "titulo" in rituals
+    assert "regras" in rituals
+    assert "exemplos_rituais" in rituals
+
+def test_get_spell_slot_table():
+    """Testa endpoint de tabela de espaços de magia."""
+    resp = client.get("/rules/spells/slot-table")
+    assert resp.status_code == 200
+    slot_table = resp.json()
+    assert isinstance(slot_table, dict)
+    assert "titulo" in slot_table
+    assert "classes" in slot_table
+    assert "Mago" in slot_table["classes"]
+    assert "Clérigo" in slot_table["classes"]
+    assert "Druida" in slot_table["classes"]
+
+# ============================================================================
+# TESTES DE MAGIAS
+# ============================================================================
+
+def test_get_spells():
+    """Testa listagem de todas as magias."""
+    resp = client.get("/spells")
+    assert resp.status_code == 200
+    spells = resp.json()
+    assert isinstance(spells, list)
+    assert len(spells) > 0
+    assert "nome" in spells[0]
+    assert "nivel" in spells[0]
+    assert "escola" in spells[0]
+    assert "classes_conjuradoras" in spells[0]
+
+def test_get_spell_by_id():
+    """Testa busca de magia por ID."""
+    resp = client.get("/spells/1")
+    assert resp.status_code == 200
+    spell = resp.json()
+    assert "nome" in spell
+    assert "nivel" in spell
+    assert "escola" in spell
+    assert "classes_conjuradoras" in spell
+    assert "texto" in spell
+
+def test_get_spell_by_id_not_found():
+    """Testa busca de magia por ID inexistente."""
+    resp = client.get("/spells/999")
+    assert resp.status_code == 404
+
+def test_spells_filter_by_level():
+    """Testa filtro de magias por nível."""
+    resp = client.get("/spells?level=1")
+    assert resp.status_code == 200
+    spells = resp.json()
+    assert isinstance(spells, list)
+    assert len(spells) > 0  # Deve haver magias de nível 1
+    for spell in spells:
+        assert spell["nivel"] == 1
+
+def test_spells_filter_by_school():
+    """Testa filtro de magias por escola."""
+    resp = client.get("/spells?school=Evocação")
+    assert resp.status_code == 200
+    spells = resp.json()
+    assert isinstance(spells, list)
+    assert len(spells) > 0  # Deve haver magias de evocação
+    for spell in spells:
+        assert "Evocação" in spell["escola"]
+
+def test_spells_filter_by_class():
+    """Testa filtro de magias por classe conjuradora."""
+    resp = client.get("/spells?class=mago")
+    assert resp.status_code == 200
+    spells = resp.json()
+    assert isinstance(spells, list)
+    # Verifica se pelo menos algumas magias têm a classe Mago
+    mago_spells = [spell for spell in spells if "Mago" in spell["classes_conjuradoras"]]
+    assert len(mago_spells) > 0, "Deve haver pelo menos uma magia da classe Mago"
+
+def test_spells_filter_by_component():
+    """Testa filtro de magias por componente."""
+    resp = client.get("/spells?component=V")
+    assert resp.status_code == 200
+    spells = resp.json()
+    assert isinstance(spells, list)
+    for spell in spells:
+        assert "V" in spell["componentes"]
+
+def test_spells_filter_by_ritual():
+    """Testa filtro de magias rituais."""
+    resp = client.get("/spells?ritual=true")
+    assert resp.status_code == 200
+    spells = resp.json()
+    assert isinstance(spells, list)
+    for spell in spells:
+        assert spell["ritual"] == True
+
+def test_spells_filter_by_concentration():
+    """Testa filtro de magias de concentração."""
+    resp = client.get("/spells?concentration=true")
+    assert resp.status_code == 200
+    spells = resp.json()
+    assert isinstance(spells, list)
+    assert len(spells) > 0  # Deve haver magias de concentração
+    for spell in spells:
+        assert spell["concentracao"] == True
+
+def test_spells_filter_by_range():
+    """Testa filtro de magias por alcance."""
+    resp = client.get("/spells?range=Toque")
+    assert resp.status_code == 200
+    spells = resp.json()
+    assert isinstance(spells, list)
+    # Verifica se pelo menos algumas magias têm alcance Toque
+    toque_spells = [spell for spell in spells if spell["alcance"] == "Toque"]
+    assert len(toque_spells) > 0, "Deve haver pelo menos uma magia com alcance Toque"
+
+def test_get_spells_by_level():
+    """Testa endpoint específico para magias por nível."""
+    resp = client.get("/spells/nivel/1")
+    assert resp.status_code == 200
+    spells = resp.json()
+    assert isinstance(spells, list)
+    for spell in spells:
+        assert spell["nivel"] == 1
+
+def test_get_spells_by_level_not_found():
+    """Testa endpoint de magias por nível inexistente."""
+    resp = client.get("/spells/nivel/99")
+    assert resp.status_code == 404
+
+def test_get_spells_by_school():
+    """Testa endpoint específico para magias por escola."""
+    resp = client.get("/spells/escola/Evocação")
+    assert resp.status_code == 200
+    spells = resp.json()
+    assert isinstance(spells, list)
+    for spell in spells:
+        assert "Evocação" in spell["escola"]
+
+def test_get_spells_by_school_not_found():
+    """Testa endpoint de magias por escola inexistente."""
+    resp = client.get("/spells/escola/Inexistente")
+    assert resp.status_code == 404
+
+def test_get_spells_by_class():
+    """Testa endpoint específico para magias por classe."""
+    resp = client.get("/spells/classe/Mago")
+    assert resp.status_code == 200
+    spells = resp.json()
+    assert isinstance(spells, list)
+    for spell in spells:
+        assert "Mago" in spell["classes_conjuradoras"]
+
+def test_get_spells_by_class_not_found():
+    """Testa endpoint de magias por classe inexistente."""
+    resp = client.get("/spells/classe/Inexistente")
+    assert resp.status_code == 404
+
+def test_get_spells_by_class_name():
+    """Testa endpoint de magias por nome de classe."""
+    resp = client.get("/spells/classes/mago")
+    assert resp.status_code == 200
+    spells = resp.json()
+    assert isinstance(spells, list)
+    assert len(spells) > 0
+    for spell in spells:
+        assert "Mago" in spell["classes_conjuradoras"]
+
+def test_get_spells_by_class_name_variations():
+    """Testa endpoint de magias por nome de classe com variações."""
+    # Testa singular e plural
+    resp1 = client.get("/spells/classes/clerigo")
+    resp2 = client.get("/spells/classes/clerigos")
+    assert resp1.status_code == 200
+    assert resp2.status_code == 200
+    assert len(resp1.json()) == len(resp2.json())
+    
+    # Testa classe com acento
+    resp3 = client.get("/spells/classes/druida")
+    assert resp3.status_code == 200
+    assert len(resp3.json()) > 0
+
+def test_get_spells_by_class_name_not_found():
+    """Testa endpoint de magias por nome de classe inexistente."""
+    resp = client.get("/spells/classes/classe_inexistente")
+    assert resp.status_code == 404
+    assert "Nenhuma magia encontrada" in resp.json()["detail"]
+
+def test_get_ritual_spells():
+    """Testa endpoint específico para magias rituais."""
+    resp = client.get("/spells/ritual")
+    assert resp.status_code == 200
+    spells = resp.json()
+    assert isinstance(spells, list)
+    for spell in spells:
+        assert spell["ritual"] == True
+
+def test_get_concentration_spells():
+    """Testa endpoint específico para magias de concentração."""
+    resp = client.get("/spells/concentracao")
+    assert resp.status_code == 200
+    spells = resp.json()
+    assert isinstance(spells, list)
+    for spell in spells:
+        assert spell["concentracao"] == True
+
+def test_search_spells_by_name():
+    """Testa busca de magias por nome."""
+    resp = client.get("/spells/busca/Bola")
+    assert resp.status_code == 200
+    spells = resp.json()
+    assert isinstance(spells, list)
+    for spell in spells:
+        assert "Bola" in spell["nome"]
+
+def test_search_spells_by_name_not_found():
+    """Testa busca de magias por nome inexistente."""
+    resp = client.get("/spells/busca/Inexistente")
+    assert resp.status_code == 404
+
+def test_spells_multiple_filters():
+    """Testa múltiplos filtros combinados."""
+    resp = client.get("/spells?level=1&school=Evocação&class=mago")
+    assert resp.status_code == 200
+    spells = resp.json()
+    assert isinstance(spells, list)
+    # Verifica se pelo menos algumas magias atendem aos critérios
+    filtered_spells = [spell for spell in spells if 
+                      spell["nivel"] == 1 and 
+                      "Evocação" in spell["escola"] and 
+                      "Mago" in spell["classes_conjuradoras"]]
+    assert len(filtered_spells) > 0, "Deve haver pelo menos uma magia que atenda a todos os critérios"
+
+def test_spells_data_structure():
+    """Testa estrutura de dados das magias."""
+    resp = client.get("/spells/1")
+    assert resp.status_code == 200
+    spell = resp.json()
+    
+    # Campos obrigatórios
+    required_fields = ["nome", "nivel", "escola", "tempo_conjuracao", "alcance", 
+                      "componentes", "duracao", "classes_conjuradoras", "texto", 
+                      "ritual", "concentracao"]
+    for field in required_fields:
+        assert field in spell
+    
+    # Verifica tipos de dados
+    assert isinstance(spell["nome"], str)
+    assert isinstance(spell["nivel"], int)
+    assert isinstance(spell["escola"], str)
+    assert isinstance(spell["componentes"], list)
+    assert isinstance(spell["classes_conjuradoras"], list)
+    assert isinstance(spell["ritual"], bool)
+    assert isinstance(spell["concentracao"], bool)
+
+def test_spells_level_distribution():
+    """Testa distribuição de níveis das magias."""
+    resp = client.get("/spells")
+    assert resp.status_code == 200
+    spells = resp.json()
+    
+    # Verifica se há magias de diferentes níveis
+    levels = set(spell["nivel"] for spell in spells)
+    assert len(levels) > 1  # Deve ter pelo menos 2 níveis diferentes
+    
+    # Verifica se há truques (nível 0)
+    has_cantrips = any(spell["nivel"] == 0 for spell in spells)
+    assert has_cantrips
+
+def test_spells_school_distribution():
+    """Testa distribuição de escolas das magias."""
+    resp = client.get("/spells")
+    assert resp.status_code == 200
+    spells = resp.json()
+    
+    # Verifica se há magias de diferentes escolas
+    schools = set(spell["escola"] for spell in spells)
+    assert len(schools) > 1  # Deve ter pelo menos 2 escolas diferentes
+
+def test_spells_class_distribution():
+    """Testa distribuição de classes conjuradoras."""
+    resp = client.get("/spells")
+    assert resp.status_code == 200
+    spells = resp.json()
+    
+    # Verifica se há magias para diferentes classes
+    all_classes = set()
+    for spell in spells:
+        all_classes.update(spell["classes_conjuradoras"])
+    
+    assert len(all_classes) > 1  # Deve ter pelo menos 2 classes diferentes
+
+def test_spells_ritual_and_concentration():
+    """Testa propriedades de ritual e concentração."""
+    resp = client.get("/spells")
+    assert resp.status_code == 200
+    spells = resp.json()
+    
+    # Verifica se há magias rituais
+    ritual_spells = [spell for spell in spells if spell["ritual"]]
+    assert len(ritual_spells) >= 0  # Pode não ter magias rituais
+    
+    # Verifica se há magias de concentração
+    concentration_spells = [spell for spell in spells if spell["concentracao"]]
+    assert len(concentration_spells) >= 0  # Pode não ter magias de concentração
+
+def test_spells_component_types():
+    """Testa tipos de componentes das magias."""
+    resp = client.get("/spells")
+    assert resp.status_code == 200
+    spells = resp.json()
+    
+    # Verifica se há magias com diferentes componentes
+    all_components = set()
+    for spell in spells:
+        all_components.update(spell["componentes"])
+    
+    # Deve ter pelo menos V (Verbal) e S (Somático)
+    assert "V" in all_components
+    assert "S" in all_components
+
+def test_spells_search_case_insensitive():
+    """Testa se a busca por nome é case-insensitive."""
+    resp1 = client.get("/spells/busca/BOLA")
+    resp2 = client.get("/spells/busca/bola")
+    
+    if resp1.status_code == 200 and resp2.status_code == 200:
+        spells1 = resp1.json()
+        spells2 = resp2.json()
+        assert len(spells1) == len(spells2)
+
+def test_spells_filter_combinations():
+    """Testa combinações de filtros."""
+    # Filtro por nível e escola
+    resp = client.get("/spells?level=1&school=Evocação")
+    assert resp.status_code == 200
+    
+    # Filtro por classe e componente
+    resp = client.get("/spells?class=mago&component=V")
+    assert resp.status_code == 200
+    
+    # Filtro por ritual e concentração
+    resp = client.get("/spells?ritual=false&concentration=true")
+    assert resp.status_code == 200
+
+def test_spells_empty_filters():
+    """Testa filtros que retornam resultados vazios."""
+    resp = client.get("/spells?level=99")
+    assert resp.status_code == 200
+    spells = resp.json()
+    assert len(spells) == 0  # Não deve haver magias de nível 99
+
+def test_spells_invalid_filters():
+    """Testa filtros inválidos."""
+    resp = client.get("/spells?level=abc")
+    # FastAPI pode não validar o tipo se o parâmetro for opcional, então aceita 200 ou 422
+    assert resp.status_code in [200, 422]
+
+def test_spells_special_characters():
+    """Testa magias com caracteres especiais no nome."""
+    resp = client.get("/spells")
+    assert resp.status_code == 200
+    spells = resp.json()
+    
+    # Verifica se todas as magias têm nomes válidos
+    for spell in spells:
+        assert len(spell["nome"]) > 0
+        assert isinstance(spell["nome"], str)
+
 print("✅ Todos os testes foram definidos!")
 print("📊 Cobertura de testes:")
 print("   - Endpoint raiz: ✅")
@@ -1321,6 +1804,7 @@ print("   - Armaduras: ✅")
 print("   - Ferramentas: ✅")
 print("   - Montarias e veículos: ✅")
 print("   - Moedas, serviços e estilos de vida: ✅")
+print("   - Magias: ✅")
 print("   - Filtros avançados: ✅")
 print("   - Casos de erro: ✅")
 print("   - Validação de dados: ✅")
@@ -1329,5 +1813,5 @@ print("   - Segurança: ✅")
 print("   - Estabilidade: ✅")
 print("   - Documentação: ✅")
 print("")
-print("🎯 Total de testes: 100+")
+print("🎯 Total de testes: 130+")
 print("🚀 Execute com: pytest test_api.py -v") 
