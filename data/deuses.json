@@ -1,0 +1,852 @@
+[
+  {
+    "id": "akadi",
+    "nome": "Akadi",
+    "titulo": "A Rainha do Ar",
+    "panteao": "Faerûn",
+    "alinhamento": "N",
+    "dominios": ["Ar"],
+    "simbolo": "Nuvem com face",
+    "plano": "Plano Elemental do Ar"
+  },
+  {
+    "id": "bane",
+    "nome": "Bane",
+    "titulo": "O Senhor Negro",
+    "panteao": "Faerûn",
+    "alinhamento": "LE",
+    "dominios": ["Guerra"],
+    "simbolo": "Garra negra com palma para cima",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "beshaba",
+    "nome": "Beshaba",
+    "titulo": "A Senhora da Má Sorte",
+    "panteao": "Faerûn",
+    "alinhamento": "CE",
+    "dominios": ["Sorte (má)"],
+    "simbolo": "Chifre preto voltado para cima",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "chauntea",
+    "nome": "Chauntea",
+    "titulo": "A Grande Mãe",
+    "panteao": "Faerûn",
+    "alinhamento": "NG",
+    "dominios": ["Vida"],
+    "simbolo": "Espiga de trigo dourada",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "cyric",
+    "nome": "Cyric",
+    "titulo": "O Príncipe da Mentira",
+    "panteao": "Faerûn",
+    "alinhamento": "CN",
+    "dominios": ["Engano"],
+    "simbolo": "Caveira com estrela flamejante",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "deneir",
+    "nome": "Deneir",
+    "titulo": "O Senhor dos Símbolos",
+    "panteao": "Faerûn",
+    "alinhamento": "NG",
+    "dominios": ["Conhecimento"],
+    "simbolo": "Olho aberto acima de uma vela",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "eldath",
+    "nome": "Eldath",
+    "titulo": "A Guardiã da Paz",
+    "panteao": "Faerûn",
+    "alinhamento": "NG",
+    "dominios": ["Vida", "Natureza"],
+    "simbolo": "Cachoeira sobre rochas",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "gond",
+    "nome": "Gond",
+    "titulo": "O Maravilhoso Artífice",
+    "panteao": "Faerûn",
+    "alinhamento": "N",
+    "dominios": ["Conhecimento"],
+    "simbolo": "Engrenagem com quatro dentes",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "helm",
+    "nome": "Helm",
+    "titulo": "O Vigilante",
+    "panteao": "Faerûn",
+    "alinhamento": "LN",
+    "dominios": ["Vida", "Guerra"],
+    "simbolo": "Elmo com visor",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "ilmater",
+    "nome": "Ilmater",
+    "titulo": "O Senhor que Sofre",
+    "panteao": "Faerûn",
+    "alinhamento": "LG",
+    "dominios": ["Vida"],
+    "simbolo": "Mãos envoltas em fitas",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "kelemvor",
+    "nome": "Kelemvor",
+    "titulo": "O Senhor dos Mortos",
+    "panteao": "Faerûn",
+    "alinhamento": "LN",
+    "dominios": ["Morte"],
+    "simbolo": "Balança em frente a uma caveira",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "lathander",
+    "nome": "Lathander",
+    "titulo": "O Senhor da Manhã",
+    "panteao": "Faerûn",
+    "alinhamento": "NG",
+    "dominios": ["Vida", "Luz"],
+    "simbolo": "Disco solar nascente",
+    "plano": "Casa da Manhã"
+  },
+  {
+    "id": "lliira",
+    "nome": "Lliira",
+    "titulo": "A Senhora da Alegria",
+    "panteao": "Faerûn",
+    "alinhamento": "CG",
+    "dominios": ["Vida"],
+    "simbolo": "Quatro pétalas de flor",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "loviatar",
+    "nome": "Loviatar",
+    "titulo": "A Senhora da Dor",
+    "panteao": "Faerûn",
+    "alinhamento": "LE",
+    "dominios": ["Dor", "Morte"],
+    "simbolo": "Lágrima ensanguentada",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "malar",
+    "nome": "Malar",
+    "titulo": "O Senhor da Caça",
+    "panteao": "Faerûn",
+    "alinhamento": "CE",
+    "dominios": ["Natureza"],
+    "simbolo": "Garra de animal",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "mask",
+    "nome": "Mask",
+    "titulo": "O Senhor das Sombras",
+    "panteao": "Faerûn",
+    "alinhamento": "CN",
+    "dominios": ["Engano"],
+    "simbolo": "Máscara preta sem expressão",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "milil",
+    "nome": "Milil",
+    "titulo": "O Senhor da Canção",
+    "panteao": "Faerûn",
+    "alinhamento": "NG",
+    "dominios": ["Conhecimento", "Inspiração"],
+    "simbolo": "Lira prateada",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "myrkul",
+    "nome": "Myrkul",
+    "titulo": "O Senhor dos Ossos",
+    "panteao": "Faerûn",
+    "alinhamento": "NE",
+    "dominios": ["Morte"],
+    "simbolo": "Crânio humano encapuzado",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "mystra",
+    "nome": "Mystra",
+    "titulo": "A Senhora dos Mistérios",
+    "panteao": "Faerûn",
+    "alinhamento": "NG",
+    "dominios": ["Magia"],
+    "simbolo": "Estrela de cinco pontas azul clara",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "oghma",
+    "nome": "Oghma",
+    "titulo": "O Senhor do Conhecimento",
+    "panteao": "Faerûn",
+    "alinhamento": "N",
+    "dominios": ["Conhecimento"],
+    "simbolo": "Rolo de pergaminho",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "savras",
+    "nome": "Savras",
+    "titulo": "O Senhor da Adivinhação",
+    "panteao": "Faerûn",
+    "alinhamento": "LN",
+    "dominios": ["Adivinhação"],
+    "simbolo": "Olho com joias coloridas",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "selune",
+    "nome": "Selûne",
+    "titulo": "A Senhora da Prata",
+    "panteao": "Faerûn",
+    "alinhamento": "CG",
+    "dominios": ["Luz"],
+    "simbolo": "Crescente de lua com olhos humanos",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "shar",
+    "nome": "Shar",
+    "titulo": "A Senhora da Perda",
+    "panteao": "Faerûn",
+    "alinhamento": "LE",
+    "dominios": ["Escuridão", "Perda"],
+    "simbolo": "Círculo negro com borda roxa",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "silvanus",
+    "nome": "Silvanus",
+    "titulo": "O Pai das Árvores",
+    "panteao": "Faerûn",
+    "alinhamento": "N",
+    "dominios": ["Natureza"],
+    "simbolo": "Carvalho com folhas",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "sune",
+    "nome": "Sune",
+    "titulo": "A Senhora do Amor",
+    "panteao": "Faerûn",
+    "alinhamento": "CG",
+    "dominios": ["Vida", "Amor", "Beleza"],
+    "simbolo": "Rosto feminino de perfil com cabelo flamejante",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "talona",
+    "nome": "Talona",
+    "titulo": "A Senhora do Veneno",
+    "panteao": "Faerûn",
+    "alinhamento": "CE",
+    "dominios": ["Doença", "Morte"],
+    "simbolo": "Garra negra com três gotas venenosas",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "talos",
+    "nome": "Talos",
+    "titulo": "O Destruidor",
+    "panteao": "Faerûn",
+    "alinhamento": "CE",
+    "dominios": ["Tempestade"],
+    "simbolo": "Nuvem com três raios",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "tempus",
+    "nome": "Tempus",
+    "titulo": "O Senhor das Batalhas",
+    "panteao": "Faerûn",
+    "alinhamento": "N",
+    "dominios": ["Guerra"],
+    "simbolo": "Escudo e espada cruzados",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "torm",
+    "nome": "Torm",
+    "titulo": "O Leal",
+    "panteao": "Faerûn",
+    "alinhamento": "LG",
+    "dominios": ["Coragem", "Dever"],
+    "simbolo": "Mão branca em um campo azul",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "tymora",
+    "nome": "Tymora",
+    "titulo": "A Senhora da Boa Sorte",
+    "panteao": "Faerûn",
+    "alinhamento": "CG",
+    "dominios": ["Sorte (boa)"],
+    "simbolo": "Moeda de ouro",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "umberlee",
+    "nome": "Umberlee",
+    "titulo": "A Rainha das Profundezas",
+    "panteao": "Faerûn",
+    "alinhamento": "CE",
+    "dominios": ["Mar", "Tempestade"],
+    "simbolo": "Onda azul verde",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "waukeen",
+    "nome": "Waukeen",
+    "titulo": "A Senhora do Comércio",
+    "panteao": "Faerûn",
+    "alinhamento": "N",
+    "dominios": ["Comércio"],
+    "simbolo": "Moeda dourada com rosto de mulher",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "pelor",
+    "nome": "Pelor",
+    "titulo": "O Sol Invicto",
+    "panteao": "Greyhawk",
+    "alinhamento": "LG",
+    "dominios": ["Sol", "Cura", "Força"],
+    "simbolo": "Disco solar",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "nerull",
+    "nome": "Nerull",
+    "titulo": "O Senhor da Morte",
+    "panteao": "Greyhawk",
+    "alinhamento": "NE",
+    "dominios": ["Morte", "Escuridão"],
+    "simbolo": "Caveira com foice",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "st-cuthbert",
+    "nome": "St. Cuthbert",
+    "titulo": "O Cudgel",
+    "panteao": "Greyhawk",
+    "alinhamento": "LN",
+    "dominios": ["Verdade", "Disciplina"],
+    "simbolo": "Círculo com estrela",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "paladine",
+    "nome": "Paladine",
+    "titulo": "O Pai dos Dragões",
+    "panteao": "Dragonlance",
+    "alinhamento": "LG",
+    "dominios": ["Justiça", "Proteção", "Honra"],
+    "simbolo": "Dragão prateado",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "takhisis",
+    "nome": "Takhisis",
+    "titulo": "A Rainha das Trevas",
+    "panteao": "Dragonlance",
+    "alinhamento": "LE",
+    "dominios": ["Tirania", "Trevas", "Ambição"],
+    "simbolo": "Dragão negro com cinco cabeças",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "gilean",
+    "nome": "Gilean",
+    "titulo": "O Sábio",
+    "panteao": "Dragonlance",
+    "alinhamento": "N",
+    "dominios": ["Conhecimento", "Equilíbrio"],
+    "simbolo": "Livro aberto",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "odin",
+    "nome": "Odin",
+    "titulo": "O Pai de Todos",
+    "panteao": "Nórdico",
+    "alinhamento": "LN",
+    "dominios": ["Sabedoria", "Magia", "Guerra"],
+    "simbolo": "Olho único",
+    "plano": "Asgard"
+  },
+  {
+    "id": "thor",
+    "nome": "Thor",
+    "titulo": "O Deus do Trovão",
+    "panteao": "Nórdico",
+    "alinhamento": "CG",
+    "dominios": ["Trovão", "Tempestade"],
+    "simbolo": "Martelo Mjolnir",
+    "plano": "Asgard"
+  },
+  {
+    "id": "loki",
+    "nome": "Loki",
+    "titulo": "O Trapaceiro",
+    "panteao": "Nórdico",
+    "alinhamento": "CN",
+    "dominios": ["Trapaça", "Caos"],
+    "simbolo": "Chama",
+    "plano": "Asgard"
+  },
+  {
+    "id": "ra",
+    "nome": "Rá",
+    "titulo": "O Deus Sol",
+    "panteao": "Egípcio",
+    "alinhamento": "LG",
+    "dominios": ["Sol", "Liderança"],
+    "simbolo": "Disco solar com serpente",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "osiris",
+    "nome": "Osíris",
+    "titulo": "O Senhor dos Mortos",
+    "panteao": "Egípcio",
+    "alinhamento": "LG",
+    "dominios": ["Morte", "Renascimento"],
+    "simbolo": "Cruz ansata",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "isis",
+    "nome": "Ísis",
+    "titulo": "A Grande Mãe",
+    "panteao": "Egípcio",
+    "alinhamento": "NG",
+    "dominios": ["Magia", "Maternidade"],
+    "simbolo": "Trono",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "zeus",
+    "nome": "Zeus",
+    "titulo": "O Pai dos Deuses",
+    "panteao": "Grego",
+    "alinhamento": "LG",
+    "dominios": ["Relâmpago", "Justiça"],
+    "simbolo": "Raio",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "atena",
+    "nome": "Atena",
+    "titulo": "A Deusa da Sabedoria",
+    "panteao": "Grego",
+    "alinhamento": "LG",
+    "dominios": ["Sabedoria", "Guerra Estratégica"],
+    "simbolo": "Coruja",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "hades",
+    "nome": "Hades",
+    "titulo": "O Senhor do Submundo",
+    "panteao": "Grego",
+    "alinhamento": "N",
+    "dominios": ["Morte", "Riquezas Subterrâneas"],
+    "simbolo": "Capacete da invisibilidade",
+    "plano": "Hades"
+  },
+  {
+    "id": "apolo",
+    "nome": "Apolo",
+    "titulo": "O Deus da Luz",
+    "panteao": "Grego",
+    "alinhamento": "CG",
+    "dominios": ["Luz", "Música", "Cura"],
+    "simbolo": "Lira",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "artemis",
+    "nome": "Ártemis",
+    "titulo": "A Deusa da Caça",
+    "panteao": "Grego",
+    "alinhamento": "CG",
+    "dominios": ["Natureza", "Caça", "Lua"],
+    "simbolo": "Arco e flecha",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "ares",
+    "nome": "Ares",
+    "titulo": "O Deus da Guerra",
+    "panteao": "Grego",
+    "alinhamento": "CN",
+    "dominios": ["Guerra", "Violência"],
+    "simbolo": "Lança",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "afrodite",
+    "nome": "Afrodite",
+    "titulo": "A Deusa do Amor",
+    "panteao": "Grego",
+    "alinhamento": "CG",
+    "dominios": ["Amor", "Beleza", "Desejo"],
+    "simbolo": "Concha",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "hefesto",
+    "nome": "Hefesto",
+    "titulo": "O Deus da Forja",
+    "panteao": "Grego",
+    "alinhamento": "N",
+    "dominios": ["Forja", "Fogo", "Artesanato"],
+    "simbolo": "Bigorna",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "hermes",
+    "nome": "Hermes",
+    "titulo": "O Mensageiro dos Deuses",
+    "panteao": "Grego",
+    "alinhamento": "CN",
+    "dominios": ["Trapaça", "Viagem", "Comunicação"],
+    "simbolo": "Caduceu",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "poseidon",
+    "nome": "Poseidon",
+    "titulo": "O Deus dos Mares",
+    "panteao": "Grego",
+    "alinhamento": "CN",
+    "dominios": ["Mar", "Tempestade", "Terremotos"],
+    "simbolo": "Tridente",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "demeter",
+    "nome": "Deméter",
+    "titulo": "A Deusa da Agricultura",
+    "panteao": "Grego",
+    "alinhamento": "NG",
+    "dominios": ["Natureza", "Agricultura", "Fertilidade"],
+    "simbolo": "Espiga de trigo",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "dionisio",
+    "nome": "Dionísio",
+    "titulo": "O Deus do Vinho",
+    "panteao": "Grego",
+    "alinhamento": "CN",
+    "dominios": ["Festa", "Vinho", "Teatro"],
+    "simbolo": "Cálice",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "helios",
+    "nome": "Hélio",
+    "titulo": "O Deus do Sol",
+    "panteao": "Grego",
+    "alinhamento": "N",
+    "dominios": ["Sol", "Luz", "Verdade"],
+    "simbolo": "Carruagem solar",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "selene",
+    "nome": "Selene",
+    "titulo": "A Deusa da Lua",
+    "panteao": "Grego",
+    "alinhamento": "N",
+    "dominios": ["Lua", "Noite", "Magia"],
+    "simbolo": "Crescente lunar",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "nike",
+    "nome": "Nike",
+    "titulo": "A Deusa da Vitória",
+    "panteao": "Grego",
+    "alinhamento": "LG",
+    "dominios": ["Vitória", "Guerra", "Sucesso"],
+    "simbolo": "Asas",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "tyche",
+    "nome": "Tique",
+    "titulo": "A Deusa da Fortuna",
+    "panteao": "Grego",
+    "alinhamento": "N",
+    "dominios": ["Sorte", "Destino", "Fortuna"],
+    "simbolo": "Roda da fortuna",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "hecate",
+    "nome": "Hécate",
+    "titulo": "A Deusa da Magia",
+    "panteao": "Grego",
+    "alinhamento": "N",
+    "dominios": ["Magia", "Encruzilhadas", "Lua Nova"],
+    "simbolo": "Tochas gêmeas",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "pan",
+    "nome": "Pan",
+    "titulo": "O Deus dos Pastores",
+    "panteao": "Grego",
+    "alinhamento": "CN",
+    "dominios": ["Natureza", "Pastores", "Música"],
+    "simbolo": "Flauta de pan",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "asclepio",
+    "nome": "Asclépio",
+    "titulo": "O Deus da Medicina",
+    "panteao": "Grego",
+    "alinhamento": "NG",
+    "dominios": ["Cura", "Medicina", "Saúde"],
+    "simbolo": "Bastão com serpente",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "persefone",
+    "nome": "Perséfone",
+    "titulo": "A Rainha do Submundo",
+    "panteao": "Grego",
+    "alinhamento": "N",
+    "dominios": ["Morte", "Renascimento", "Fertilidade"],
+    "simbolo": "Romã",
+    "plano": "Hades"
+  },
+  {
+    "id": "hebe",
+    "nome": "Hebe",
+    "titulo": "A Deusa da Juventude",
+    "panteao": "Grego",
+    "alinhamento": "NG",
+    "dominios": ["Juventude", "Vitalidade", "Beleza"],
+    "simbolo": "Taça dourada",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "iris",
+    "nome": "Íris",
+    "titulo": "A Mensageira dos Deuses",
+    "panteao": "Grego",
+    "alinhamento": "NG",
+    "dominios": ["Comunicação", "Arco-íris", "Mensagens"],
+    "simbolo": "Arco-íris",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "nemesis",
+    "nome": "Nêmesis",
+    "titulo": "A Deusa da Vingança",
+    "panteao": "Grego",
+    "alinhamento": "LN",
+    "dominios": ["Vingança", "Justiça", "Equilíbrio"],
+    "simbolo": "Espada da justiça",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "hypnos",
+    "nome": "Hipnos",
+    "titulo": "O Deus do Sono",
+    "panteao": "Grego",
+    "alinhamento": "N",
+    "dominios": ["Sono", "Sonhos", "Repouso"],
+    "simbolo": "Papoila",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "thanatos",
+    "nome": "Tânatos",
+    "titulo": "O Deus da Morte",
+    "panteao": "Grego",
+    "alinhamento": "N",
+    "dominios": ["Morte", "Destino", "Fim"],
+    "simbolo": "Espada negra",
+    "plano": "Hades"
+  },
+  {
+    "id": "eros",
+    "nome": "Eros",
+    "titulo": "O Deus do Amor",
+    "panteao": "Grego",
+    "alinhamento": "CG",
+    "dominios": ["Amor", "Desejo", "Paixão"],
+    "simbolo": "Arco e flecha dourados",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "psyche",
+    "nome": "Psique",
+    "titulo": "A Deusa da Alma",
+    "panteao": "Grego",
+    "alinhamento": "NG",
+    "dominios": ["Alma", "Beleza", "Transformação"],
+    "simbolo": "Borboleta",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "morfeu",
+    "nome": "Morféu",
+    "titulo": "O Deus dos Sonhos",
+    "panteao": "Grego",
+    "alinhamento": "N",
+    "dominios": ["Sonhos", "Ilusão", "Transformação"],
+    "simbolo": "Asas de borboleta",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "fobos",
+    "nome": "Fobos",
+    "titulo": "O Deus do Medo",
+    "panteao": "Grego",
+    "alinhamento": "CN",
+    "dominios": ["Medo", "Terror", "Pânico"],
+    "simbolo": "Máscara de terror",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "deimos",
+    "nome": "Deimos",
+    "titulo": "O Deus do Terror",
+    "panteao": "Grego",
+    "alinhamento": "CN",
+    "dominios": ["Terror", "Dread", "Horror"],
+    "simbolo": "Espada ensanguentada",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "harmonia",
+    "nome": "Harmonia",
+    "titulo": "A Deusa da Harmonia",
+    "panteao": "Grego",
+    "alinhamento": "NG",
+    "dominios": ["Harmonia", "Paz", "Equilíbrio"],
+    "simbolo": "Lira harmoniosa",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "peitho",
+    "nome": "Peito",
+    "titulo": "A Deusa da Persuasão",
+    "panteao": "Grego",
+    "alinhamento": "CN",
+    "dominios": ["Persuasão", "Sedução", "Eloquência"],
+    "simbolo": "Língua de prata",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "kleio",
+    "nome": "Clio",
+    "titulo": "A Musa da História",
+    "panteao": "Grego",
+    "alinhamento": "NG",
+    "dominios": ["História", "Conhecimento", "Memória"],
+    "simbolo": "Pergaminho",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "euterpe",
+    "nome": "Euterpe",
+    "titulo": "A Musa da Música",
+    "panteao": "Grego",
+    "alinhamento": "NG",
+    "dominios": ["Música", "Poesia", "Inspiração"],
+    "simbolo": "Flauta",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "thalia",
+    "nome": "Tália",
+    "titulo": "A Musa da Comédia",
+    "panteao": "Grego",
+    "alinhamento": "CG",
+    "dominios": ["Comédia", "Teatro", "Alegria"],
+    "simbolo": "Máscara cômica",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "melpomene",
+    "nome": "Melpômene",
+    "titulo": "A Musa da Tragédia",
+    "panteao": "Grego",
+    "alinhamento": "N",
+    "dominios": ["Tragédia", "Drama", "Emoção"],
+    "simbolo": "Máscara trágica",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "terpsichore",
+    "nome": "Terpsícore",
+    "titulo": "A Musa da Dança",
+    "panteao": "Grego",
+    "alinhamento": "CG",
+    "dominios": ["Dança", "Movimento", "Graça"],
+    "simbolo": "Lira dançante",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "erato",
+    "nome": "Erato",
+    "titulo": "A Musa da Poesia Lírica",
+    "panteao": "Grego",
+    "alinhamento": "CG",
+    "dominios": ["Poesia", "Amor", "Romance"],
+    "simbolo": "Lira de amor",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "polymnia",
+    "nome": "Polímnia",
+    "titulo": "A Musa da Poesia Sagrada",
+    "panteao": "Grego",
+    "alinhamento": "NG",
+    "dominios": ["Poesia Sagrada", "Hinos", "Oração"],
+    "simbolo": "Véu sagrado",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "urania",
+    "nome": "Urânia",
+    "titulo": "A Musa da Astronomia",
+    "panteao": "Grego",
+    "alinhamento": "NG",
+    "dominios": ["Astronomia", "Ciência", "Conhecimento"],
+    "simbolo": "Globo celeste",
+    "plano": "Olimpo"
+  },
+  {
+    "id": "calliope",
+    "nome": "Calíope",
+    "titulo": "A Musa da Poesia Épica",
+    "panteao": "Grego",
+    "alinhamento": "NG",
+    "dominios": ["Poesia Épica", "Eloquência", "Narrativa"],
+    "simbolo": "Tábua de escrita",
+    "plano": "Olimpo"
+  }
+]
