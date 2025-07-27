@@ -19,9 +19,15 @@ from routes.environment import router as environment_router
 from routes.actions import router as actions_router
 from routes.conditions import router as conditions_router
 from routes.spells import router as spells_router
+from routes.deities import router as deities_router
+from routes.planes import router as planes_router
+from routes.creatures import router as creatures_router
+from routes.leituras import router as leituras_router
+from routes.changelog import router as changelog_router
 
 # Definição das tags para Swagger
 openapi_tags = [
+    {"name": "Changelog", "description": "Histórico completo de versões da API com detalhes de mudanças, estatísticas e evolução do projeto. Inclui categorização por tipo de mudança e documentação de cada versão."},
     {"name": "Root", "description": "Endpoint raiz da API. Status e mensagem de boas-vindas."},
     {"name": "Raças", "description": "Consulta e filtros avançados para raças e sub-raças do Livro do Jogador."},
     {"name": "Sub-raças", "description": "Detalhes e busca de sub-raças."},
@@ -44,64 +50,80 @@ openapi_tags = [
     {"name": "Ações", "description": "Ações de combate disponíveis: atacar, correr, esquivar, usar objeto, ações bônus, reações, etc. Permite filtro por tipo."},
     {"name": "Condições", "description": "Sistema completo de condições de combate com 14 condições do PHB. Inclui filtros por efeito e fonte, busca por nome, e documentação detalhada com exemplos práticos para uso durante o jogo."},
     {"name": "Regras de Combate", "description": "Regras específicas de combate: iniciativa, rodadas, tipos de ataque, acertos críticos, dano, morte, cobertura, combate montado, subaquático e em massa."},
-    {"name": "Magias", "description": "Consulta de magias por nível, escola, classe conjuradora, componentes, ritual, concentração e outros critérios. Inclui truques e magias de 1º a 9º nível."}
+    {"name": "Magias", "description": "Consulta de magias por nível, escola, classe conjuradora, componentes, ritual, concentração e outros critérios. Inclui truques e magias de 1º a 9º nível."},
+    {"name": "Divindades", "description": "Sistema de divindades com panteões, alinhamentos, domínios e símbolos sagrados. Inclui divindades Faerûnianas e outras."},
+    {"name": "Planos", "description": "Sistema de planos de existência com tipos, alinhamentos, associações e criaturas típicas. Inclui planos Material, Elementais, Exteriores e Transitivos."},
+    {"name": "Criaturas", "description": "Sistema de criaturas com estatísticas completas, ataques, sentidos e níveis de desafio. Inclui bestas, mortos-vivos, humanoides e outras criaturas do PHB."},
+    {"name": "Leituras Inspiradoras", "description": "Sistema de leituras inspiradoras que influenciaram D&D. Inclui obras literárias, mitologias e suas influências específicas no jogo."}
 ]
 
 app = FastAPI(
     title="D&D 5e API",
     description="""API RESTful para consulta de dados do Livro do Jogador de Dungeons & Dragons 5ª Edição.
 
-## 🎯 Versão 2.0 - Novidades
+## 📊 **Estatísticas da API**
 
-### ✨ Sistema de Condições Completo
-- **14 condições** do PHB com efeitos detalhados
-- **Filtros avançados** por efeito e fonte
-- **Busca inteligente** por nome
-- **Documentação completa** com exemplos
+- **30+ endpoints** organizados por categoria
+- **14 condições** de combate documentadas
+- **25 magias** com sistema completo
+- **85 divindades** de múltiplos panteões
+- **30 planos** de existência
+- **32 criaturas** com estatísticas completas
+- **36 leituras inspiradoras** com influências documentadas
+- **100% compatível** com Pydantic V2
 
-### 🔮 Sistema de Magias Aprimorado
-- **25 magias** traduzidas do PHB
-- **Filtros múltiplos** por nível, escola, classe
-- **Endpoints especializados** para rituais e concentração
-- **Regras de conjuração** detalhadas
+## 🎮 **Casos de Uso**
 
-### 📚 Documentação Swagger Melhorada
-- **Exemplos práticos** para cada endpoint
-- **Categorização** por tipo de funcionalidade
-- **Guias de uso** para jogadores e mestres
-- **Casos de teste** comuns
-
-### 🚀 Funcionalidades Principais
-- **Raças e Classes:** Consulta completa com filtros
-- **Equipamentos:** Armas, armaduras, ferramentas
-- **Regras:** Combate, viagem, descanso, ambiente
-- **Condições:** 14 condições com efeitos mecânicos
-- **Magias:** Sistema completo de conjuração
-
-### 🎮 Uso Recomendado
-- **Durante o jogo:** Consulta rápida de regras
-- **Criação de personagens:** Referência completa
+- **Durante o jogo:** Consulta rápida de regras e condições
+- **Criação de personagens:** Referência completa de raças, classes e equipamentos
 - **Mestres:** Ferramenta de consulta durante sessões
-- **Desenvolvedores:** API para aplicações D&D
+- **Desenvolvedores:** API robusta para aplicações D&D
 
-**Acesse /docs para documentação interativa completa!**""",
-    version="2.0.0",
+## 📖 **Documentação**
+
+- **Swagger UI:** `/docs` - Documentação interativa completa
+- **ReDoc:** `/redoc` - Documentação alternativa
+- **OpenAPI JSON:** `/openapi.json` - Especificação da API
+- **Changelog:** `/changelog` - Histórico completo de versões
+
+---""",
+    version="2.4.0",
     openapi_tags=openapi_tags
 )
 
-@app.get("/", tags=["Root"], summary="Root", description="Endpoint raiz da API. Retorna status e mensagem de boas-vindas.")
+@app.get("/", tags=["Root"], summary="Root", description="Endpoint raiz da API. Retorna status, versão e informações sobre a API.")
 def root():
     return JSONResponse({
         "status": "ok",
-        "version": "2.0.0",
-        "mensagem": "🎲 API D&D 5e v2.0 está funcionando! ✨",
-        "features": {
-            "conditions": "14 condições com filtros avançados",
-            "spells": "25 magias com sistema completo",
-            "documentation": "Swagger aprimorado com exemplos"
+        "version": "2.4.0",
+        "mensagem": "🎲 API D&D 5e v2.4 está funcionando! ✨",
+        "changelog": {
+            "latest_version": "2.4.0",
+            "release_date": "2024-12-27",
+            "highlights": [
+                "Sistema de Leituras Inspiradoras (36 leituras)",
+                "Sistema de Criaturas Completo (32 criaturas)",
+                "Sistema de Planos de Existência (30 planos)",
+                "Sistema de Condições Completo (14 condições)",
+                "Sistema de Magias Expandido (25 magias)",
+                "Sistema de Divindades (85 divindades)"
+            ]
         },
-        "docs": "/docs",
-        "redoc": "/redoc"
+        "statistics": {
+            "endpoints": "30+",
+            "conditions": "14",
+            "spells": "25",
+            "deities": "85",
+            "planes": "30",
+            "creatures": "32",
+            "leituras": "36",
+            "pydantic_compatibility": "100%"
+        },
+        "documentation": {
+            "swagger": "/docs",
+            "redoc": "/redoc",
+            "openapi": "/openapi.json"
+        }
     })
 
 app.include_router(races_router)
@@ -122,4 +144,9 @@ app.include_router(rest_router)
 app.include_router(environment_router)
 app.include_router(actions_router)
 app.include_router(conditions_router)
-app.include_router(spells_router) 
+app.include_router(spells_router)
+app.include_router(deities_router)
+app.include_router(planes_router)
+app.include_router(creatures_router)
+app.include_router(leituras_router)
+app.include_router(changelog_router) 

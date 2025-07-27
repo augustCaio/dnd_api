@@ -1,0 +1,152 @@
+[
+  {
+    "id": "lathander",
+    "nome": "Lathander",
+    "titulo": "O Senhor da Aurora",
+    "panteao": "Faerûniano",
+    "alinhamento": "NB",
+    "dominios": ["Vida", "Luz", "Nascimento"],
+    "simbolo": "Círculo de luz dourada",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "mystra",
+    "nome": "Mystra",
+    "titulo": "A Senhora dos Mistérios",
+    "panteao": "Faerûniano",
+    "alinhamento": "NM",
+    "dominios": ["Magia", "Conhecimento", "Arcanos"],
+    "simbolo": "Círculo de sete estrelas",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "tyr",
+    "nome": "Tyr",
+    "titulo": "O Deus da Justiça",
+    "panteao": "Faerûniano",
+    "alinhamento": "LM",
+    "dominios": ["Justiça", "Lei", "Guerra"],
+    "simbolo": "Espada equilibrada em balança",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "chauntea",
+    "nome": "Chauntea",
+    "titulo": "A Grande Mãe",
+    "panteao": "Faerûniano",
+    "alinhamento": "NB",
+    "dominios": ["Vida", "Natureza", "Agricultura"],
+    "simbolo": "Sheaf de trigo dourado",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "tempus",
+    "nome": "Tempus",
+    "titulo": "O Senhor das Batalhas",
+    "panteao": "Faerûniano",
+    "alinhamento": "NM",
+    "dominios": ["Guerra", "Força", "Coragem"],
+    "simbolo": "Espada em chamas",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "silvanus",
+    "nome": "Silvanus",
+    "titulo": "O Pai das Árvores",
+    "panteao": "Faerûniano",
+    "alinhamento": "NM",
+    "dominios": ["Natureza", "Vida", "Proteção"],
+    "simbolo": "Folha de carvalho",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "helm",
+    "nome": "Helm",
+    "titulo": "O Vigilante",
+    "panteao": "Faerûniano",
+    "alinhamento": "LM",
+    "dominios": ["Proteção", "Lei", "Vigilância"],
+    "simbolo": "Olho vigilante em escudo",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "torm",
+    "nome": "Torm",
+    "titulo": "O Leal",
+    "panteao": "Faerûniano",
+    "alinhamento": "LB",
+    "dominios": ["Lei", "Bem", "Proteção"],
+    "simbolo": "Mão direita de prata",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "sune",
+    "nome": "Sune",
+    "titulo": "A Senhora do Amor",
+    "panteao": "Faerûniano",
+    "alinhamento": "CB",
+    "dominios": ["Luz", "Vida", "Beleza"],
+    "simbolo": "Rosa vermelha",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "oghma",
+    "nome": "Oghma",
+    "titulo": "O Senhor do Conhecimento",
+    "panteao": "Faerûniano",
+    "alinhamento": "NM",
+    "dominios": ["Conhecimento", "Truques", "Comunicação"],
+    "simbolo": "Pergaminho desenrolado",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "gond",
+    "nome": "Gond",
+    "titulo": "O Maravilhoso Artífice",
+    "panteao": "Faerûniano",
+    "alinhamento": "NM",
+    "dominios": ["Conhecimento", "Forja", "Invenção"],
+    "simbolo": "Toco de madeira com pregos",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "mask",
+    "nome": "Mask",
+    "titulo": "O Senhor das Sombras",
+    "panteao": "Faerûniano",
+    "alinhamento": "CN",
+    "dominios": ["Trapaça", "Sombra", "Ladinos"],
+    "simbolo": "Máscara negra",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "bane",
+    "nome": "Bane",
+    "titulo": "O Senhor Negro",
+    "panteao": "Faerûniano",
+    "alinhamento": "LM",
+    "dominios": ["Guerra", "Lei", "Ódio"],
+    "simbolo": "Punho negro em campo vermelho",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "cyric",
+    "nome": "Cyric",
+    "titulo": "O Príncipe da Mentira",
+    "panteao": "Faerûniano",
+    "alinhamento": "CM",
+    "dominios": ["Morte", "Trapaça", "Caos"],
+    "simbolo": "Coroa de espinhos",
+    "plano": "Plano Material"
+  },
+  {
+    "id": "talos",
+    "nome": "Talos",
+    "titulo": "O Destruidor",
+    "panteao": "Faerûniano",
+    "alinhamento": "CM",
+    "dominios": ["Tempestade", "Destruição", "Caos"],
+    "simbolo": "Três raios em triângulo",
+    "plano": "Plano Material"
+  }
+]

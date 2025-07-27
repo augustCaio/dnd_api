@@ -1,0 +1,374 @@
+[
+  {
+    "id": "plano-material",
+    "nome": "Plano Material",
+    "tipo": "Material",
+    "descricao": "O 'mundo real' onde a maioria das campanhas ocorre. Inclui mundos como Faerûn, Eberron e Greyhawk. É o plano da realidade normal onde vivem humanos, elfos, anões e outras raças mortais.",
+    "alinhamento": "Neutro",
+    "associado_a": "Realidade Física",
+    "criaturas_tipicas": [
+      "Humanos",
+      "Elfos",
+      "Anões",
+      "Orcs",
+      "Goblins",
+      "Dragões",
+      "Todas as raças mortais"
+    ]
+  },
+  {
+    "id": "plano-etereo",
+    "nome": "Plano Etéreo",
+    "tipo": "Transitivo",
+    "descricao": "Um reino nebuloso e brumoso que coexiste com o Plano Material. Usado para acessar o Material e os Planos Interiores. Criaturas etéreas podem ver o Material mas não podem interagir diretamente.",
+    "alinhamento": "Neutro",
+    "associado_a": "Eter",
+    "criaturas_tipicas": [
+      "Ethereal Filchers",
+      "Ethereal Marauders",
+      "Ethereal Doppelgangers",
+      "Criaturas Etéreas"
+    ]
+  },
+  {
+    "id": "plano-astral",
+    "nome": "Plano Astral",
+    "tipo": "Transitivo",
+    "descricao": "Um reino de pensamento e sonho, onde a consciência pode viajar sem o corpo físico. É usado para viagem entre planos e é a rota principal de viagem planar. Liga todos os planos exteriores.",
+    "alinhamento": "Neutro",
+    "associado_a": "Consciência",
+    "criaturas_tipicas": [
+      "Githyanki",
+      "Githzerai",
+      "Psicopatas",
+      "Entidades Astrais",
+      "Astral Dreadnoughts"
+    ]
+  },
+  {
+    "id": "plano-sombras",
+    "nome": "Plano das Sombras",
+    "tipo": "Transitivo",
+    "descricao": "Um reino de escuridão e sombras que espelha o Plano Material. Usado para viagem rápida entre locais do Material. Tudo aqui é mais escuro e sombrio que no Material.",
+    "alinhamento": "Neutro",
+    "associado_a": "Sombras",
+    "criaturas_tipicas": [
+      "Shadow Dragons",
+      "Shadow Mastiffs",
+      "Shadar-kai",
+      "Criaturas das Sombras"
+    ]
+  },
+  {
+    "id": "plano-elemental-ar",
+    "nome": "Plano Elemental do Ar",
+    "tipo": "Interior",
+    "descricao": "Um reino de ventos eternos e céus infinitos. Tudo aqui flutua em um oceano de ar, com ilhas flutuantes e correntes de vento que podem transportar viajantes.",
+    "alinhamento": "Neutro",
+    "associado_a": "Elemento Ar",
+    "criaturas_tipicas": [
+      "Djinn",
+      "Elementais de Ar",
+      "Aarakocra",
+      "Criaturas Voadoras"
+    ]
+  },
+  {
+    "id": "plano-elemental-fogo",
+    "nome": "Plano Elemental do Fogo",
+    "tipo": "Interior",
+    "descricao": "Um reino de chamas eternas e calor intenso. Tudo aqui é feito de fogo, desde o solo até o ar. O calor é tão intenso que pode incinerar criaturas despreparadas.",
+    "alinhamento": "Caótico e Mau",
+    "associado_a": "Elemento Fogo",
+    "criaturas_tipicas": [
+      "Efriti",
+      "Elementais de Fogo",
+      "Salamandras",
+      "Fênix",
+      "Criaturas de Fogo"
+    ]
+  },
+  {
+    "id": "plano-elemental-agua",
+    "nome": "Plano Elemental da Água",
+    "tipo": "Interior",
+    "descricao": "Um oceano infinito sem superfície ou fundo. Tudo aqui é água, com correntes que podem transportar viajantes para qualquer direção. A pressão pode esmagar criaturas despreparadas.",
+    "alinhamento": "Neutro",
+    "associado_a": "Elemento Água",
+    "criaturas_tipicas": [
+      "Marids",
+      "Elementais de Água",
+      "Tritões",
+      "Criaturas Aquáticas"
+    ]
+  },
+  {
+    "id": "plano-elemental-terra",
+    "nome": "Plano Elemental da Terra",
+    "tipo": "Interior",
+    "descricao": "Um reino de rocha sólida e túneis infinitos. Tudo aqui é feito de pedra, com cavernas gigantescas e passagens que se estendem para sempre.",
+    "alinhamento": "Leal e Neutro",
+    "associado_a": "Elemento Terra",
+    "criaturas_tipicas": [
+      "Dao",
+      "Elementais de Terra",
+      "Xorns",
+      "Criaturas Subterrâneas"
+    ]
+  },
+  {
+    "id": "plano-energia-positiva",
+    "nome": "Plano de Energia Positiva",
+    "tipo": "Interior",
+    "descricao": "Um reino de energia vital pura e intensa. Tudo aqui pulsa com vida e energia. Criaturas podem ser curadas rapidamente, mas também podem ser sobrecarregadas pela energia excessiva.",
+    "alinhamento": "Bom",
+    "associado_a": "Energia Positiva",
+    "criaturas_tipicas": [
+      "Criaturas Positivas",
+      "Entidades de Vida",
+      "Seres de Luz"
+    ]
+  },
+  {
+    "id": "plano-energia-negativa",
+    "nome": "Plano de Energia Negativa",
+    "tipo": "Interior",
+    "descricao": "Um reino de energia de morte e decadência. Tudo aqui é drenado de vida e energia. Criaturas podem ser enfraquecidas ou mortas pela energia negativa.",
+    "alinhamento": "Mau",
+    "associado_a": "Energia Negativa",
+    "criaturas_tipicas": [
+      "Mortos-vivos",
+      "Criaturas Negativas",
+      "Entidades de Morte"
+    ]
+  },
+  {
+    "id": "monte-celestia",
+    "nome": "Monte Celéstia",
+    "tipo": "Exterior",
+    "descricao": "O reino supremo da ordem e bondade. Sete montanhas sagradas se elevam em camadas, cada uma representando um nível de virtude. É o lar dos deuses leais e bons.",
+    "alinhamento": "Leal e Bom",
+    "associado_a": "Tyr, Bahamut",
+    "criaturas_tipicas": ["Anjos", "Arcontes", "Devas", "Criaturas Celestiais"]
+  },
+  {
+    "id": "campos-eliseos",
+    "nome": "Campos Elísios",
+    "tipo": "Exterior",
+    "descricao": "Um reino de paz e harmonia perfeita. Prados verdes se estendem infinitamente, com rios cristalinos e florestas sagradas. É o lar dos deuses neutros e bons.",
+    "alinhamento": "Neutro e Bom",
+    "associado_a": "Chauntea, Mielikki",
+    "criaturas_tipicas": [
+      "Anjos",
+      "Guardas Celestiais",
+      "Criaturas da Natureza"
+    ]
+  },
+  {
+    "id": "arborea",
+    "nome": "Arbórea",
+    "tipo": "Exterior",
+    "descricao": "Um reino de liberdade e natureza selvagem. Florestas infinitas e montanhas imponentes se misturam com vales secretos. É o lar dos deuses caóticos e bons.",
+    "alinhamento": "Caótico e Bom",
+    "associado_a": "Silvanus, Eldath",
+    "criaturas_tipicas": [
+      "Sátiros",
+      "Dríades",
+      "Criaturas da Natureza",
+      "Fadas"
+    ]
+  },
+  {
+    "id": "limbo",
+    "nome": "Limbo",
+    "tipo": "Exterior",
+    "descricao": "Um reino de caos puro e mudança constante. Elementos se misturam e se separam aleatoriamente, criando paisagens que mudam a cada momento. É o lar dos deuses caóticos e neutros.",
+    "alinhamento": "Caótico e Neutro",
+    "associado_a": "Gargauth",
+    "criaturas_tipicas": ["Slaadi", "Elementais", "Criaturas do Caos"]
+  },
+  {
+    "id": "acheron",
+    "nome": "Acheron",
+    "tipo": "Exterior",
+    "descricao": "Um reino de guerra eterna e conflito sem fim. Cubos gigantes de metal flutuam no vazio, servindo como campos de batalha para exércitos infinitos. É o lar dos deuses leais e neutros.",
+    "alinhamento": "Leal e Neutro",
+    "associado_a": "Tempus",
+    "criaturas_tipicas": [
+      "Guerreiros Mortos",
+      "Constructos",
+      "Criaturas de Guerra"
+    ]
+  },
+  {
+    "id": "pandemônio",
+    "nome": "Pandemônio",
+    "tipo": "Exterior",
+    "descricao": "Um reino de ventos furiosos e tempestades eternas. Ventos cortantes e trovões ensurdecedores dominam a paisagem. É o lar dos deuses neutros e maus.",
+    "alinhamento": "Neutro e Mau",
+    "associado_a": "Talos",
+    "criaturas_tipicas": [
+      "Demônios Menores",
+      "Criaturas da Tempestade",
+      "Entidades do Vento"
+    ]
+  },
+  {
+    "id": "abismo",
+    "nome": "Abismo",
+    "tipo": "Exterior",
+    "descricao": "Um reino de mal puro e corrupção infinita. Camadas infinitas de tormento e perversão se estendem para baixo. É o lar dos deuses caóticos e maus.",
+    "alinhamento": "Caótico e Mau",
+    "associado_a": "Demogorgon, Orcus",
+    "criaturas_tipicas": ["Demônios", "Tanar'ri", "Criaturas Demoníacas"]
+  },
+  {
+    "id": "inferno",
+    "nome": "Inferno",
+    "tipo": "Exterior",
+    "descricao": "Um reino de mal organizado e tortura sistemática. Nove círculos de tormento se estendem para baixo, cada um pior que o anterior. É o lar dos deuses leais e maus.",
+    "alinhamento": "Leal e Mau",
+    "associado_a": "Asmodeus, Dispater",
+    "criaturas_tipicas": ["Diabos", "Baatezu", "Criaturas Infernais"]
+  },
+  {
+    "id": "geena",
+    "nome": "Geena",
+    "tipo": "Exterior",
+    "descricao": "Um reino de mal neutro e corrupção. Quatro camadas de tormento se estendem, cada uma focada em um tipo diferente de perversão. É o lar dos deuses neutros e maus.",
+    "alinhamento": "Neutro e Mau",
+    "associado_a": "Myrkul",
+    "criaturas_tipicas": [
+      "Yugoloths",
+      "Criaturas de Geena",
+      "Entidades Corruptas"
+    ]
+  },
+  {
+    "id": "mechanus",
+    "nome": "Mechanus",
+    "tipo": "Exterior",
+    "descricao": "Um reino de ordem absoluta e perfeição mecânica. Engrenagens gigantes flutuam no vazio, cada uma girando em perfeita sincronia. É o lar dos deuses leais e neutros.",
+    "alinhamento": "Leal e Neutro",
+    "associado_a": "Primus",
+    "criaturas_tipicas": ["Modrons", "Constructos", "Criaturas Mecânicas"]
+  },
+  {
+    "id": "yggdrasil",
+    "nome": "Yggdrasil",
+    "tipo": "Exterior",
+    "descricao": "A Árvore do Mundo que conecta todos os planos. Suas raízes se estendem pelos planos inferiores e seus galhos alcançam os planos superiores. É um plano de conexão e transição.",
+    "alinhamento": "Neutro",
+    "associado_a": "Natureza Cósmica",
+    "criaturas_tipicas": [
+      "Entidades Arbóreas",
+      "Criaturas da Árvore",
+      "Seres Cósmicos"
+    ]
+  },
+  {
+    "id": "plano-fey",
+    "nome": "Plano Fey",
+    "tipo": "Exterior",
+    "descricao": "Um reino de magia natural e encantamento. Florestas encantadas e vales mágicos se estendem infinitamente. O tempo flui de forma estranha aqui.",
+    "alinhamento": "Caótico e Neutro",
+    "associado_a": "Magia Natural",
+    "criaturas_tipicas": [
+      "Fadas",
+      "Elfos Selvagens",
+      "Criaturas Fey",
+      "Unicórnios"
+    ]
+  },
+  {
+    "id": "plano-sombrio",
+    "nome": "Plano Sombrio",
+    "tipo": "Exterior",
+    "descricao": "Um reino de escuridão e corrupção. Paisagens sombrias e criaturas perversas dominam este plano. É o oposto do Plano Fey.",
+    "alinhamento": "Caótico e Mau",
+    "associado_a": "Escuridão",
+    "criaturas_tipicas": [
+      "Criaturas Sombrias",
+      "Entidades das Trevas",
+      "Seres Corruptos"
+    ]
+  },
+  {
+    "id": "plano-elemental-caos",
+    "nome": "Plano Elemental do Caos",
+    "tipo": "Interior",
+    "descricao": "Um reino onde todos os elementos se misturam de forma caótica. Fogo, água, terra e ar se combinam e se separam aleatoriamente.",
+    "alinhamento": "Caótico",
+    "associado_a": "Caos Elemental",
+    "criaturas_tipicas": [
+      "Elementais Caóticos",
+      "Criaturas do Caos",
+      "Entidades Elementais"
+    ]
+  },
+  {
+    "id": "plano-elemental-ordem",
+    "nome": "Plano Elemental da Ordem",
+    "tipo": "Interior",
+    "descricao": "Um reino onde os elementos se organizam de forma perfeita e ordenada. Cada elemento tem seu lugar e função específica.",
+    "alinhamento": "Leal",
+    "associado_a": "Ordem Elemental",
+    "criaturas_tipicas": [
+      "Elementais Ordenados",
+      "Criaturas da Ordem",
+      "Entidades Elementais"
+    ]
+  },
+  {
+    "id": "plano-temporal",
+    "nome": "Plano Temporal",
+    "tipo": "Transitivo",
+    "descricao": "Um reino onde o tempo flui de forma diferente. Passado, presente e futuro se misturam, permitindo viagem temporal.",
+    "alinhamento": "Neutro",
+    "associado_a": "Tempo",
+    "criaturas_tipicas": [
+      "Criaturas Temporais",
+      "Entidades do Tempo",
+      "Seres Atemporais"
+    ]
+  },
+  {
+    "id": "plano-mirror",
+    "nome": "Plano Espelho",
+    "tipo": "Transitivo",
+    "descricao": "Um reino que reflete outros planos como um espelho. Superfícies reflexivas permitem ver e acessar outros planos.",
+    "alinhamento": "Neutro",
+    "associado_a": "Reflexão",
+    "criaturas_tipicas": [
+      "Criaturas Reflexivas",
+      "Entidades Espelhadas",
+      "Seres de Reflexão"
+    ]
+  },
+  {
+    "id": "plano-dream",
+    "nome": "Plano dos Sonhos",
+    "tipo": "Transitivo",
+    "descricao": "Um reino onde os sonhos se tornam realidade. Paisagens oníricas e criaturas dos sonhos dominam este plano.",
+    "alinhamento": "Neutro",
+    "associado_a": "Sonhos",
+    "criaturas_tipicas": [
+      "Criaturas dos Sonhos",
+      "Entidades Oníricas",
+      "Seres dos Sonhos"
+    ]
+  },
+  {
+    "id": "plano-memory",
+    "nome": "Plano da Memória",
+    "tipo": "Transitivo",
+    "descricao": "Um reino onde as memórias se materializam. Paisagens e eventos passados podem ser revividos aqui.",
+    "alinhamento": "Neutro",
+    "associado_a": "Memória",
+    "criaturas_tipicas": [
+      "Criaturas da Memória",
+      "Entidades Mnemônicas",
+      "Seres da Memória"
+    ]
+  }
+]

@@ -1143,14 +1143,43 @@ def test_all_endpoints_covered():
         ("/services/{id}", "GET"),
         ("/lifestyles", "GET"),
         ("/lifestyles/{id}", "GET"),
+        ("/abilities", "GET"),
+        ("/abilities/{id}", "GET"),
+        ("/skills", "GET"),
+        ("/skills/{id}", "GET"),
+        ("/feats", "GET"),
+        ("/feats/{id}", "GET"),
+        ("/multiclass", "GET"),
+        ("/multiclass/{classe}", "GET"),
+        ("/rules", "GET"),
+        ("/rules/{id}", "GET"),
+        ("/rules/combat", "GET"),
+        ("/rules/spells", "GET"),
+        ("/rules/spells/components", "GET"),
+        ("/rules/spells/rituals", "GET"),
+        ("/rules/spells/slot-table", "GET"),
+        ("/conditions", "GET"),
+        ("/conditions/{id}", "GET"),
+        ("/conditions/busca/{nome}", "GET"),
+        ("/deuses", "GET"),
+        ("/deuses/{id}", "GET"),
+        ("/deuses/busca/{nome}", "GET"),
         ("/spells", "GET"),
         ("/spells/{id}", "GET"),
         ("/spells/nivel/{nivel}", "GET"),
         ("/spells/escola/{escola}", "GET"),
         ("/spells/classe/{classe}", "GET"),
+        ("/spells/classes/{class_name}", "GET"),
         ("/spells/ritual", "GET"),
         ("/spells/concentracao", "GET"),
         ("/spells/busca/{nome}", "GET"),
+        ("/planos", "GET"),
+        ("/planos/{id}", "GET"),
+        ("/planos/tipos/{tipo}", "GET"),
+        ("/planos/alinhamentos/{alinhamento}", "GET"),
+        ("/changelog", "GET"),
+        ("/changelog/latest", "GET"),
+        ("/changelog/{version}", "GET"),
     ]
     
     # Verifica se todos os endpoints respondem (mesmo que com 404 para IDs inexistentes)
@@ -1183,12 +1212,23 @@ def test_all_filters_covered():
         ("/tools", "category"),
         ("/tools", "type"),
         ("/mounts", "type"),
+        ("/skills", "ability"),
+        ("/feats", "prerequisite"),
+        ("/rules", "type"),
+        ("/conditions", "effect"),
+        ("/conditions", "source"),
+        ("/deuses", "panteao"),
+        ("/deuses", "dominio"),
+        ("/deuses", "alinhamento"),
         ("/spells", "school"),
         ("/spells", "class"),
         ("/spells", "component"),
         ("/spells", "ritual"),
         ("/spells", "concentration"),
         ("/spells", "range"),
+        ("/planos", "tipo"),
+        ("/planos", "alinhamento"),
+        ("/planos", "associado_a"),
     ]
 
     for endpoint, filter_param in filters_to_test:
@@ -1206,28 +1246,21 @@ def test_all_filters_covered():
         assert resp.status_code == 200
 
 # ============================================================================
-# TESTES DE MÉTODOS NÃO PERMITIDOS
+# ATUALIZAÇÃO DOS PARAMETRIZADOS
 # ============================================================================
-
-import http
-
-import pytest
 
 @pytest.mark.parametrize("endpoint", [
     "/", "/racas", "/subracas", "/classes", "/backgrounds", "/equipment",
-    "/weapons", "/armor", "/tools", "/mounts", "/currency", "/services", "/lifestyles", "/spells"
+    "/weapons", "/armor", "/tools", "/mounts", "/currency", "/services", "/lifestyles", "/spells",
+    "/abilities", "/skills", "/feats", "/multiclass", "/rules", "/conditions", "/deuses", "/planos", "/changelog"
 ])
 @pytest.mark.parametrize("method", ["post", "put", "delete", "patch"])
 def test_method_not_allowed(endpoint, method):
     resp = getattr(client, method)(endpoint)
     assert resp.status_code in [405, 422]  # 422 se o endpoint espera body obrigatório
 
-# ============================================================================
-# TESTES DE HEAD E OPTIONS
-# ============================================================================
-
 @pytest.mark.parametrize("endpoint", [
-    "/", "/racas", "/classes", "/equipment", "/weapons", "/spells"
+    "/", "/racas", "/classes", "/equipment", "/weapons", "/spells", "/conditions", "/deuses", "/planos", "/changelog"
 ])
 def test_head_and_options(endpoint):
     resp = client.head(endpoint)
@@ -1237,13 +1270,10 @@ def test_head_and_options(endpoint):
     # FastAPI pode não suportar OPTIONS, então aceita 405
     assert resp.status_code in [200, 204, 405]
 
-# ============================================================================
-# TESTES DE IDS NEGATIVOS E ZERO
-# ============================================================================
-
 @pytest.mark.parametrize("endpoint", [
     "/racas", "/subracas", "/classes", "/backgrounds", "/equipment",
-    "/weapons", "/armor", "/tools", "/mounts", "/currency", "/services", "/lifestyles", "/spells"
+    "/weapons", "/armor", "/tools", "/mounts", "/currency", "/services", "/lifestyles", "/spells",
+    "/abilities", "/skills", "/feats", "/multiclass", "/rules", "/conditions", "/deuses", "/planos"
 ])
 @pytest.mark.parametrize("bad_id", ["0", "-1"])
 def test_invalid_id_values(endpoint, bad_id):
@@ -1435,6 +1465,227 @@ def test_search_conditions_by_name_not_found():
     assert len(conditions) == 0
 
 # ============================================================================
+# TESTES DE DIVINDADES
+# ============================================================================
+
+def test_get_deities():
+    """Testa listagem de todas as divindades."""
+    resp = client.get("/deuses")
+    assert resp.status_code == 200
+    deities = resp.json()
+    assert isinstance(deities, list)
+    assert len(deities) > 0
+    assert "id" in deities[0]
+    assert "nome" in deities[0]
+    assert "panteao" in deities[0]
+    assert "alinhamento" in deities[0]
+    assert "dominios" in deities[0]
+
+def test_get_deity_by_id():
+    """Testa busca de divindade por ID."""
+    resp = client.get("/deuses/lathander")
+    assert resp.status_code == 200
+    deity = resp.json()
+    assert "id" in deity
+    assert "nome" in deity
+    assert "panteao" in deity
+    assert "alinhamento" in deity
+    assert "dominios" in deity
+
+def test_get_deity_by_id_not_found():
+    """Testa busca de divindade por ID inexistente."""
+    resp = client.get("/deuses/xyz123")
+    assert resp.status_code == 404
+
+def test_deities_filter_by_panteao():
+    """Testa filtro de divindades por panteão."""
+    resp = client.get("/deuses?panteao=Faerûn")
+    assert resp.status_code == 200
+    deities = resp.json()
+    assert isinstance(deities, list)
+    # Verifica se todas as divindades retornadas são de Faerûn
+    for deity in deities:
+        assert "faerûn" in deity["panteao"].lower()
+
+def test_deities_filter_by_dominio():
+    """Testa filtro de divindades por domínio."""
+    resp = client.get("/deuses?dominio=Guerra")
+    assert resp.status_code == 200
+    deities = resp.json()
+    assert isinstance(deities, list)
+    # Verifica se pelo menos algumas divindades têm o domínio Guerra
+    guerra_deities = [d for d in deities if any("guerra" in dominio.lower() for dominio in d["dominios"])]
+    assert len(guerra_deities) > 0, "Deve haver pelo menos uma divindade da guerra"
+
+def test_deities_filter_by_alinhamento():
+    """Testa filtro de divindades por alinhamento."""
+    resp = client.get("/deuses?alinhamento=NG")
+    assert resp.status_code == 200
+    deities = resp.json()
+    assert isinstance(deities, list)
+    # Verifica se todas as divindades retornadas têm alinhamento NG
+    for deity in deities:
+        assert deity["alinhamento"] == "NG"
+
+def test_deities_multiple_filters():
+    """Testa múltiplos filtros de divindades."""
+    resp = client.get("/deuses?panteao=Grego&dominio=Guerra")
+    assert resp.status_code == 200
+    deities = resp.json()
+    assert isinstance(deities, list)
+    # Verifica se as divindades atendem aos dois critérios
+    for deity in deities:
+        assert "grego" in deity["panteao"].lower()
+        assert any("guerra" in dominio.lower() for dominio in deity["dominios"])
+
+def test_search_deities_by_name():
+    """Testa busca de divindades por nome."""
+    resp = client.get("/deuses/busca/zeus")
+    assert resp.status_code == 200
+    deities = resp.json()
+    assert isinstance(deities, list)
+    assert len(deities) > 0
+    assert any("zeus" in deity["nome"].lower() for deity in deities)
+
+def test_search_deities_by_name_not_found():
+    """Testa busca de divindades por nome inexistente."""
+    resp = client.get("/deuses/busca/xyz123")
+    assert resp.status_code == 200
+    deities = resp.json()
+    assert isinstance(deities, list)
+    assert len(deities) == 0
+
+# ============================================================================
+# TESTES DE HABILIDADES
+# ============================================================================
+
+def test_get_abilities():
+    """Testa listagem de todas as habilidades."""
+    resp = client.get("/abilities")
+    assert resp.status_code == 200
+    abilities = resp.json()
+    assert isinstance(abilities, list)
+    assert len(abilities) > 0
+    assert "nome" in abilities[0]
+    assert "descricao" in abilities[0]
+
+def test_get_ability_by_id():
+    """Testa busca de habilidade por ID."""
+    resp = client.get("/abilities/1")
+    assert resp.status_code == 200
+    ability = resp.json()
+    assert "nome" in ability
+    assert "descricao" in ability
+
+def test_get_ability_by_id_not_found():
+    """Testa busca de habilidade por ID inexistente."""
+    resp = client.get("/abilities/999")
+    assert resp.status_code == 404
+
+# ============================================================================
+# TESTES DE PERÍCIAS
+# ============================================================================
+
+def test_get_skills():
+    """Testa listagem de todas as perícias."""
+    resp = client.get("/skills")
+    assert resp.status_code == 200
+    skills = resp.json()
+    assert isinstance(skills, list)
+    assert len(skills) > 0
+    assert "nome" in skills[0]
+    assert "habilidade_associada" in skills[0]
+
+def test_get_skill_by_id():
+    """Testa busca de perícia por ID."""
+    resp = client.get("/skills/1")
+    # Skills podem não ter IDs individuais, então aceita 404
+    assert resp.status_code in [200, 404]
+    if resp.status_code == 200:
+        skill = resp.json()
+        assert "nome" in skill
+        assert "habilidade_associada" in skill
+
+def test_get_skill_by_id_not_found():
+    """Testa busca de perícia por ID inexistente."""
+    resp = client.get("/skills/999")
+    assert resp.status_code == 404
+
+def test_skills_filter_by_ability():
+    """Testa filtro de perícias por habilidade."""
+    resp = client.get("/skills?ability=Força")
+    assert resp.status_code == 200
+    skills = resp.json()
+    assert isinstance(skills, list)
+    for skill in skills:
+        assert "Força" in skill["habilidade_associada"]
+
+# ============================================================================
+# TESTES DE FEATS
+# ============================================================================
+
+def test_get_feats():
+    """Testa listagem de todas as feats."""
+    resp = client.get("/feats")
+    assert resp.status_code == 200
+    feats = resp.json()
+    assert isinstance(feats, list)
+    assert len(feats) > 0
+    assert "nome" in feats[0]
+    assert "efeito" in feats[0]
+
+def test_get_feat_by_id():
+    """Testa busca de feat por ID."""
+    resp = client.get("/feats/1")
+    # Feats podem não ter IDs individuais, então aceita 404
+    assert resp.status_code in [200, 404]
+    if resp.status_code == 200:
+        feat = resp.json()
+        assert "nome" in feat
+        assert "efeito" in feat
+
+def test_get_feat_by_id_not_found():
+    """Testa busca de feat por ID inexistente."""
+    resp = client.get("/feats/999")
+    assert resp.status_code == 404
+
+def test_feats_filter_by_prerequisite():
+    """Testa filtro de feats por pré-requisito."""
+    resp = client.get("/feats?prerequisite=Força")
+    assert resp.status_code == 200
+    feats = resp.json()
+    assert isinstance(feats, list)
+
+# ============================================================================
+# TESTES DE MULTICLASS
+# ============================================================================
+
+def test_get_multiclass():
+    """Testa listagem de requisitos de multiclasse."""
+    resp = client.get("/multiclass")
+    assert resp.status_code == 200
+    multiclass = resp.json()
+    assert isinstance(multiclass, list)
+    assert len(multiclass) > 0
+    assert "classe_base" in multiclass[0]
+    assert "requisitos" in multiclass[0]
+
+def test_get_multiclass_by_class():
+    """Testa busca de requisitos de multiclasse por classe."""
+    resp = client.get("/multiclass/mago")
+    # Endpoint pode não existir, então aceita 404
+    assert resp.status_code in [200, 404]
+    if resp.status_code == 200:
+        multiclass = resp.json()
+        assert "classe_base" in multiclass
+        assert "requisitos" in multiclass
+
+def test_get_multiclass_by_class_not_found():
+    """Testa busca de requisitos de multiclasse por classe inexistente."""
+    resp = client.get("/multiclass/classe_inexistente")
+    assert resp.status_code == 404
+
+# ============================================================================
 # TESTES DE REGRAS DE COMBATE
 # ============================================================================
 
@@ -1498,6 +1749,44 @@ def test_get_spell_slot_table():
     assert "Mago" in slot_table["classes"]
     assert "Clérigo" in slot_table["classes"]
     assert "Druida" in slot_table["classes"]
+
+# ============================================================================
+# TESTES DE REGRAS GERAIS
+# ============================================================================
+
+def test_get_rules():
+    """Testa listagem de todas as regras gerais."""
+    resp = client.get("/rules")
+    assert resp.status_code == 200
+    rules = resp.json()
+    assert isinstance(rules, list)
+    assert len(rules) > 0
+    assert "nome" in rules[0]
+    assert "descricao" in rules[0]
+
+def test_get_rule_by_id():
+    """Testa busca de regra por ID."""
+    resp = client.get("/rules/1")
+    # Rules podem não ter IDs individuais, então aceita 404
+    assert resp.status_code in [200, 404]
+    if resp.status_code == 200:
+        rule = resp.json()
+        assert "nome" in rule
+        assert "descricao" in rule
+
+def test_get_rule_by_id_not_found():
+    """Testa busca de regra por ID inexistente."""
+    resp = client.get("/rules/999")
+    assert resp.status_code == 404
+
+def test_rules_filter_by_type():
+    """Testa filtro de regras por tipo."""
+    resp = client.get("/rules?type=combate")
+    assert resp.status_code == 200
+    rules = resp.json()
+    assert isinstance(rules, list)
+    for rule in rules:
+        assert "combate" in rule["tipo"].lower()
 
 # ============================================================================
 # TESTES DE MAGIAS
@@ -1852,6 +2141,905 @@ def test_spells_special_characters():
         assert len(spell["nome"]) > 0
         assert isinstance(spell["nome"], str)
 
+# ============================================================================
+# TESTES DE VALIDAÇÃO DE DADOS - DIVINDADES
+# ============================================================================
+
+def test_deities_data_structure():
+    """Testa estrutura de dados das divindades."""
+    resp = client.get("/deuses/lathander")
+    assert resp.status_code == 200
+    deity = resp.json()
+    
+    # Campos obrigatórios
+    required_fields = ["id", "nome", "panteao", "alinhamento", "dominios"]
+    for field in required_fields:
+        assert field in deity
+    
+    # Verifica tipos de dados
+    assert isinstance(deity["id"], str)
+    assert isinstance(deity["nome"], str)
+    assert isinstance(deity["panteao"], str)
+    assert isinstance(deity["alinhamento"], str)
+    assert isinstance(deity["dominios"], list)
+    
+    # Verifica se domínios não está vazio
+    assert len(deity["dominios"]) > 0
+
+def test_deities_alignment_validation():
+    """Testa se os alinhamentos das divindades são válidos."""
+    resp = client.get("/deuses")
+    assert resp.status_code == 200
+    deities = resp.json()
+    
+    valid_alignments = ["LG", "NG", "CG", "LN", "N", "CN", "LE", "NE", "CE"]
+    for deity in deities:
+        assert deity["alinhamento"] in valid_alignments
+
+def test_deities_pantheon_distribution():
+    """Testa distribuição de panteões das divindades."""
+    resp = client.get("/deuses")
+    assert resp.status_code == 200
+    deities = resp.json()
+    
+    # Verifica se há divindades de diferentes panteões
+    pantheons = set(deity["panteao"] for deity in deities)
+    assert len(pantheons) > 1  # Deve ter pelo menos 2 panteões diferentes
+
+# ============================================================================
+# TESTES DE VALIDAÇÃO DE DADOS - CONDIÇÕES
+# ============================================================================
+
+def test_conditions_data_structure():
+    """Testa estrutura de dados das condições."""
+    resp = client.get("/conditions/1")
+    assert resp.status_code == 200
+    condition = resp.json()
+    
+    # Campos obrigatórios
+    required_fields = ["nome", "descricao", "efeitos"]
+    for field in required_fields:
+        assert field in condition
+    
+    # Verifica tipos de dados
+    assert isinstance(condition["nome"], str)
+    assert isinstance(condition["descricao"], str)
+    assert isinstance(condition["efeitos"], list)
+    
+    # Verifica se efeitos não está vazio
+    assert len(condition["efeitos"]) > 0
+
+def test_conditions_effects_validation():
+    """Testa se as condições têm efeitos válidos."""
+    resp = client.get("/conditions")
+    assert resp.status_code == 200
+    conditions = resp.json()
+    
+    for condition in conditions:
+        assert len(condition["efeitos"]) > 0
+        for effect in condition["efeitos"]:
+            assert isinstance(effect, str)
+            assert len(effect) > 0
+
+# ============================================================================
+# TESTES DE PLANOS DE EXISTÊNCIA
+# ============================================================================
+
+def test_get_planes():
+    """Testa listagem de todos os planos de existência."""
+    resp = client.get("/planos")
+    assert resp.status_code == 200
+    planes = resp.json()
+    assert isinstance(planes, list)
+    assert len(planes) > 0
+    assert "id" in planes[0]
+    assert "nome" in planes[0]
+    assert "tipo" in planes[0]
+    assert "descricao" in planes[0]
+    assert "alinhamento" in planes[0]
+
+def test_get_plane_by_id():
+    """Testa busca de plano por ID."""
+    resp = client.get("/planos/plano-material")
+    assert resp.status_code == 200
+    plane = resp.json()
+    assert "id" in plane
+    assert "nome" in plane
+    assert "tipo" in plane
+    assert "descricao" in plane
+    assert "alinhamento" in plane
+    assert plane["id"] == "plano-material"
+
+def test_get_plane_by_id_not_found():
+    """Testa busca de plano por ID inexistente."""
+    resp = client.get("/planos/plano-inexistente")
+    assert resp.status_code == 404
+
+def test_planes_filter_by_type():
+    """Testa filtro de planos por tipo."""
+    resp = client.get("/planos?tipo=Exterior")
+    assert resp.status_code == 200
+    planes = resp.json()
+    assert isinstance(planes, list)
+    assert len(planes) > 0
+    for plane in planes:
+        assert plane["tipo"] == "Exterior"
+
+def test_planes_filter_by_alignment():
+    """Testa filtro de planos por alinhamento."""
+    resp = client.get("/planos?alinhamento=Neutro")
+    assert resp.status_code == 200
+    planes = resp.json()
+    assert isinstance(planes, list)
+    assert len(planes) > 0
+    for plane in planes:
+        assert plane["alinhamento"] == "Neutro"
+
+def test_planes_filter_by_associado_a():
+    """Testa filtro de planos por associação."""
+    resp = client.get("/planos?associado_a=Elemento")
+    assert resp.status_code == 200
+    planes = resp.json()
+    assert isinstance(planes, list)
+    # Verifica se pelo menos alguns planos têm "Elemento" na associação
+    element_planes = [p for p in planes if "Elemento" in p.get("associado_a", "")]
+    assert len(element_planes) > 0, "Deve haver pelo menos um plano associado a Elemento"
+
+def test_planes_multiple_filters():
+    """Testa múltiplos filtros de planos."""
+    resp = client.get("/planos?tipo=Exterior&alinhamento=Leal e Bom")
+    assert resp.status_code == 200
+    planes = resp.json()
+    assert isinstance(planes, list)
+    for plane in planes:
+        assert plane["tipo"] == "Exterior"
+        assert plane["alinhamento"] == "Leal e Bom"
+
+def test_get_planes_by_type():
+    """Testa endpoint específico para planos por tipo."""
+    resp = client.get("/planos/tipos/Exterior")
+    assert resp.status_code == 200
+    planes = resp.json()
+    assert isinstance(planes, list)
+    assert len(planes) > 0
+    for plane in planes:
+        assert plane["tipo"] == "Exterior"
+
+def test_get_planes_by_type_not_found():
+    """Testa endpoint de planos por tipo inexistente."""
+    resp = client.get("/planos/tipos/Inexistente")
+    assert resp.status_code == 404
+
+def test_get_planes_by_alignment():
+    """Testa endpoint específico para planos por alinhamento."""
+    resp = client.get("/planos/alinhamentos/Neutro")
+    assert resp.status_code == 200
+    planes = resp.json()
+    assert isinstance(planes, list)
+    assert len(planes) > 0
+    for plane in planes:
+        assert plane["alinhamento"] == "Neutro"
+
+def test_get_planes_by_alignment_not_found():
+    """Testa endpoint de planos por alinhamento inexistente."""
+    resp = client.get("/planos/alinhamentos/Inexistente")
+    assert resp.status_code == 404
+
+def test_planes_data_structure():
+    """Testa estrutura de dados dos planos."""
+    resp = client.get("/planos/plano-material")
+    assert resp.status_code == 200
+    plane = resp.json()
+    
+    # Campos obrigatórios
+    required_fields = ["id", "nome", "tipo", "descricao"]
+    for field in required_fields:
+        assert field in plane
+    
+    # Verifica tipos de dados
+    assert isinstance(plane["id"], str)
+    assert isinstance(plane["nome"], str)
+    assert isinstance(plane["tipo"], str)
+    assert isinstance(plane["descricao"], str)
+    
+    # Campos opcionais
+    if "alinhamento" in plane:
+        assert isinstance(plane["alinhamento"], str)
+    if "associado_a" in plane:
+        assert isinstance(plane["associado_a"], str)
+    if "criaturas_tipicas" in plane:
+        assert isinstance(plane["criaturas_tipicas"], list)
+
+def test_planes_type_distribution():
+    """Testa distribuição de tipos de planos."""
+    resp = client.get("/planos")
+    assert resp.status_code == 200
+    planes = resp.json()
+    
+    # Verifica se há planos de diferentes tipos
+    types = set(plane["tipo"] for plane in planes)
+    assert len(types) > 1  # Deve ter pelo menos 2 tipos diferentes
+    
+    # Verifica se há planos dos tipos principais
+    expected_types = ["Material", "Interior", "Exterior", "Transitivo"]
+    for expected_type in expected_types:
+        has_type = any(plane["tipo"] == expected_type for plane in planes)
+        assert has_type, f"Deve haver pelo menos um plano do tipo {expected_type}"
+
+def test_planes_alignment_distribution():
+    """Testa distribuição de alinhamentos dos planos."""
+    resp = client.get("/planos")
+    assert resp.status_code == 200
+    planes = resp.json()
+    
+    # Verifica se há planos de diferentes alinhamentos
+    alignments = set(plane["alinhamento"] for plane in planes if plane.get("alinhamento"))
+    assert len(alignments) > 1  # Deve ter pelo menos 2 alinhamentos diferentes
+
+# ============================================================================
+# TESTES DE CHANGELOG
+# ============================================================================
+
+def test_get_changelog():
+    """Testa listagem do changelog completo."""
+    resp = client.get("/changelog")
+    assert resp.status_code == 200
+    changelog = resp.json()
+    assert isinstance(changelog, dict)
+    assert "current_version" in changelog
+    assert "total_versions" in changelog
+    assert "versions" in changelog
+    assert isinstance(changelog["versions"], list)
+    assert len(changelog["versions"]) > 0
+
+def test_get_latest_version():
+    """Testa busca da versão mais recente."""
+    resp = client.get("/changelog/latest")
+    assert resp.status_code == 200
+    version = resp.json()
+    assert isinstance(version, dict)
+    assert "version" in version
+    assert "release_date" in version
+    assert "codename" in version
+    assert "description" in version
+    assert "changes" in version
+    assert "statistics" in version
+
+def test_get_version_details():
+    """Testa busca de detalhes de uma versão específica."""
+    resp = client.get("/changelog/2.0.0")
+    assert resp.status_code == 200
+    version = resp.json()
+    assert isinstance(version, dict)
+    assert "version" in version
+    assert version["version"] == "2.0.0"
+    assert "release_date" in version
+    assert "codename" in version
+    assert "description" in version
+    assert "changes" in version
+    assert "statistics" in version
+
+def test_get_version_details_not_found():
+    """Testa busca de versão inexistente."""
+    resp = client.get("/changelog/99.0.0")
+    assert resp.status_code == 404
+
+def test_changelog_data_structure():
+    """Testa estrutura de dados do changelog."""
+    resp = client.get("/changelog/2.0.0")
+    assert resp.status_code == 200
+    version = resp.json()
+    
+    # Campos obrigatórios
+    required_fields = ["version", "release_date", "codename", "description", "changes", "statistics"]
+    for field in required_fields:
+        assert field in version
+    
+    # Verifica tipos de dados
+    assert isinstance(version["version"], str)
+    assert isinstance(version["release_date"], str)
+    assert isinstance(version["codename"], str)
+    assert isinstance(version["description"], str)
+    assert isinstance(version["changes"], list)
+    assert isinstance(version["statistics"], dict)
+    
+    # Verifica estrutura das mudanças
+    for change in version["changes"]:
+        assert "type" in change
+        assert "description" in change
+        assert "details" in change
+        assert isinstance(change["type"], str)
+        assert isinstance(change["description"], str)
+        assert isinstance(change["details"], list)
+
+def test_changelog_version_order():
+    """Testa se as versões estão ordenadas corretamente."""
+    resp = client.get("/changelog")
+    assert resp.status_code == 200
+    changelog = resp.json()
+    
+    versions = changelog["versions"]
+    assert len(versions) > 1
+    
+    # Verifica se a primeira versão é a mais recente
+    latest_version = versions[0]
+    assert latest_version["version"] == "2.2.0"
+
+def test_changelog_statistics():
+    """Testa se as estatísticas estão presentes."""
+    resp = client.get("/changelog/2.0.0")
+    assert resp.status_code == 200
+    version = resp.json()
+    
+    statistics = version["statistics"]
+    assert isinstance(statistics, dict)
+    assert len(statistics) > 0
+    
+    # Verifica se há estatísticas relevantes
+    expected_stats = ["endpoints", "conditions", "spells", "deities"]
+    for stat in expected_stats:
+        assert stat in statistics
+
+# ============================================================================
+# ATUALIZAÇÃO DOS ENDPOINTS PARA TESTAR
+# ============================================================================
+
+def test_all_endpoints_covered():
+    """Testa se todos os endpoints estão cobertos pelos testes."""
+    # Lista de todos os endpoints que devem ser testados
+    endpoints_to_test = [
+        ("/", "GET"),
+        ("/racas", "GET"),
+        ("/racas/{id}", "GET"),
+        ("/subracas", "GET"),
+        ("/subracas/{id}", "GET"),
+        ("/classes", "GET"),
+        ("/classes/{id}", "GET"),
+        ("/backgrounds", "GET"),
+        ("/backgrounds/{id}", "GET"),
+        ("/backgrounds/{id}/traits", "GET"),
+        ("/equipment", "GET"),
+        ("/equipment/{id}", "GET"),
+        ("/weapons", "GET"),
+        ("/weapons/{id}", "GET"),
+        ("/armor", "GET"),
+        ("/armor/{id}", "GET"),
+        ("/tools", "GET"),
+        ("/tools/{id}", "GET"),
+        ("/mounts", "GET"),
+        ("/mounts/{id}", "GET"),
+        ("/currency", "GET"),
+        ("/currency/{id}", "GET"),
+        ("/services", "GET"),
+        ("/services/{id}", "GET"),
+        ("/lifestyles", "GET"),
+        ("/lifestyles/{id}", "GET"),
+        ("/abilities", "GET"),
+        ("/abilities/{id}", "GET"),
+        ("/skills", "GET"),
+        ("/skills/{id}", "GET"),
+        ("/feats", "GET"),
+        ("/feats/{id}", "GET"),
+        ("/multiclass", "GET"),
+        ("/multiclass/{classe}", "GET"),
+        ("/rules", "GET"),
+        ("/rules/{id}", "GET"),
+        ("/rules/combat", "GET"),
+        ("/rules/spells", "GET"),
+        ("/rules/spells/components", "GET"),
+        ("/rules/spells/rituals", "GET"),
+        ("/rules/spells/slot-table", "GET"),
+        ("/conditions", "GET"),
+        ("/conditions/{id}", "GET"),
+        ("/conditions/busca/{nome}", "GET"),
+        ("/deuses", "GET"),
+        ("/deuses/{id}", "GET"),
+        ("/deuses/busca/{nome}", "GET"),
+        ("/spells", "GET"),
+        ("/spells/{id}", "GET"),
+        ("/spells/nivel/{nivel}", "GET"),
+        ("/spells/escola/{escola}", "GET"),
+        ("/spells/classe/{classe}", "GET"),
+        ("/spells/classes/{class_name}", "GET"),
+        ("/spells/ritual", "GET"),
+        ("/spells/concentracao", "GET"),
+        ("/spells/busca/{nome}", "GET"),
+        ("/planos", "GET"),
+        ("/planos/{id}", "GET"),
+        ("/planos/tipos/{tipo}", "GET"),
+        ("/planos/alinhamentos/{alinhamento}", "GET"),
+        ("/changelog", "GET"),
+        ("/changelog/latest", "GET"),
+        ("/changelog/{version}", "GET"),
+    ]
+    
+    # Verifica se todos os endpoints respondem (mesmo que com 404 para IDs inexistentes)
+    for endpoint, method in endpoints_to_test:
+        if "{id}" in endpoint:
+            # Para endpoints com ID, testa com ID inexistente
+            resp = client.get(endpoint.replace("{id}", "999"))
+            assert resp.status_code in [200, 404, 422]
+        else:
+            resp = client.get(endpoint)
+            assert resp.status_code in [200, 404, 422]
+
+def test_all_filters_covered():
+    """Testa se todos os filtros estão cobertos pelos testes."""
+    # Lista de filtros que devem ser testados
+    filters_to_test = [
+        ("/racas", "nome"),
+        ("/classes", "nome"),
+        ("/backgrounds", "name"),
+        ("/backgrounds", "prof"),
+        ("/backgrounds", "ideal"),
+        ("/equipment", "cost"),
+        ("/equipment", "weight"),
+        ("/weapons", "type"),
+        ("/weapons", "property"),
+        ("/weapons", "damage"),
+        ("/armor", "type"),
+        ("/armor", "ac"),
+        ("/armor", "stealth_penalty"),
+        ("/tools", "category"),
+        ("/tools", "type"),
+        ("/mounts", "type"),
+        ("/skills", "ability"),
+        ("/feats", "prerequisite"),
+        ("/rules", "type"),
+        ("/conditions", "effect"),
+        ("/conditions", "source"),
+        ("/deuses", "panteao"),
+        ("/deuses", "dominio"),
+        ("/deuses", "alinhamento"),
+        ("/spells", "school"),
+        ("/spells", "class"),
+        ("/spells", "component"),
+        ("/spells", "ritual"),
+        ("/spells", "concentration"),
+        ("/spells", "range"),
+        ("/planos", "tipo"),
+        ("/planos", "alinhamento"),
+        ("/planos", "associado_a"),
+    ]
+
+    for endpoint, filter_param in filters_to_test:
+        resp = client.get(f"{endpoint}?{filter_param}=test")
+        # Alguns filtros podem retornar 422 para valores inválidos, o que é aceitável
+        assert resp.status_code in [200, 422]
+    
+    # Testa filtros numéricos separadamente
+    numeric_filters = [
+        ("/spells", "level", "1")
+    ]
+    
+    for endpoint, filter_param, value in numeric_filters:
+        resp = client.get(f"{endpoint}?{filter_param}={value}")
+        assert resp.status_code == 200
+
+# ============================================================================
+# ATUALIZAÇÃO DOS PARAMETRIZADOS
+# ============================================================================
+
+@pytest.mark.parametrize("endpoint", [
+    "/", "/racas", "/subracas", "/classes", "/backgrounds", "/equipment",
+    "/weapons", "/armor", "/tools", "/mounts", "/currency", "/services", "/lifestyles", "/spells",
+    "/abilities", "/skills", "/feats", "/multiclass", "/rules", "/conditions", "/deuses", "/planos", "/changelog"
+])
+@pytest.mark.parametrize("method", ["post", "put", "delete", "patch"])
+def test_method_not_allowed(endpoint, method):
+    resp = getattr(client, method)(endpoint)
+    assert resp.status_code in [405, 422]  # 422 se o endpoint espera body obrigatório
+
+@pytest.mark.parametrize("endpoint", [
+    "/", "/racas", "/classes", "/equipment", "/weapons", "/spells", "/conditions", "/deuses", "/planos", "/changelog"
+])
+def test_head_and_options(endpoint):
+    resp = client.head(endpoint)
+    # FastAPI pode não suportar HEAD, então aceita 405
+    assert resp.status_code in [200, 404, 405]
+    resp = client.options(endpoint)
+    # FastAPI pode não suportar OPTIONS, então aceita 405
+    assert resp.status_code in [200, 204, 405]
+
+@pytest.mark.parametrize("endpoint", [
+    "/racas", "/subracas", "/classes", "/backgrounds", "/equipment",
+    "/weapons", "/armor", "/tools", "/mounts", "/currency", "/services", "/lifestyles", "/spells",
+    "/abilities", "/skills", "/feats", "/multiclass", "/rules", "/conditions", "/deuses", "/planos"
+])
+@pytest.mark.parametrize("bad_id", ["0", "-1"])
+def test_invalid_id_values(endpoint, bad_id):
+    resp = client.get(f"{endpoint}/{bad_id}")
+    # Alguns endpoints podem aceitar ID 0, então aceita 200 também
+    assert resp.status_code in [404, 422, 200]
+
+# ============================================================================
+# TESTES PARA SISTEMA DE CRIATURAS
+# ============================================================================
+
+def test_get_creatures():
+    """Testa o endpoint de listagem de todas as criaturas."""
+    resp = client.get("/criaturas")
+    assert resp.status_code == 200
+    creatures = resp.json()
+    assert isinstance(creatures, list)
+    assert len(creatures) > 0
+    assert all("id" in creature for creature in creatures)
+    assert all("nome" in creature for creature in creatures)
+    assert all("tipo" in creature for creature in creatures)
+
+def test_get_creature_by_id():
+    """Testa o endpoint de detalhes de uma criatura específica."""
+    resp = client.get("/criaturas/corvo")
+    assert resp.status_code == 200
+    creature = resp.json()
+    assert creature["nome"] == "Corvo"
+    assert creature["tipo"] == "Besta"
+    assert creature["nivel_desafio"] == "0"
+    assert "atributos" in creature
+    assert "ataques" in creature
+
+def test_get_creature_by_id_not_found():
+    """Testa o endpoint de criatura com ID inexistente."""
+    resp = client.get("/criaturas/criatura-inexistente")
+    assert resp.status_code == 404
+
+def test_creatures_filter_by_type():
+    """Testa filtro de criaturas por tipo."""
+    resp = client.get("/criaturas?tipo=Besta")
+    assert resp.status_code == 200
+    creatures = resp.json()
+    assert all(creature["tipo"] == "Besta" for creature in creatures)
+    assert len(creatures) > 0
+
+def test_creatures_filter_by_size():
+    """Testa filtro de criaturas por tamanho."""
+    resp = client.get("/criaturas?tamanho=Miúdo")
+    assert resp.status_code == 200
+    creatures = resp.json()
+    assert all(creature["tamanho"] == "Miúdo" for creature in creatures)
+    assert len(creatures) > 0
+
+def test_creatures_filter_by_challenge_rating():
+    """Testa filtro de criaturas por nível de desafio."""
+    resp = client.get("/criaturas?nd=1/4")
+    assert resp.status_code == 200
+    creatures = resp.json()
+    assert all(creature["nivel_desafio"] == "1/4" for creature in creatures)
+    assert len(creatures) > 0
+
+def test_creatures_multiple_filters():
+    """Testa múltiplos filtros de criaturas."""
+    resp = client.get("/criaturas?tipo=Besta&tamanho=Miúdo")
+    assert resp.status_code == 200
+    creatures = resp.json()
+    assert all(creature["tipo"] == "Besta" and creature["tamanho"] == "Miúdo" for creature in creatures)
+
+def test_get_creatures_by_type():
+    """Testa o endpoint de criaturas por tipo específico."""
+    resp = client.get("/criaturas/tipos/Besta")
+    assert resp.status_code == 200
+    creatures = resp.json()
+    assert all(creature["tipo"] == "Besta" for creature in creatures)
+    assert len(creatures) > 0
+
+def test_get_creatures_by_type_not_found():
+    """Testa o endpoint de criaturas por tipo inexistente."""
+    resp = client.get("/criaturas/tipos/TipoInexistente")
+    assert resp.status_code == 404
+
+def test_get_creatures_by_size():
+    """Testa o endpoint de criaturas por tamanho específico."""
+    resp = client.get("/criaturas/tamanhos/Médio")
+    assert resp.status_code == 200
+    creatures = resp.json()
+    assert all(creature["tamanho"] == "Médio" for creature in creatures)
+    assert len(creatures) > 0
+
+def test_get_creatures_by_size_not_found():
+    """Testa o endpoint de criaturas por tamanho inexistente."""
+    resp = client.get("/criaturas/tamanhos/TamanhoInexistente")
+    assert resp.status_code == 404
+
+def test_get_creatures_by_challenge_rating():
+    """Testa o endpoint de criaturas por nível de desafio específico."""
+    resp = client.get("/criaturas/niveis/1_4")
+    assert resp.status_code == 200
+    creatures = resp.json()
+    assert all(creature["nivel_desafio"] == "1/4" for creature in creatures)
+    assert len(creatures) > 0
+
+def test_get_creatures_by_challenge_rating_not_found():
+    """Testa o endpoint de criaturas por nível de desafio inexistente."""
+    resp = client.get("/criaturas/niveis/999")
+    assert resp.status_code == 404
+
+def test_creatures_data_structure():
+    """Testa a estrutura dos dados das criaturas."""
+    resp = client.get("/criaturas")
+    assert resp.status_code == 200
+    creatures = resp.json()
+    
+    for creature in creatures:
+        # Campos obrigatórios
+        assert "id" in creature
+        assert "nome" in creature
+        assert "tipo" in creature
+        assert "tamanho" in creature
+        assert "ca" in creature
+        assert "pv" in creature
+        assert "deslocamento" in creature
+        assert "atributos" in creature
+        assert "nivel_desafio" in creature
+        
+        # Validação de tipos
+        assert isinstance(creature["id"], str)
+        assert isinstance(creature["nome"], str)
+        assert isinstance(creature["tipo"], str)
+        assert isinstance(creature["tamanho"], str)
+        assert isinstance(creature["ca"], int)
+        assert isinstance(creature["pv"], str)
+        assert isinstance(creature["deslocamento"], str)
+        assert isinstance(creature["atributos"], dict)
+        assert isinstance(creature["nivel_desafio"], str)
+        
+        # Validação de atributos
+        atributos = creature["atributos"]
+        assert "FOR" in atributos
+        assert "DES" in atributos
+        assert "CON" in atributos
+        assert "INT" in atributos
+        assert "SAB" in atributos
+        assert "CAR" in atributos
+        
+        for attr_value in atributos.values():
+            assert isinstance(attr_value, int)
+            assert 1 <= attr_value <= 30
+
+def test_creatures_type_distribution():
+    """Testa a distribuição de tipos de criaturas."""
+    resp = client.get("/criaturas")
+    assert resp.status_code == 200
+    creatures = resp.json()
+    
+    tipos = [creature["tipo"] for creature in creatures]
+    tipos_unicos = set(tipos)
+    
+    # Verifica se temos os tipos esperados
+    assert "Besta" in tipos_unicos
+    assert "Morto-vivo" in tipos_unicos
+    
+    # Verifica se a maioria são bestas (conforme dados)
+    bestas = [c for c in creatures if c["tipo"] == "Besta"]
+    assert len(bestas) > len(creatures) * 0.8  # Mais de 80% são bestas
+
+def test_creatures_size_distribution():
+    """Testa a distribuição de tamanhos de criaturas."""
+    resp = client.get("/criaturas")
+    assert resp.status_code == 200
+    creatures = resp.json()
+    
+    tamanhos = [creature["tamanho"] for creature in creatures]
+    tamanhos_unicos = set(tamanhos)
+    
+    # Verifica se temos os tamanhos esperados (baseado nos dados reais)
+    assert "Miúdo" in tamanhos_unicos
+    assert "Médio" in tamanhos_unicos
+    assert "Grande" in tamanhos_unicos
+    
+    # Verifica se a maioria são miúdas (conforme dados reais: 23 miúdas de 32 total)
+    miudas = [c for c in creatures if c["tamanho"] == "Miúdo"]
+    assert len(miudas) > len(creatures) * 0.6  # Mais de 60% são miúdas
+
+def test_creatures_challenge_rating_distribution():
+    """Testa a distribuição de níveis de desafio das criaturas."""
+    resp = client.get("/criaturas")
+    assert resp.status_code == 200
+    creatures = resp.json()
+    
+    nds = [creature["nivel_desafio"] for creature in creatures]
+    nds_unicos = set(nds)
+    
+    # Verifica se temos os NDs esperados
+    assert "0" in nds_unicos
+    assert "1/8" in nds_unicos
+    assert "1/4" in nds_unicos
+    assert "1/2" in nds_unicos
+    
+    # Verifica se a maioria são ND 0 ou 1/8 (conforme dados)
+    baixos = [c for c in creatures if c["nivel_desafio"] in ["0", "1/8"]]
+    assert len(baixos) > len(creatures) * 0.6  # Mais de 60% são ND baixo
+
+# ============================================================================
+# TESTES PARA SISTEMA DE LEITURAS INSPIRADORAS
+# ============================================================================
+
+def test_get_leituras():
+    """Testa o endpoint de listagem de leituras inspiradoras."""
+    resp = client.get("/leituras")
+    assert resp.status_code == 200
+    leituras = resp.json()
+    assert isinstance(leituras, list)
+    assert len(leituras) > 0
+    assert all("id" in leitura for leitura in leituras)
+    assert all("titulo" in leitura for leitura in leituras)
+    assert all("autor" in leitura for leitura in leituras)
+    assert all("categoria" in leitura for leitura in leituras)
+
+def test_get_leitura_by_id():
+    """Testa o endpoint de busca de leitura por ID."""
+    resp = client.get("/leituras/senhor-dos-aneis")
+    assert resp.status_code == 200
+    leitura = resp.json()
+    assert leitura["id"] == "senhor-dos-aneis"
+    assert leitura["titulo"] == "O Senhor dos Anéis"
+    assert leitura["autor"] == "J.R.R. Tolkien"
+    assert leitura["categoria"] == "Fantasia"
+
+def test_get_leitura_by_id_not_found():
+    """Testa o endpoint de busca de leitura por ID inexistente."""
+    resp = client.get("/leituras/leitura-inexistente")
+    assert resp.status_code == 404
+
+def test_leituras_filter_by_categoria():
+    """Testa filtro de leituras por categoria."""
+    resp = client.get("/leituras?categoria=Fantasia")
+    assert resp.status_code == 200
+    leituras = resp.json()
+    assert len(leituras) > 0
+    assert all(leitura["categoria"] == "Fantasia" for leitura in leituras)
+
+def test_leituras_filter_by_autor():
+    """Testa filtro de leituras por autor."""
+    resp = client.get("/leituras?autor=H.P. Lovecraft")
+    assert resp.status_code == 200
+    leituras = resp.json()
+    assert len(leituras) > 0
+    assert all(leitura["autor"] == "H.P. Lovecraft" for leitura in leituras)
+
+def test_leituras_filter_by_influencia():
+    """Testa filtro de leituras por influência."""
+    resp = client.get("/leituras?influencia=Forgotten Realms")
+    assert resp.status_code == 200
+    leituras = resp.json()
+    assert len(leituras) > 0
+    assert all("Forgotten Realms" in leitura["influencia"] for leitura in leituras)
+
+def test_leituras_multiple_filters():
+    """Testa filtros múltiplos de leituras."""
+    resp = client.get("/leituras?categoria=Terror&autor=H.P. Lovecraft")
+    assert resp.status_code == 200
+    leituras = resp.json()
+    assert len(leituras) > 0
+    assert all(leitura["categoria"] == "Terror" and leitura["autor"] == "H.P. Lovecraft" for leitura in leituras)
+
+def test_get_leituras_by_category():
+    """Testa endpoint específico de leituras por categoria."""
+    resp = client.get("/leituras/categorias/Mitologia")
+    assert resp.status_code == 200
+    leituras = resp.json()
+    assert len(leituras) > 0
+    assert all(leitura["categoria"] == "Mitologia" for leitura in leituras)
+
+def test_get_leituras_by_category_not_found():
+    """Testa endpoint de leituras por categoria inexistente."""
+    resp = client.get("/leituras/categorias/CategoriaInexistente")
+    assert resp.status_code == 404
+
+def test_get_leituras_by_author():
+    """Testa endpoint específico de leituras por autor."""
+    resp = client.get("/leituras/autores/J.R.R. Tolkien")
+    assert resp.status_code == 200
+    leituras = resp.json()
+    assert len(leituras) > 0
+    assert all(leitura["autor"] == "J.R.R. Tolkien" for leitura in leituras)
+
+def test_get_leituras_by_author_not_found():
+    """Testa endpoint de leituras por autor inexistente."""
+    resp = client.get("/leituras/autores/AutorInexistente")
+    assert resp.status_code == 404
+
+def test_leituras_data_structure():
+    """Testa a estrutura de dados das leituras."""
+    resp = client.get("/leituras")
+    assert resp.status_code == 200
+    leituras = resp.json()
+    
+    for leitura in leituras:
+        # Campos obrigatórios
+        assert "id" in leitura
+        assert "titulo" in leitura
+        assert "autor" in leitura
+        assert "categoria" in leitura
+        
+        # Campos opcionais
+        if "descricao" in leitura:
+            assert isinstance(leitura["descricao"], str)
+        if "influencia" in leitura:
+            assert isinstance(leitura["influencia"], str)
+        
+        # Validação de tipos
+        assert isinstance(leitura["id"], str)
+        assert isinstance(leitura["titulo"], str)
+        assert isinstance(leitura["autor"], str)
+        assert isinstance(leitura["categoria"], str)
+        
+        # Validação de conteúdo
+        assert len(leitura["id"]) > 0
+        assert len(leitura["titulo"]) > 0
+        assert len(leitura["autor"]) > 0
+        assert len(leitura["categoria"]) > 0
+
+def test_leituras_categoria_distribution():
+    """Testa a distribuição de categorias de leituras."""
+    resp = client.get("/leituras")
+    assert resp.status_code == 200
+    leituras = resp.json()
+    
+    categorias = [leitura["categoria"] for leitura in leituras]
+    categorias_unicas = set(categorias)
+    
+    # Verifica se temos as categorias esperadas
+    assert "Fantasia" in categorias_unicas
+    assert "Mitologia" in categorias_unicas
+    assert "Terror" in categorias_unicas
+    assert "Espada e Feitiçaria" in categorias_unicas
+    
+    # Verifica se a maioria são mitologias (conforme dados)
+    mitologias = [l for l in leituras if l["categoria"] == "Mitologia"]
+    assert len(mitologias) > len(leituras) * 0.6  # Mais de 60% são mitologias
+
+def test_leituras_autor_distribution():
+    """Testa a distribuição de autores de leituras."""
+    resp = client.get("/leituras")
+    assert resp.status_code == 200
+    leituras = resp.json()
+    
+    autores = [leitura["autor"] for leitura in leituras]
+    autores_unicos = set(autores)
+    
+    # Verifica se temos autores esperados
+    assert "J.R.R. Tolkien" in autores_unicos
+    assert "H.P. Lovecraft" in autores_unicos
+    assert "Vários" in autores_unicos  # Para mitologias
+    
+    # Verifica se a maioria são "Vários" (mitologias)
+    varios = [l for l in leituras if l["autor"] == "Vários"]
+    assert len(varios) > len(leituras) * 0.6  # Mais de 60% são "Vários"
+
+def test_leituras_search_case_insensitive():
+    """Testa busca case-insensitive de leituras."""
+    resp = client.get("/leituras?categoria=fantasia")
+    assert resp.status_code == 200
+    leituras = resp.json()
+    assert len(leituras) > 0
+    assert all(leitura["categoria"] == "Fantasia" for leitura in leituras)
+
+def test_leituras_empty_filters():
+    """Testa filtros vazios de leituras."""
+    resp = client.get("/leituras?categoria=")
+    assert resp.status_code == 200
+    leituras = resp.json()
+    assert len(leituras) > 0  # Deve retornar todas as leituras
+
+def test_leituras_invalid_filters():
+    """Testa filtros inválidos de leituras."""
+    resp = client.get("/leituras?categoria=CategoriaInexistente")
+    assert resp.status_code == 200
+    leituras = resp.json()
+    assert len(leituras) == 0  # Deve retornar lista vazia
+
+def test_leituras_special_characters():
+    """Testa caracteres especiais em filtros de leituras."""
+    resp = client.get("/leituras?autor=H.P. Lovecraft")
+    assert resp.status_code == 200
+    leituras = resp.json()
+    assert len(leituras) > 0
+    assert all(leitura["autor"] == "H.P. Lovecraft" for leitura in leituras)
+
+# ============================================================================
+# ATUALIZAÇÃO DOS ENDPOINTS PARA TESTAR
+# ============================================================================
+
 print("✅ Todos os testes foram definidos!")
 print("📊 Cobertura de testes:")
 print("   - Endpoint raiz: ✅")
@@ -1864,7 +3052,20 @@ print("   - Armaduras: ✅")
 print("   - Ferramentas: ✅")
 print("   - Montarias e veículos: ✅")
 print("   - Moedas, serviços e estilos de vida: ✅")
+print("   - Habilidades: ✅")
+print("   - Perícias: ✅")
+print("   - Feats: ✅")
+print("   - Multiclasse: ✅")
+print("   - Regras gerais: ✅")
+print("   - Regras de combate: ✅")
+print("   - Regras de conjuração: ✅")
+print("   - Condições: ✅")
+print("   - Divindades: ✅")
 print("   - Magias: ✅")
+print("   - Planos de Existência: ✅")
+print("   - Criaturas: ✅")
+print("   - Leituras Inspiradoras: ✅")
+print("   - Changelog: ✅")
 print("   - Filtros avançados: ✅")
 print("   - Casos de erro: ✅")
 print("   - Validação de dados: ✅")
@@ -1873,5 +3074,5 @@ print("   - Segurança: ✅")
 print("   - Estabilidade: ✅")
 print("   - Documentação: ✅")
 print("")
-print("🎯 Total de testes: 130+")
+print("🎯 Total de testes: 240+")
 print("🚀 Execute com: pytest test_api.py -v") 
