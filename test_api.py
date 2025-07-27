@@ -1173,6 +1173,13 @@ def test_all_endpoints_covered():
         ("/spells/ritual", "GET"),
         ("/spells/concentracao", "GET"),
         ("/spells/busca/{nome}", "GET"),
+        ("/planos", "GET"),
+        ("/planos/{id}", "GET"),
+        ("/planos/tipos/{tipo}", "GET"),
+        ("/planos/alinhamentos/{alinhamento}", "GET"),
+        ("/changelog", "GET"),
+        ("/changelog/latest", "GET"),
+        ("/changelog/{version}", "GET"),
     ]
     
     # Verifica se todos os endpoints respondem (mesmo que com 404 para IDs inexistentes)
@@ -1219,6 +1226,9 @@ def test_all_filters_covered():
         ("/spells", "ritual"),
         ("/spells", "concentration"),
         ("/spells", "range"),
+        ("/planos", "tipo"),
+        ("/planos", "alinhamento"),
+        ("/planos", "associado_a"),
     ]
 
     for endpoint, filter_param in filters_to_test:
@@ -1236,29 +1246,21 @@ def test_all_filters_covered():
         assert resp.status_code == 200
 
 # ============================================================================
-# TESTES DE MÉTODOS NÃO PERMITIDOS
+# ATUALIZAÇÃO DOS PARAMETRIZADOS
 # ============================================================================
-
-import http
-
-import pytest
 
 @pytest.mark.parametrize("endpoint", [
     "/", "/racas", "/subracas", "/classes", "/backgrounds", "/equipment",
     "/weapons", "/armor", "/tools", "/mounts", "/currency", "/services", "/lifestyles", "/spells",
-    "/abilities", "/skills", "/feats", "/multiclass", "/rules", "/conditions", "/deuses"
+    "/abilities", "/skills", "/feats", "/multiclass", "/rules", "/conditions", "/deuses", "/planos", "/changelog"
 ])
 @pytest.mark.parametrize("method", ["post", "put", "delete", "patch"])
 def test_method_not_allowed(endpoint, method):
     resp = getattr(client, method)(endpoint)
     assert resp.status_code in [405, 422]  # 422 se o endpoint espera body obrigatório
 
-# ============================================================================
-# TESTES DE HEAD E OPTIONS
-# ============================================================================
-
 @pytest.mark.parametrize("endpoint", [
-    "/", "/racas", "/classes", "/equipment", "/weapons", "/spells", "/conditions", "/deuses"
+    "/", "/racas", "/classes", "/equipment", "/weapons", "/spells", "/conditions", "/deuses", "/planos", "/changelog"
 ])
 def test_head_and_options(endpoint):
     resp = client.head(endpoint)
@@ -1268,14 +1270,10 @@ def test_head_and_options(endpoint):
     # FastAPI pode não suportar OPTIONS, então aceita 405
     assert resp.status_code in [200, 204, 405]
 
-# ============================================================================
-# TESTES DE IDS NEGATIVOS E ZERO
-# ============================================================================
-
 @pytest.mark.parametrize("endpoint", [
     "/racas", "/subracas", "/classes", "/backgrounds", "/equipment",
     "/weapons", "/armor", "/tools", "/mounts", "/currency", "/services", "/lifestyles", "/spells",
-    "/abilities", "/skills", "/feats", "/multiclass", "/rules", "/conditions", "/deuses"
+    "/abilities", "/skills", "/feats", "/multiclass", "/rules", "/conditions", "/deuses", "/planos"
 ])
 @pytest.mark.parametrize("bad_id", ["0", "-1"])
 def test_invalid_id_values(endpoint, bad_id):
@@ -2223,6 +2221,437 @@ def test_conditions_effects_validation():
             assert isinstance(effect, str)
             assert len(effect) > 0
 
+# ============================================================================
+# TESTES DE PLANOS DE EXISTÊNCIA
+# ============================================================================
+
+def test_get_planes():
+    """Testa listagem de todos os planos de existência."""
+    resp = client.get("/planos")
+    assert resp.status_code == 200
+    planes = resp.json()
+    assert isinstance(planes, list)
+    assert len(planes) > 0
+    assert "id" in planes[0]
+    assert "nome" in planes[0]
+    assert "tipo" in planes[0]
+    assert "descricao" in planes[0]
+    assert "alinhamento" in planes[0]
+
+def test_get_plane_by_id():
+    """Testa busca de plano por ID."""
+    resp = client.get("/planos/plano-material")
+    assert resp.status_code == 200
+    plane = resp.json()
+    assert "id" in plane
+    assert "nome" in plane
+    assert "tipo" in plane
+    assert "descricao" in plane
+    assert "alinhamento" in plane
+    assert plane["id"] == "plano-material"
+
+def test_get_plane_by_id_not_found():
+    """Testa busca de plano por ID inexistente."""
+    resp = client.get("/planos/plano-inexistente")
+    assert resp.status_code == 404
+
+def test_planes_filter_by_type():
+    """Testa filtro de planos por tipo."""
+    resp = client.get("/planos?tipo=Exterior")
+    assert resp.status_code == 200
+    planes = resp.json()
+    assert isinstance(planes, list)
+    assert len(planes) > 0
+    for plane in planes:
+        assert plane["tipo"] == "Exterior"
+
+def test_planes_filter_by_alignment():
+    """Testa filtro de planos por alinhamento."""
+    resp = client.get("/planos?alinhamento=Neutro")
+    assert resp.status_code == 200
+    planes = resp.json()
+    assert isinstance(planes, list)
+    assert len(planes) > 0
+    for plane in planes:
+        assert plane["alinhamento"] == "Neutro"
+
+def test_planes_filter_by_associado_a():
+    """Testa filtro de planos por associação."""
+    resp = client.get("/planos?associado_a=Elemento")
+    assert resp.status_code == 200
+    planes = resp.json()
+    assert isinstance(planes, list)
+    # Verifica se pelo menos alguns planos têm "Elemento" na associação
+    element_planes = [p for p in planes if "Elemento" in p.get("associado_a", "")]
+    assert len(element_planes) > 0, "Deve haver pelo menos um plano associado a Elemento"
+
+def test_planes_multiple_filters():
+    """Testa múltiplos filtros de planos."""
+    resp = client.get("/planos?tipo=Exterior&alinhamento=Leal e Bom")
+    assert resp.status_code == 200
+    planes = resp.json()
+    assert isinstance(planes, list)
+    for plane in planes:
+        assert plane["tipo"] == "Exterior"
+        assert plane["alinhamento"] == "Leal e Bom"
+
+def test_get_planes_by_type():
+    """Testa endpoint específico para planos por tipo."""
+    resp = client.get("/planos/tipos/Exterior")
+    assert resp.status_code == 200
+    planes = resp.json()
+    assert isinstance(planes, list)
+    assert len(planes) > 0
+    for plane in planes:
+        assert plane["tipo"] == "Exterior"
+
+def test_get_planes_by_type_not_found():
+    """Testa endpoint de planos por tipo inexistente."""
+    resp = client.get("/planos/tipos/Inexistente")
+    assert resp.status_code == 404
+
+def test_get_planes_by_alignment():
+    """Testa endpoint específico para planos por alinhamento."""
+    resp = client.get("/planos/alinhamentos/Neutro")
+    assert resp.status_code == 200
+    planes = resp.json()
+    assert isinstance(planes, list)
+    assert len(planes) > 0
+    for plane in planes:
+        assert plane["alinhamento"] == "Neutro"
+
+def test_get_planes_by_alignment_not_found():
+    """Testa endpoint de planos por alinhamento inexistente."""
+    resp = client.get("/planos/alinhamentos/Inexistente")
+    assert resp.status_code == 404
+
+def test_planes_data_structure():
+    """Testa estrutura de dados dos planos."""
+    resp = client.get("/planos/plano-material")
+    assert resp.status_code == 200
+    plane = resp.json()
+    
+    # Campos obrigatórios
+    required_fields = ["id", "nome", "tipo", "descricao"]
+    for field in required_fields:
+        assert field in plane
+    
+    # Verifica tipos de dados
+    assert isinstance(plane["id"], str)
+    assert isinstance(plane["nome"], str)
+    assert isinstance(plane["tipo"], str)
+    assert isinstance(plane["descricao"], str)
+    
+    # Campos opcionais
+    if "alinhamento" in plane:
+        assert isinstance(plane["alinhamento"], str)
+    if "associado_a" in plane:
+        assert isinstance(plane["associado_a"], str)
+    if "criaturas_tipicas" in plane:
+        assert isinstance(plane["criaturas_tipicas"], list)
+
+def test_planes_type_distribution():
+    """Testa distribuição de tipos de planos."""
+    resp = client.get("/planos")
+    assert resp.status_code == 200
+    planes = resp.json()
+    
+    # Verifica se há planos de diferentes tipos
+    types = set(plane["tipo"] for plane in planes)
+    assert len(types) > 1  # Deve ter pelo menos 2 tipos diferentes
+    
+    # Verifica se há planos dos tipos principais
+    expected_types = ["Material", "Interior", "Exterior", "Transitivo"]
+    for expected_type in expected_types:
+        has_type = any(plane["tipo"] == expected_type for plane in planes)
+        assert has_type, f"Deve haver pelo menos um plano do tipo {expected_type}"
+
+def test_planes_alignment_distribution():
+    """Testa distribuição de alinhamentos dos planos."""
+    resp = client.get("/planos")
+    assert resp.status_code == 200
+    planes = resp.json()
+    
+    # Verifica se há planos de diferentes alinhamentos
+    alignments = set(plane["alinhamento"] for plane in planes if plane.get("alinhamento"))
+    assert len(alignments) > 1  # Deve ter pelo menos 2 alinhamentos diferentes
+
+# ============================================================================
+# TESTES DE CHANGELOG
+# ============================================================================
+
+def test_get_changelog():
+    """Testa listagem do changelog completo."""
+    resp = client.get("/changelog")
+    assert resp.status_code == 200
+    changelog = resp.json()
+    assert isinstance(changelog, dict)
+    assert "current_version" in changelog
+    assert "total_versions" in changelog
+    assert "versions" in changelog
+    assert isinstance(changelog["versions"], list)
+    assert len(changelog["versions"]) > 0
+
+def test_get_latest_version():
+    """Testa busca da versão mais recente."""
+    resp = client.get("/changelog/latest")
+    assert resp.status_code == 200
+    version = resp.json()
+    assert isinstance(version, dict)
+    assert "version" in version
+    assert "release_date" in version
+    assert "codename" in version
+    assert "description" in version
+    assert "changes" in version
+    assert "statistics" in version
+
+def test_get_version_details():
+    """Testa busca de detalhes de uma versão específica."""
+    resp = client.get("/changelog/2.0.0")
+    assert resp.status_code == 200
+    version = resp.json()
+    assert isinstance(version, dict)
+    assert "version" in version
+    assert version["version"] == "2.0.0"
+    assert "release_date" in version
+    assert "codename" in version
+    assert "description" in version
+    assert "changes" in version
+    assert "statistics" in version
+
+def test_get_version_details_not_found():
+    """Testa busca de versão inexistente."""
+    resp = client.get("/changelog/99.0.0")
+    assert resp.status_code == 404
+
+def test_changelog_data_structure():
+    """Testa estrutura de dados do changelog."""
+    resp = client.get("/changelog/2.0.0")
+    assert resp.status_code == 200
+    version = resp.json()
+    
+    # Campos obrigatórios
+    required_fields = ["version", "release_date", "codename", "description", "changes", "statistics"]
+    for field in required_fields:
+        assert field in version
+    
+    # Verifica tipos de dados
+    assert isinstance(version["version"], str)
+    assert isinstance(version["release_date"], str)
+    assert isinstance(version["codename"], str)
+    assert isinstance(version["description"], str)
+    assert isinstance(version["changes"], list)
+    assert isinstance(version["statistics"], dict)
+    
+    # Verifica estrutura das mudanças
+    for change in version["changes"]:
+        assert "type" in change
+        assert "description" in change
+        assert "details" in change
+        assert isinstance(change["type"], str)
+        assert isinstance(change["description"], str)
+        assert isinstance(change["details"], list)
+
+def test_changelog_version_order():
+    """Testa se as versões estão ordenadas corretamente."""
+    resp = client.get("/changelog")
+    assert resp.status_code == 200
+    changelog = resp.json()
+    
+    versions = changelog["versions"]
+    assert len(versions) > 1
+    
+    # Verifica se a primeira versão é a mais recente
+    latest_version = versions[0]
+    assert latest_version["version"] == "2.0.0"
+
+def test_changelog_statistics():
+    """Testa se as estatísticas estão presentes."""
+    resp = client.get("/changelog/2.0.0")
+    assert resp.status_code == 200
+    version = resp.json()
+    
+    statistics = version["statistics"]
+    assert isinstance(statistics, dict)
+    assert len(statistics) > 0
+    
+    # Verifica se há estatísticas relevantes
+    expected_stats = ["endpoints", "conditions", "spells", "deities"]
+    for stat in expected_stats:
+        assert stat in statistics
+
+# ============================================================================
+# ATUALIZAÇÃO DOS ENDPOINTS PARA TESTAR
+# ============================================================================
+
+def test_all_endpoints_covered():
+    """Testa se todos os endpoints estão cobertos pelos testes."""
+    # Lista de todos os endpoints que devem ser testados
+    endpoints_to_test = [
+        ("/", "GET"),
+        ("/racas", "GET"),
+        ("/racas/{id}", "GET"),
+        ("/subracas", "GET"),
+        ("/subracas/{id}", "GET"),
+        ("/classes", "GET"),
+        ("/classes/{id}", "GET"),
+        ("/backgrounds", "GET"),
+        ("/backgrounds/{id}", "GET"),
+        ("/backgrounds/{id}/traits", "GET"),
+        ("/equipment", "GET"),
+        ("/equipment/{id}", "GET"),
+        ("/weapons", "GET"),
+        ("/weapons/{id}", "GET"),
+        ("/armor", "GET"),
+        ("/armor/{id}", "GET"),
+        ("/tools", "GET"),
+        ("/tools/{id}", "GET"),
+        ("/mounts", "GET"),
+        ("/mounts/{id}", "GET"),
+        ("/currency", "GET"),
+        ("/currency/{id}", "GET"),
+        ("/services", "GET"),
+        ("/services/{id}", "GET"),
+        ("/lifestyles", "GET"),
+        ("/lifestyles/{id}", "GET"),
+        ("/abilities", "GET"),
+        ("/abilities/{id}", "GET"),
+        ("/skills", "GET"),
+        ("/skills/{id}", "GET"),
+        ("/feats", "GET"),
+        ("/feats/{id}", "GET"),
+        ("/multiclass", "GET"),
+        ("/multiclass/{classe}", "GET"),
+        ("/rules", "GET"),
+        ("/rules/{id}", "GET"),
+        ("/rules/combat", "GET"),
+        ("/rules/spells", "GET"),
+        ("/rules/spells/components", "GET"),
+        ("/rules/spells/rituals", "GET"),
+        ("/rules/spells/slot-table", "GET"),
+        ("/conditions", "GET"),
+        ("/conditions/{id}", "GET"),
+        ("/conditions/busca/{nome}", "GET"),
+        ("/deuses", "GET"),
+        ("/deuses/{id}", "GET"),
+        ("/deuses/busca/{nome}", "GET"),
+        ("/spells", "GET"),
+        ("/spells/{id}", "GET"),
+        ("/spells/nivel/{nivel}", "GET"),
+        ("/spells/escola/{escola}", "GET"),
+        ("/spells/classe/{classe}", "GET"),
+        ("/spells/classes/{class_name}", "GET"),
+        ("/spells/ritual", "GET"),
+        ("/spells/concentracao", "GET"),
+        ("/spells/busca/{nome}", "GET"),
+        ("/planos", "GET"),
+        ("/planos/{id}", "GET"),
+        ("/planos/tipos/{tipo}", "GET"),
+        ("/planos/alinhamentos/{alinhamento}", "GET"),
+        ("/changelog", "GET"),
+        ("/changelog/latest", "GET"),
+        ("/changelog/{version}", "GET"),
+    ]
+    
+    # Verifica se todos os endpoints respondem (mesmo que com 404 para IDs inexistentes)
+    for endpoint, method in endpoints_to_test:
+        if "{id}" in endpoint:
+            # Para endpoints com ID, testa com ID inexistente
+            resp = client.get(endpoint.replace("{id}", "999"))
+            assert resp.status_code in [200, 404, 422]
+        else:
+            resp = client.get(endpoint)
+            assert resp.status_code in [200, 404, 422]
+
+def test_all_filters_covered():
+    """Testa se todos os filtros estão cobertos pelos testes."""
+    # Lista de filtros que devem ser testados
+    filters_to_test = [
+        ("/racas", "nome"),
+        ("/classes", "nome"),
+        ("/backgrounds", "name"),
+        ("/backgrounds", "prof"),
+        ("/backgrounds", "ideal"),
+        ("/equipment", "cost"),
+        ("/equipment", "weight"),
+        ("/weapons", "type"),
+        ("/weapons", "property"),
+        ("/weapons", "damage"),
+        ("/armor", "type"),
+        ("/armor", "ac"),
+        ("/armor", "stealth_penalty"),
+        ("/tools", "category"),
+        ("/tools", "type"),
+        ("/mounts", "type"),
+        ("/skills", "ability"),
+        ("/feats", "prerequisite"),
+        ("/rules", "type"),
+        ("/conditions", "effect"),
+        ("/conditions", "source"),
+        ("/deuses", "panteao"),
+        ("/deuses", "dominio"),
+        ("/deuses", "alinhamento"),
+        ("/spells", "school"),
+        ("/spells", "class"),
+        ("/spells", "component"),
+        ("/spells", "ritual"),
+        ("/spells", "concentration"),
+        ("/spells", "range"),
+        ("/planos", "tipo"),
+        ("/planos", "alinhamento"),
+        ("/planos", "associado_a"),
+    ]
+
+    for endpoint, filter_param in filters_to_test:
+        resp = client.get(f"{endpoint}?{filter_param}=test")
+        # Alguns filtros podem retornar 422 para valores inválidos, o que é aceitável
+        assert resp.status_code in [200, 422]
+    
+    # Testa filtros numéricos separadamente
+    numeric_filters = [
+        ("/spells", "level", "1")
+    ]
+    
+    for endpoint, filter_param, value in numeric_filters:
+        resp = client.get(f"{endpoint}?{filter_param}={value}")
+        assert resp.status_code == 200
+
+# ============================================================================
+# ATUALIZAÇÃO DOS PARAMETRIZADOS
+# ============================================================================
+
+@pytest.mark.parametrize("endpoint", [
+    "/", "/racas", "/subracas", "/classes", "/backgrounds", "/equipment",
+    "/weapons", "/armor", "/tools", "/mounts", "/currency", "/services", "/lifestyles", "/spells",
+    "/abilities", "/skills", "/feats", "/multiclass", "/rules", "/conditions", "/deuses", "/planos", "/changelog"
+])
+@pytest.mark.parametrize("method", ["post", "put", "delete", "patch"])
+def test_method_not_allowed(endpoint, method):
+    resp = getattr(client, method)(endpoint)
+    assert resp.status_code in [405, 422]  # 422 se o endpoint espera body obrigatório
+
+@pytest.mark.parametrize("endpoint", [
+    "/", "/racas", "/classes", "/equipment", "/weapons", "/spells", "/conditions", "/deuses", "/planos", "/changelog"
+])
+def test_head_and_options(endpoint):
+    resp = client.head(endpoint)
+    # FastAPI pode não suportar HEAD, então aceita 405
+    assert resp.status_code in [200, 404, 405]
+    resp = client.options(endpoint)
+    # FastAPI pode não suportar OPTIONS, então aceita 405
+    assert resp.status_code in [200, 204, 405]
+
+@pytest.mark.parametrize("endpoint", [
+    "/racas", "/subracas", "/classes", "/backgrounds", "/equipment",
+    "/weapons", "/armor", "/tools", "/mounts", "/currency", "/services", "/lifestyles", "/spells",
+    "/abilities", "/skills", "/feats", "/multiclass", "/rules", "/conditions", "/deuses", "/planos"
+])
+@pytest.mark.parametrize("bad_id", ["0", "-1"])
+def test_invalid_id_values(endpoint, bad_id):
+    resp = client.get(f"{endpoint}/{bad_id}")
+    # Alguns endpoints podem aceitar ID 0, então aceita 200 também
+    assert resp.status_code in [404, 422, 200]
+
 print("✅ Todos os testes foram definidos!")
 print("📊 Cobertura de testes:")
 print("   - Endpoint raiz: ✅")
@@ -2245,6 +2674,8 @@ print("   - Regras de conjuração: ✅")
 print("   - Condições: ✅")
 print("   - Divindades: ✅")
 print("   - Magias: ✅")
+print("   - Planos de Existência: ✅")
+print("   - Changelog: ✅")
 print("   - Filtros avançados: ✅")
 print("   - Casos de erro: ✅")
 print("   - Validação de dados: ✅")
@@ -2253,5 +2684,5 @@ print("   - Segurança: ✅")
 print("   - Estabilidade: ✅")
 print("   - Documentação: ✅")
 print("")
-print("🎯 Total de testes: 180+")
+print("🎯 Total de testes: 200+")
 print("🚀 Execute com: pytest test_api.py -v") 
