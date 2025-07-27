@@ -1,0 +1,290 @@
+[
+  {
+    "id": "senhor-dos-aneis",
+    "titulo": "O Senhor dos Anéis",
+    "autor": "J.R.R. Tolkien",
+    "categoria": "Fantasia",
+    "descricao": "Trilogia épica que estabeleceu muitos dos fundamentos da fantasia moderna, incluindo raças como elfos, anões e hobbits.",
+    "influencia": "Inspirou diretamente as raças e o mundo de D&D, especialmente os elfos e anões. Influenciou o conceito de magia e aventura épica. Base fundamental para o mundo de Forgotten Realms."
+  },
+  {
+    "id": "conan-o-barbaro",
+    "titulo": "Conan, o Bárbaro",
+    "autor": "Robert E. Howard",
+    "categoria": "Espada e Feitiçaria",
+    "descricao": "Série de contos sobre o guerreiro bárbaro Conan em um mundo de fantasia sombria.",
+    "influencia": "Inspirou a classe Bárbaro e o conceito de mundos de fantasia sombria e brutal."
+  },
+  {
+    "id": "duna",
+    "titulo": "Duna",
+    "autor": "Frank Herbert",
+    "categoria": "Ficção Científica",
+    "descricao": "Romance de ficção científica que explora temas de política, religião e ecologia em um mundo desértico.",
+    "influencia": "Inspirou conceitos de desertos mágicos, culturas nômades e sistemas políticos complexos em D&D."
+  },
+  {
+    "id": "mitologia-nordica",
+    "titulo": "Mitologia Nórdica",
+    "autor": "Vários",
+    "categoria": "Mitologia",
+    "descricao": "Conjunto de lendas e mitos dos povos nórdicos, incluindo deuses como Odin, Thor e Loki.",
+    "influencia": "Inspirou deuses, criaturas e conceitos mágicos em D&D, especialmente no panteão nórdico."
+  },
+  {
+    "id": "mitologia-grega",
+    "titulo": "Mitologia Grega",
+    "autor": "Vários",
+    "categoria": "Mitologia",
+    "descricao": "Conjunto de mitos e lendas da Grécia Antiga, incluindo deuses do Olimpo e heróis como Hércules.",
+    "influencia": "Inspirou deuses, criaturas míticas e conceitos de heróis épicos em D&D."
+  },
+  {
+    "id": "mitologia-celta",
+    "titulo": "Mitologia Celta",
+    "autor": "Vários",
+    "categoria": "Mitologia",
+    "descricao": "Tradições mitológicas dos povos celtas, incluindo fadas, druidas e magia natural.",
+    "influencia": "Inspirou a classe Druida, criaturas feéricas e conceitos de magia natural em D&D."
+  },
+  {
+    "id": "fafhrd-e-o-mago-cinzento",
+    "titulo": "Fafhrd e o Mago Cinzento",
+    "autor": "Fritz Leiber",
+    "categoria": "Espada e Feitiçaria",
+    "descricao": "Série de contos sobre dois aventureiros em uma cidade de fantasia sombria.",
+    "influencia": "Inspirou o conceito de cidades de fantasia e aventureiros mercenários em D&D."
+  },
+  {
+    "id": "elric-de-melnibone",
+    "titulo": "Elric de Melniboné",
+    "autor": "Michael Moorcock",
+    "categoria": "Espada e Feitiçaria",
+    "descricao": "Série sobre um imperador albino que usa uma espada demoníaca para drenar almas.",
+    "influencia": "Inspirou conceitos de armas mágicas, pactos demoníacos e anti-heróis em D&D."
+  },
+  {
+    "id": "terra-morta",
+    "titulo": "Terra Morta",
+    "autor": "Clark Ashton Smith",
+    "categoria": "Terror",
+    "descricao": "Série de contos de horror cósmico e fantasia sombria.",
+    "influencia": "Inspirou conceitos de horror cósmico e criaturas alienígenas em D&D."
+  },
+  {
+    "id": "chamado-de-cthulhu",
+    "titulo": "O Chamado de Cthulhu",
+    "autor": "H.P. Lovecraft",
+    "categoria": "Terror",
+    "descricao": "Conto sobre uma criatura cósmica adormecida e seus cultistas.",
+    "influencia": "Inspirou criaturas cósmicas, cultos malignos e horror cósmico em D&D."
+  },
+  {
+    "id": "montanhas-da-loucura",
+    "titulo": "Nas Montanhas da Loucura",
+    "autor": "H.P. Lovecraft",
+    "categoria": "Terror",
+    "descricao": "Romance sobre uma expedição à Antártida que descobre ruínas alienígenas.",
+    "influencia": "Inspirou conceitos de civilizações perdidas e criaturas alienígenas em D&D."
+  },
+  {
+    "id": "sombra-sobre-insmouth",
+    "titulo": "A Sombra Sobre Innsmouth",
+    "autor": "H.P. Lovecraft",
+    "categoria": "Terror",
+    "descricao": "Conto sobre uma cidade costeira habitada por criaturas híbridas.",
+    "influencia": "Inspirou criaturas híbridas e cidades corrompidas em D&D."
+  },
+  {
+    "id": "mitologia-chinesa",
+    "titulo": "Mitologia Chinesa",
+    "autor": "Vários",
+    "categoria": "Mitologia",
+    "descricao": "Conjunto de lendas e mitos da China, incluindo dragões, fênix e deuses celestiais.",
+    "influencia": "Inspirou criaturas como dragões orientais e conceitos de magia celestial em D&D."
+  },
+  {
+    "id": "mitologia-japonesa",
+    "titulo": "Mitologia Japonesa",
+    "autor": "Vários",
+    "categoria": "Mitologia",
+    "descricao": "Tradições mitológicas do Japão, incluindo kami, yokai e samurais.",
+    "influencia": "Inspirou criaturas sobrenaturais e conceitos de honra e bushido em D&D."
+  },
+  {
+    "id": "mitologia-egipcia",
+    "titulo": "Mitologia Egípcia",
+    "autor": "Vários",
+    "categoria": "Mitologia",
+    "descricao": "Conjunto de mitos e lendas do Antigo Egito, incluindo deuses como Rá, Anúbis e Ísis.",
+    "influencia": "Inspirou deuses, mumificação e conceitos de vida após a morte em D&D."
+  },
+  {
+    "id": "mitologia-hindu",
+    "titulo": "Mitologia Hindu",
+    "autor": "Vários",
+    "categoria": "Mitologia",
+    "descricao": "Tradições mitológicas da Índia, incluindo deuses como Brahma, Vishnu e Shiva.",
+    "influencia": "Inspirou conceitos de reencarnação, karma e deuses múltiplos em D&D."
+  },
+  {
+    "id": "mitologia-maia",
+    "titulo": "Mitologia Maia",
+    "autor": "Vários",
+    "categoria": "Mitologia",
+    "descricao": "Tradições mitológicas dos povos maias, incluindo deuses da natureza e do tempo.",
+    "influencia": "Inspirou conceitos de calendários mágicos e deuses da natureza em D&D."
+  },
+  {
+    "id": "mitologia-azteca",
+    "titulo": "Mitologia Asteca",
+    "autor": "Vários",
+    "categoria": "Mitologia",
+    "descricao": "Tradições mitológicas dos povos astecas, incluindo sacrifícios e deuses da guerra.",
+    "influencia": "Inspirou conceitos de sacrifícios rituais e deuses da guerra em D&D."
+  },
+  {
+    "id": "mitologia-inca",
+    "titulo": "Mitologia Inca",
+    "autor": "Vários",
+    "categoria": "Mitologia",
+    "descricao": "Tradições mitológicas dos povos incas, incluindo deuses da montanha e do sol.",
+    "influencia": "Inspirou conceitos de deuses da natureza e civilizações perdidas em D&D."
+  },
+  {
+    "id": "mitologia-persa",
+    "titulo": "Mitologia Persa",
+    "autor": "Vários",
+    "categoria": "Mitologia",
+    "descricao": "Tradições mitológicas da Pérsia, incluindo deuses como Ahura Mazda e Angra Mainyu.",
+    "influencia": "Inspirou conceitos de dualidade entre bem e mal e deuses da luz e escuridão em D&D."
+  },
+  {
+    "id": "mitologia-babilonica",
+    "titulo": "Mitologia Babilônica",
+    "autor": "Vários",
+    "categoria": "Mitologia",
+    "descricao": "Tradições mitológicas da Babilônia, incluindo a Epopeia de Gilgamesh.",
+    "influencia": "Inspirou conceitos de heróis épicos e civilizações antigas em D&D."
+  },
+  {
+    "id": "mitologia-sumeria",
+    "titulo": "Mitologia Suméria",
+    "autor": "Vários",
+    "categoria": "Mitologia",
+    "descricao": "Tradições mitológicas dos sumérios, incluindo deuses da criação e do conhecimento.",
+    "influencia": "Inspirou conceitos de deuses da sabedoria e civilizações perdidas em D&D."
+  },
+  {
+    "id": "mitologia-fenicia",
+    "titulo": "Mitologia Fenícia",
+    "autor": "Vários",
+    "categoria": "Mitologia",
+    "descricao": "Tradições mitológicas dos fenícios, incluindo deuses marítimos e comerciais.",
+    "influencia": "Inspirou conceitos de deuses do mar e comércio em D&D."
+  },
+  {
+    "id": "mitologia-cartaginesa",
+    "titulo": "Mitologia Cartaginesa",
+    "autor": "Vários",
+    "categoria": "Mitologia",
+    "descricao": "Tradições mitológicas de Cartago, incluindo deuses como Baal e Tanit.",
+    "influencia": "Inspirou conceitos de deuses da fertilidade e sacrifícios em D&D."
+  },
+  {
+    "id": "mitologia-cananeia",
+    "titulo": "Mitologia Cananéia",
+    "autor": "Vários",
+    "categoria": "Mitologia",
+    "descricao": "Tradições mitológicas dos cananeus, incluindo deuses como El e Baal.",
+    "influencia": "Inspirou conceitos de deuses da tempestade e fertilidade em D&D."
+  },
+  {
+    "id": "mitologia-hebraica",
+    "titulo": "Mitologia Hebraica",
+    "autor": "Vários",
+    "categoria": "Mitologia",
+    "descricao": "Tradições mitológicas dos hebreus, incluindo anjos, demônios e profetas.",
+    "influencia": "Inspirou conceitos de anjos, demônios e seres celestiais em D&D."
+  },
+  {
+    "id": "mitologia-islamica",
+    "titulo": "Mitologia Islâmica",
+    "autor": "Vários",
+    "categoria": "Mitologia",
+    "descricao": "Tradições mitológicas do Islã, incluindo djinns e seres sobrenaturais.",
+    "influencia": "Inspirou conceitos de djinns e seres elementais em D&D."
+  },
+  {
+    "id": "mitologia-zoroastriana",
+    "titulo": "Mitologia Zoroastriana",
+    "autor": "Vários",
+    "categoria": "Mitologia",
+    "descricao": "Tradições mitológicas do Zoroastrismo, incluindo Ahura Mazda e Angra Mainyu.",
+    "influencia": "Inspirou conceitos de dualidade cósmica e deuses da luz e escuridão em D&D."
+  },
+  {
+    "id": "mitologia-budista",
+    "titulo": "Mitologia Budista",
+    "autor": "Vários",
+    "categoria": "Mitologia",
+    "descricao": "Tradições mitológicas do Budismo, incluindo bodhisattvas e reinos de existência.",
+    "influencia": "Inspirou conceitos de iluminação e reinos espirituais em D&D."
+  },
+  {
+    "id": "mitologia-xintoista",
+    "titulo": "Mitologia Xintoísta",
+    "autor": "Vários",
+    "categoria": "Mitologia",
+    "descricao": "Tradições mitológicas do Xintoísmo, incluindo kami e espíritos da natureza.",
+    "influencia": "Inspirou conceitos de espíritos da natureza e kami em D&D."
+  },
+  {
+    "id": "mitologia-taoista",
+    "titulo": "Mitologia Taoísta",
+    "autor": "Vários",
+    "categoria": "Mitologia",
+    "descricao": "Tradições mitológicas do Taoísmo, incluindo imortais e conceitos de yin-yang.",
+    "influencia": "Inspirou conceitos de imortalidade e equilíbrio cósmico em D&D."
+  },
+  {
+    "id": "mitologia-confucionista",
+    "titulo": "Mitologia Confucionista",
+    "autor": "Vários",
+    "categoria": "Mitologia",
+    "descricao": "Tradições mitológicas do Confucionismo, incluindo ancestrais e virtudes.",
+    "influencia": "Inspirou conceitos de honra aos ancestrais e virtudes em D&D."
+  },
+  {
+    "id": "mitologia-africana",
+    "titulo": "Mitologia Africana",
+    "autor": "Vários",
+    "categoria": "Mitologia",
+    "descricao": "Tradições mitológicas da África, incluindo deuses da natureza e ancestrais.",
+    "influencia": "Inspirou conceitos de deuses da natureza e culto aos ancestrais em D&D."
+  },
+  {
+    "id": "mitologia-americana-nativa",
+    "titulo": "Mitologia Americana Nativa",
+    "autor": "Vários",
+    "categoria": "Mitologia",
+    "descricao": "Tradições mitológicas dos povos nativos americanos, incluindo espíritos animais e xamãs.",
+    "influencia": "Inspirou conceitos de xamanismo e espíritos animais em D&D."
+  },
+  {
+    "id": "mitologia-australiana",
+    "titulo": "Mitologia Australiana",
+    "autor": "Vários",
+    "categoria": "Mitologia",
+    "descricao": "Tradições mitológicas dos aborígenes australianos, incluindo o Dreamtime.",
+    "influencia": "Inspirou conceitos de reinos dos sonhos e criaturas únicas em D&D."
+  },
+  {
+    "id": "mitologia-polinesia",
+    "titulo": "Mitologia Polinésia",
+    "autor": "Vários",
+    "categoria": "Mitologia",
+    "descricao": "Tradições mitológicas dos povos polinésios, incluindo deuses do mar e navegação.",
+    "influencia": "Inspirou conceitos de deuses do mar e navegação mágica em D&D."
+  }
+]

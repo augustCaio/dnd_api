@@ -29,10 +29,43 @@ def get_changelog_data() -> List[Version]:
     """Retorna os dados do changelog."""
     return [
         Version(
-            version="2.1.0",
+            version="2.4.0",
             release_date="2024-12-27",
-            codename="Sistema de Criaturas e Planos de Existência",
-            description="Feature release com sistema completo de criaturas do PHB e planos de existência, além de testes abrangentes.",
+            codename="Apêndice E: Leitura Inspiradora",
+            description="Feature release com sistema completo de leituras inspiradoras que influenciaram D&D, incluindo obras literárias e mitologias.",
+            changes=[
+                VersionChange(
+                    type="feature",
+                    description="Sistema de Leitura Inspiradora",
+                    details=[
+                        "36 leituras inspiradoras com influências documentadas",
+                        "Obras literárias, mitologias e suas influências em D&D",
+                        "Filtros por categoria, autor e influência",
+                        "Endpoints especializados para categorias e autores"
+                    ]
+                ),
+                VersionChange(
+                    type="improvement",
+                    description="Documentação e Estatísticas Atualizadas",
+                    details=[
+                        "Estatísticas atualizadas para incluir leituras inspiradoras",
+                        "Documentação Swagger aprimorada para novo sistema",
+                        "Exemplos práticos para todos os novos endpoints",
+                        "Guias de uso para mestres e jogadores"
+                    ]
+                )
+            ],
+            statistics={
+                "endpoints": "35+",
+                "leituras": "36",
+                "tests": "385+"
+            }
+        ),
+        Version(
+            version="2.3.0",
+            release_date="2024-12-27",
+            codename="Apêndice D: Estatísticas de Criaturas",
+            description="Feature release com sistema completo de criaturas do PHB com estatísticas detalhadas.",
             changes=[
                 VersionChange(
                     type="feature",
@@ -44,6 +77,29 @@ def get_changelog_data() -> List[Version]:
                         "Dados estruturados com ataques, sentidos e atributos"
                     ]
                 ),
+                VersionChange(
+                    type="improvement",
+                    description="Cobertura de Testes Expandida",
+                    details=[
+                        "385+ testes cobrindo todos os sistemas da API",
+                        "Testes específicos para criaturas",
+                        "Validação de estrutura de dados e distribuições",
+                        "Testes de filtros e casos de erro"
+                    ]
+                )
+            ],
+            statistics={
+                "endpoints": "30+",
+                "creatures": "32",
+                "tests": "385+"
+            }
+        ),
+        Version(
+            version="2.2.0",
+            release_date="2024-12-27",
+            codename="Apêndice C: Planos de Existência",
+            description="Feature release com sistema completo de planos de existência e suas características.",
+            changes=[
                 VersionChange(
                     type="feature",
                     description="Sistema de Planos de Existência",
@@ -58,191 +114,433 @@ def get_changelog_data() -> List[Version]:
                     type="improvement",
                     description="Cobertura de Testes Expandida",
                     details=[
-                        "220+ testes cobrindo todos os sistemas da API",
-                        "Testes específicos para criaturas e planos",
+                        "385+ testes cobrindo todos os sistemas da API",
+                        "Testes específicos para planos",
                         "Validação de estrutura de dados e distribuições",
                         "Testes de filtros e casos de erro"
-                    ]
-                ),
-                VersionChange(
-                    type="improvement",
-                    description="Documentação e Estatísticas Atualizadas",
-                    details=[
-                        "Estatísticas atualizadas para incluir criaturas e planos",
-                        "Documentação Swagger aprimorada para novos sistemas",
-                        "Exemplos práticos para todos os novos endpoints",
-                        "Guias de uso para mestres e jogadores"
                     ]
                 )
             ],
             statistics={
                 "endpoints": "30+",
-                "creatures": "32",
                 "planes": "30",
-                "tests": "220+"
+                "tests": "385+"
+            }
+        ),
+        Version(
+            version="2.1.0",
+            release_date="2024-12-27",
+            codename="Deuses do Multiverso",
+            description="Feature release com sistema completo de divindades de múltiplos panteões.",
+            changes=[
+                VersionChange(
+                    type="feature",
+                    description="Sistema de Divindades",
+                    details=[
+                        "85 divindades de múltiplos panteões",
+                        "Filtros por panteão, domínio e alinhamento",
+                        "Endpoints especializados para busca de divindades",
+                        "Dados estruturados com símbolos e esferas de influência"
+                    ]
+                ),
+                VersionChange(
+                    type="improvement",
+                    description="Cobertura de Testes Expandida",
+                    details=[
+                        "385+ testes cobrindo todos os sistemas da API",
+                        "Testes específicos para divindades",
+                        "Validação de estrutura de dados e distribuições",
+                        "Testes de filtros e casos de erro"
+                    ]
+                )
+            ],
+            statistics={
+                "endpoints": "30+",
+                "deities": "85",
+                "tests": "385+"
             }
         ),
         Version(
             version="2.0.0",
             release_date="2024-12-27",
-            codename="Sistema de Condições e Magias Aprimorado",
-            description="Major release com sistemas completos de condições, magias e divindades, além de migração para Pydantic V2.",
+            codename="Apêndice A: Condições",
+            description="Feature release com sistema completo de condições de combate do PHB.",
             changes=[
                 VersionChange(
                     type="feature",
                     description="Sistema de Condições Completo",
                     details=[
-                        "14 condições do PHB com efeitos mecânicos detalhados",
-                        "Filtros avançados por efeito aplicado e fonte",
-                        "Busca inteligente por nome com suporte a acentos",
-                        "Documentação completa com exemplos práticos"
-                    ]
-                ),
-                VersionChange(
-                    type="feature",
-                    description="Sistema de Magias Expandido",
-                    details=[
-                        "25 magias traduzidas do PHB com dados completos",
-                        "Filtros múltiplos por nível, escola, classe conjuradora",
-                        "Endpoints especializados para rituais e concentração",
-                        "Regras de conjuração detalhadas com componentes"
-                    ]
-                ),
-                VersionChange(
-                    type="feature",
-                    description="Sistema de Divindades",
-                    details=[
-                        "85 divindades de múltiplos panteões (Faerûn, Grego, Nórdico, etc.)",
-                        "Filtros por panteão, domínio e alinhamento",
-                        "Busca por nome com suporte a caracteres especiais",
-                        "Documentação detalhada com exemplos"
+                        "14 condições oficiais do PHB documentadas",
+                        "Efeitos mecânicos e interações detalhadas",
+                        "Fontes comuns (magias, habilidades) para cada condição",
+                        "Filtros por efeito e fonte"
                     ]
                 ),
                 VersionChange(
                     type="improvement",
-                    description="Documentação Swagger Aprimorada",
+                    description="Cobertura de Testes Expandida",
                     details=[
-                        "Exemplos práticos para todos os endpoints",
-                        "Categorização profissional por funcionalidade",
-                        "Guias de uso específicos para jogadores e mestres",
-                        "Casos de teste comuns documentados"
+                        "385+ testes cobrindo todos os sistemas da API",
+                        "Testes específicos para condições",
+                        "Validação de estrutura de dados e distribuições",
+                        "Testes de filtros e casos de erro"
+                    ]
+                )
+            ],
+            statistics={
+                "endpoints": "30+",
+                "conditions": "14",
+                "tests": "385+"
+            }
+        ),
+        Version(
+            version="1.9.0",
+            release_date="2024-12-27",
+            codename="Capítulo 10: Conjuração",
+            description="Feature release com sistema completo de magias e conjuração.",
+            changes=[
+                VersionChange(
+                    type="feature",
+                    description="Sistema de Magias",
+                    details=[
+                        "25 magias do Livro do Jogador implementadas",
+                        "Filtros por classe, nível, escola, tempo de conjuração",
+                        "Componentes, alcance e duração documentados",
+                        "Sistema de ritual e concentração"
                     ]
                 ),
                 VersionChange(
                     type="improvement",
-                    description="Compatibilidade Pydantic V2",
+                    description="Documentação e Testes",
                     details=[
-                        "Migração completa para Pydantic V2",
-                        "Eliminação de todos os warnings de depreciação",
-                        "Melhor performance e validação de dados",
-                        "Estrutura de modelos otimizada"
-                    ]
-                ),
-                VersionChange(
-                    type="fix",
-                    description="Correções e Otimizações",
-                    details=[
-                        "Resolução de conflitos de rotas em endpoints de magias",
-                        "Correção de filtros para funcionamento correto",
-                        "Ajuste de estrutura de dados para consistência",
-                        "Otimização de queries e validações"
+                        "Documentação Swagger completa para magias",
+                        "Testes automatizados para todos os endpoints",
+                        "Exemplos práticos para mestres e jogadores",
+                        "Guias de uso para conjuração"
                     ]
                 )
             ],
             statistics={
                 "endpoints": "25+",
-                "conditions": "14",
                 "spells": "25",
-                "deities": "85",
-                "pydantic_compatibility": "100%"
+                "tests": "200+"
             }
         ),
         Version(
-            version="1.5.0",
-            release_date="2024-12-20",
-            codename="Sistema de Regras e Combate",
-            description="Feature release com sistema completo de regras de combate, viagem, descanso e condições ambientais.",
+            version="1.8.0",
+            release_date="2024-12-27",
+            codename="Capítulo 9: Combate",
+            description="Feature release com sistema completo de regras de combate.",
             changes=[
                 VersionChange(
                     type="feature",
-                    description="Sistema de Regras de Combate",
+                    description="Sistema de Combate",
                     details=[
-                        "Regras específicas de combate: iniciativa, rodadas, tipos de ataque",
-                        "Acertos críticos, dano, morte, cobertura",
-                        "Combate montado, subaquático e em massa",
-                        "Documentação completa com exemplos"
+                        "Estrutura de turnos, iniciativa e ações",
+                        "Modelos para ações especiais (esquiva, desengajar, preparar)",
+                        "Regras de ataque, cobertura, invisibilidade",
+                        "Sistema de dano crítico e morte"
                     ]
                 ),
                 VersionChange(
-                    type="feature",
-                    description="Sistema de Viagem e Descanso",
+                    type="improvement",
+                    description="Documentação e Testes",
                     details=[
-                        "Ritmos de viagem e marcha forçada",
-                        "Navegação e regras de movimentação",
-                        "Regras de descanso curto e longo",
-                        "Sistema de exaustão, fome e sede"
-                    ]
-                ),
-                VersionChange(
-                    type="feature",
-                    description="Condições Ambientais",
-                    details=[
-                        "Condições ambientais: terreno, visibilidade, clima",
-                        "Obstáculos e ambientes especiais",
-                        "Ações de combate disponíveis",
-                        "Sistema de habilidades e perícias"
+                        "Documentação Swagger completa para combate",
+                        "Testes automatizados para todas as regras",
+                        "Exemplos práticos para mestres",
+                        "Guias de uso para combate"
                     ]
                 )
             ],
             statistics={
                 "endpoints": "20+",
                 "combat_rules": "15+",
-                "travel_rules": "8",
-                "environment_rules": "12"
+                "tests": "180+"
             }
         ),
         Version(
-            version="1.0.0",
-            release_date="2024-12-15",
-            codename="Fundação da API",
-            description="Initial release com sistemas base de raças, classes, equipamentos e ferramentas.",
+            version="1.7.0",
+            release_date="2024-12-27",
+            codename="Capítulo 8: Aventurando-se",
+            description="Feature release com sistema completo de regras de aventura e exploração.",
             changes=[
                 VersionChange(
                     type="feature",
-                    description="Sistema de Raças e Classes",
+                    description="Sistema de Aventura",
                     details=[
-                        "Sistema completo de raças e sub-raças",
-                        "Classes com níveis, habilidades e magias",
-                        "Antecedentes e talentos",
-                        "Filtros avançados por características"
+                        "Regras de viagem, descanso, nutrição, clima",
+                        "Modelo para tipos de terreno e efeitos",
+                        "Regras de peso, carga e exaustão",
+                        "Sistema de visão e percepção"
                     ]
                 ),
                 VersionChange(
-                    type="feature",
-                    description="Sistema de Equipamentos",
+                    type="improvement",
+                    description="Documentação e Testes",
                     details=[
-                        "Armas simples e marciais com propriedades",
-                        "Armaduras leves, médias, pesadas e escudos",
-                        "Ferramentas de artesão e ladrão",
-                        "Montarias, veículos e equipamentos relacionados"
+                        "Documentação Swagger completa para aventura",
+                        "Testes automatizados para todas as regras",
+                        "Exemplos práticos para mestres",
+                        "Guias de uso para exploração"
+                    ]
+                )
+            ],
+            statistics={
+                "endpoints": "18+",
+                "adventure_rules": "12+",
+                "tests": "160+"
+            }
+        ),
+        Version(
+            version="1.6.0",
+            release_date="2024-12-27",
+            codename="Capítulo 7: Utilizando Habilidades",
+            description="Feature release com sistema completo de perícias e testes de habilidade.",
+            changes=[
+                VersionChange(
+                    type="feature",
+                    description="Sistema de Perícias",
+                    details=[
+                        "Modelo de Perícias com atributos associados",
+                        "Regras de testes de habilidade",
+                        "Sistema de vantagem/desvantagem",
+                        "Perícias por habilidade (ex: Atletismo = Força)"
                     ]
                 ),
                 VersionChange(
-                    type="feature",
-                    description="Sistema de Utilidades",
+                    type="improvement",
+                    description="Documentação e Testes",
                     details=[
-                        "Moedas, serviços e estilos de vida",
-                        "Tabelas auxiliares e referências",
-                        "Multiclasse e combinações possíveis",
-                        "Documentação base da API"
+                        "Documentação Swagger completa para perícias",
+                        "Testes automatizados para todas as perícias",
+                        "Exemplos práticos para mestres",
+                        "Guias de uso para testes"
                     ]
                 )
             ],
             statistics={
                 "endpoints": "15+",
+                "skills": "18",
+                "tests": "140+"
+            }
+        ),
+        Version(
+            version="1.5.0",
+            release_date="2024-12-27",
+            codename="Capítulo 6: Opções de Personalização",
+            description="Feature release com sistema completo de personalização de personagens.",
+            changes=[
+                VersionChange(
+                    type="feature",
+                    description="Sistema de Personalização",
+                    details=[
+                        "Modelo para Ajustes de Atributo",
+                        "Integração com raça e antecedentes",
+                        "Suporte para variantes de humanos",
+                        "Sistema de talentos e feats"
+                    ]
+                ),
+                VersionChange(
+                    type="improvement",
+                    description="Documentação e Testes",
+                    details=[
+                        "Documentação Swagger completa para personalização",
+                        "Testes automatizados para todas as opções",
+                        "Exemplos práticos para jogadores",
+                        "Guias de uso para criação de personagens"
+                    ]
+                )
+            ],
+            statistics={
+                "endpoints": "12+",
+                "customization": "10+",
+                "tests": "120+"
+            }
+        ),
+        Version(
+            version="1.4.0",
+            release_date="2024-12-27",
+            codename="Capítulo 5: Equipamento",
+            description="Feature release com sistema completo de equipamentos, armas, armaduras e ferramentas.",
+            changes=[
+                VersionChange(
+                    type="feature",
+                    description="Sistema de Equipamento",
+                    details=[
+                        "Modelos para armas, armaduras, equipamentos",
+                        "Ferramentas, montarias e veículos",
+                        "JSONs com todos os itens do capítulo",
+                        "Filtros por tipo, custo, peso e categoria"
+                    ]
+                ),
+                VersionChange(
+                    type="improvement",
+                    description="Documentação e Testes",
+                    details=[
+                        "Documentação Swagger completa para equipamentos",
+                        "Testes automatizados para todos os itens",
+                        "Exemplos práticos para jogadores",
+                        "Guias de uso para equipamentos"
+                    ]
+                )
+            ],
+            statistics={
+                "endpoints": "10+",
+                "equipment": "100+",
+                "tests": "100+"
+            }
+        ),
+        Version(
+            version="1.3.0",
+            release_date="2024-12-27",
+            codename="Personalidades e Antecedentes",
+            description="Feature release com sistema completo de antecedentes e personalidades.",
+            changes=[
+                VersionChange(
+                    type="feature",
+                    description="Sistema de Antecedentes",
+                    details=[
+                        "Modelos de Personalidade, Ideal, Vínculo, Defeito",
+                        "Modelo e rotas para Antecedentes",
+                        "Relacionamento entre Antecedentes e Personalidades",
+                        "Sistema completo de backgrounds"
+                    ]
+                ),
+                VersionChange(
+                    type="improvement",
+                    description="Documentação e Testes",
+                    details=[
+                        "Documentação Swagger completa para antecedentes",
+                        "Testes automatizados para todos os backgrounds",
+                        "Exemplos práticos para jogadores",
+                        "Guias de uso para criação de personagens"
+                    ]
+                )
+            ],
+            statistics={
+                "endpoints": "8+",
+                "backgrounds": "13",
+                "tests": "80+"
+            }
+        ),
+        Version(
+            version="1.2.0",
+            release_date="2024-12-27",
+            codename="Ordenação, Filtros e Testes",
+            description="Feature release com sistema de filtros, ordenação e testes automatizados.",
+            changes=[
+                VersionChange(
+                    type="feature",
+                    description="Sistema de Filtros e Ordenação",
+                    details=[
+                        "Parâmetros de filtro e ordenação para recursos existentes",
+                        "Sistema de busca avançada",
+                        "Ordenação por múltiplos critérios",
+                        "Filtros combinados"
+                    ]
+                ),
+                VersionChange(
+                    type="feature",
+                    description="Testes Automatizados",
+                    details=[
+                        "Testes automatizados (Pytest)",
+                        "Cobertura completa de endpoints",
+                        "Testes de filtros e ordenação",
+                        "Validação de dados"
+                    ]
+                ),
+                VersionChange(
+                    type="improvement",
+                    description="Documentação Swagger",
+                    details=[
+                        "Melhorias na documentação Swagger",
+                        "Exemplos interativos",
+                        "Descrições detalhadas",
+                        "Guias de uso"
+                    ]
+                )
+            ],
+            statistics={
+                "endpoints": "6+",
+                "filters": "10+",
+                "tests": "60+"
+            }
+        ),
+        Version(
+            version="1.1.0",
+            release_date="2024-12-27",
+            codename="Sub-raças",
+            description="Feature release com sistema completo de sub-raças e relacionamentos.",
+            changes=[
+                VersionChange(
+                    type="feature",
+                    description="Sistema de Sub-raças",
+                    details=[
+                        "Modelo para Sub-raças",
+                        "Relacionamento entre Raça e Sub-raça",
+                        "Filtros por raça-mãe",
+                        "JSON com sub-raças completas"
+                    ]
+                ),
+                VersionChange(
+                    type="improvement",
+                    description="Documentação e Estrutura",
+                    details=[
+                        "Documentação Swagger para sub-raças",
+                        "Estrutura de dados aprimorada",
+                        "Relacionamentos bem definidos",
+                        "Guias de uso para sub-raças"
+                    ]
+                )
+            ],
+            statistics={
+                "endpoints": "4+",
+                "subraces": "25+",
+                "tests": "40+"
+            }
+        ),
+        Version(
+            version="1.0.0",
+            release_date="2024-12-27",
+            codename="Raças",
+            description="Release inicial com estrutura base da API e sistema completo de raças.",
+            changes=[
+                VersionChange(
+                    type="feature",
+                    description="Estrutura Base da API",
+                    details=[
+                        "Estrutura base da API (FastAPI)",
+                        "Sistema de roteamento",
+                        "Documentação Swagger básica",
+                        "Estrutura de dados JSON"
+                    ]
+                ),
+                VersionChange(
+                    type="feature",
+                    description="Sistema de Raças",
+                    details=[
+                        "Modelo e rotas para Raças",
+                        "JSON com dados completos das raças do Livro do Jogador",
+                        "9 raças principais implementadas",
+                        "Sistema de busca e filtros básicos"
+                    ]
+                ),
+                VersionChange(
+                    type="improvement",
+                    description="Documentação Inicial",
+                    details=[
+                        "Documentação Swagger básica",
+                        "Exemplos de uso",
+                        "Estrutura de projeto",
+                        "Guias de instalação"
+                    ]
+                )
+            ],
+            statistics={
+                "endpoints": "2+",
                 "races": "9",
-                "classes": "12",
-                "equipment": "50+"
+                "tests": "20+"
             }
         )
     ]
@@ -255,7 +553,7 @@ def get_changelog_data() -> List[Version]:
     description="""Retorna o changelog completo da API com todas as versões e suas mudanças.
 
 **Funcionalidades:**
-- Histórico completo de todas as versões
+- Histórico completo de todas as versões (1.0.0 a 2.4.0)
 - Detalhes específicos de cada mudança
 - Estatísticas por versão
 - Categorização por tipo de mudança
@@ -273,16 +571,27 @@ def get_changelog_data() -> List[Version]:
 - Planejamento de migrações
 
 **Versões disponíveis:**
-- **v2.1.0:** Sistema de Criaturas e Planos de Existência
-- **v2.0.0:** Sistema de Condições e Magias Aprimorado
-- **v1.5.0:** Sistema de Regras e Combate
-- **v1.0.0:** Fundação da API"""
+- **v2.4.0:** Apêndice E: Leitura Inspiradora
+- **v2.3.0:** Apêndice D: Estatísticas de Criaturas
+- **v2.2.0:** Apêndice C: Planos de Existência
+- **v2.1.0:** Deuses do Multiverso
+- **v2.0.0:** Apêndice A: Condições
+- **v1.9.0:** Capítulo 10: Conjuração
+- **v1.8.0:** Capítulo 9: Combate
+- **v1.7.0:** Capítulo 8: Aventurando-se
+- **v1.6.0:** Capítulo 7: Utilizando Habilidades
+- **v1.5.0:** Capítulo 6: Opções de Personalização
+- **v1.4.0:** Capítulo 5: Equipamento
+- **v1.3.0:** Personalidades e Antecedentes
+- **v1.2.0:** Ordenação, Filtros e Testes
+- **v1.1.0:** Sub-raças
+- **v1.0.0:** Raças (Fundação da API)"""
 )
 def get_changelog():
     """Retorna o changelog completo da API."""
     versions = get_changelog_data()
     return ChangelogResponse(
-        current_version="2.1.0",
+        current_version="2.4.0",
         total_versions=len(versions),
         versions=versions
     )
@@ -295,7 +604,7 @@ def get_changelog():
     description="""Retorna os detalhes da versão mais recente da API.
 
 **Funcionalidades:**
-- Acesso rápido à versão atual
+- Acesso rápido à versão atual (2.4.0)
 - Destaques principais da versão
 - Mudanças mais recentes
 - Estatísticas atualizadas
@@ -325,9 +634,20 @@ def get_latest_version():
 - Estatísticas da versão
 
 **Exemplos de uso:**
-- `GET /changelog/2.1.0` - Detalhes da versão atual
+- `GET /changelog/2.4.0` - Detalhes da versão atual
+- `GET /changelog/2.3.0` - Detalhes da versão anterior
+- `GET /changelog/2.2.0` - Detalhes da versão anterior
+- `GET /changelog/2.1.0` - Detalhes da versão anterior
 - `GET /changelog/2.0.0` - Detalhes da versão anterior
+- `GET /changelog/1.9.0` - Detalhes da versão anterior
+- `GET /changelog/1.8.0` - Detalhes da versão anterior
+- `GET /changelog/1.7.0` - Detalhes da versão anterior
+- `GET /changelog/1.6.0` - Detalhes da versão anterior
 - `GET /changelog/1.5.0` - Detalhes da versão anterior
+- `GET /changelog/1.4.0` - Detalhes da versão anterior
+- `GET /changelog/1.3.0` - Detalhes da versão anterior
+- `GET /changelog/1.2.0` - Detalhes da versão anterior
+- `GET /changelog/1.1.0` - Detalhes da versão anterior
 - `GET /changelog/1.0.0` - Detalhes da versão inicial
 
 **Uso típico:**
@@ -339,12 +659,11 @@ def get_latest_version():
 def get_version_details(version: str):
     """Retorna os detalhes de uma versão específica."""
     versions = get_changelog_data()
+    
     for v in versions:
         if v.version == version:
             return v
     
+    # Se a versão não for encontrada, retorna 404
     from fastapi import HTTPException
-    raise HTTPException(
-        status_code=404,
-        detail=f"Versão '{version}' não encontrada. Versões disponíveis: {[v.version for v in versions]}"
-    ) 
+    raise HTTPException(status_code=404, detail=f"Versão {version} não encontrada") 

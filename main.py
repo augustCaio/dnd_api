@@ -22,6 +22,7 @@ from routes.spells import router as spells_router
 from routes.deities import router as deities_router
 from routes.planes import router as planes_router
 from routes.creatures import router as creatures_router
+from routes.leituras import router as leituras_router
 from routes.changelog import router as changelog_router
 
 # Definição das tags para Swagger
@@ -52,7 +53,8 @@ openapi_tags = [
     {"name": "Magias", "description": "Consulta de magias por nível, escola, classe conjuradora, componentes, ritual, concentração e outros critérios. Inclui truques e magias de 1º a 9º nível."},
     {"name": "Divindades", "description": "Sistema de divindades com panteões, alinhamentos, domínios e símbolos sagrados. Inclui divindades Faerûnianas e outras."},
     {"name": "Planos", "description": "Sistema de planos de existência com tipos, alinhamentos, associações e criaturas típicas. Inclui planos Material, Elementais, Exteriores e Transitivos."},
-    {"name": "Criaturas", "description": "Sistema de criaturas com estatísticas completas, ataques, sentidos e níveis de desafio. Inclui bestas, mortos-vivos, humanoides e outras criaturas do PHB."}
+    {"name": "Criaturas", "description": "Sistema de criaturas com estatísticas completas, ataques, sentidos e níveis de desafio. Inclui bestas, mortos-vivos, humanoides e outras criaturas do PHB."},
+    {"name": "Leituras Inspiradoras", "description": "Sistema de leituras inspiradoras que influenciaram D&D. Inclui obras literárias, mitologias e suas influências específicas no jogo."}
 ]
 
 app = FastAPI(
@@ -67,6 +69,7 @@ app = FastAPI(
 - **85 divindades** de múltiplos panteões
 - **30 planos** de existência
 - **32 criaturas** com estatísticas completas
+- **36 leituras inspiradoras** com influências documentadas
 - **100% compatível** com Pydantic V2
 
 ## 🎮 **Casos de Uso**
@@ -84,7 +87,7 @@ app = FastAPI(
 - **Changelog:** `/changelog` - Histórico completo de versões
 
 ---""",
-    version="2.1.0",
+    version="2.4.0",
     openapi_tags=openapi_tags
 )
 
@@ -92,18 +95,18 @@ app = FastAPI(
 def root():
     return JSONResponse({
         "status": "ok",
-        "version": "2.1.0",
-        "mensagem": "🎲 API D&D 5e v2.1 está funcionando! ✨",
+        "version": "2.4.0",
+        "mensagem": "🎲 API D&D 5e v2.4 está funcionando! ✨",
         "changelog": {
-            "latest_version": "2.1.0",
+            "latest_version": "2.4.0",
             "release_date": "2024-12-27",
             "highlights": [
+                "Sistema de Leituras Inspiradoras (36 leituras)",
                 "Sistema de Criaturas Completo (32 criaturas)",
                 "Sistema de Planos de Existência (30 planos)",
                 "Sistema de Condições Completo (14 condições)",
                 "Sistema de Magias Expandido (25 magias)",
-                "Sistema de Divindades (85 divindades)",
-                "Cobertura de Testes Expandida (220+ testes)"
+                "Sistema de Divindades (85 divindades)"
             ]
         },
         "statistics": {
@@ -113,6 +116,7 @@ def root():
             "deities": "85",
             "planes": "30",
             "creatures": "32",
+            "leituras": "36",
             "pydantic_compatibility": "100%"
         },
         "documentation": {
@@ -144,4 +148,5 @@ app.include_router(spells_router)
 app.include_router(deities_router)
 app.include_router(planes_router)
 app.include_router(creatures_router)
+app.include_router(leituras_router)
 app.include_router(changelog_router) 

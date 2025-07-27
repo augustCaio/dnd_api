@@ -2463,7 +2463,7 @@ def test_changelog_version_order():
     
     # Verifica se a primeira versão é a mais recente
     latest_version = versions[0]
-    assert latest_version["version"] == "2.0.0"
+    assert latest_version["version"] == "2.2.0"
 
 def test_changelog_statistics():
     """Testa se as estatísticas estão presentes."""
@@ -2850,6 +2850,193 @@ def test_creatures_challenge_rating_distribution():
     assert len(baixos) > len(creatures) * 0.6  # Mais de 60% são ND baixo
 
 # ============================================================================
+# TESTES PARA SISTEMA DE LEITURAS INSPIRADORAS
+# ============================================================================
+
+def test_get_leituras():
+    """Testa o endpoint de listagem de leituras inspiradoras."""
+    resp = client.get("/leituras")
+    assert resp.status_code == 200
+    leituras = resp.json()
+    assert isinstance(leituras, list)
+    assert len(leituras) > 0
+    assert all("id" in leitura for leitura in leituras)
+    assert all("titulo" in leitura for leitura in leituras)
+    assert all("autor" in leitura for leitura in leituras)
+    assert all("categoria" in leitura for leitura in leituras)
+
+def test_get_leitura_by_id():
+    """Testa o endpoint de busca de leitura por ID."""
+    resp = client.get("/leituras/senhor-dos-aneis")
+    assert resp.status_code == 200
+    leitura = resp.json()
+    assert leitura["id"] == "senhor-dos-aneis"
+    assert leitura["titulo"] == "O Senhor dos Anéis"
+    assert leitura["autor"] == "J.R.R. Tolkien"
+    assert leitura["categoria"] == "Fantasia"
+
+def test_get_leitura_by_id_not_found():
+    """Testa o endpoint de busca de leitura por ID inexistente."""
+    resp = client.get("/leituras/leitura-inexistente")
+    assert resp.status_code == 404
+
+def test_leituras_filter_by_categoria():
+    """Testa filtro de leituras por categoria."""
+    resp = client.get("/leituras?categoria=Fantasia")
+    assert resp.status_code == 200
+    leituras = resp.json()
+    assert len(leituras) > 0
+    assert all(leitura["categoria"] == "Fantasia" for leitura in leituras)
+
+def test_leituras_filter_by_autor():
+    """Testa filtro de leituras por autor."""
+    resp = client.get("/leituras?autor=H.P. Lovecraft")
+    assert resp.status_code == 200
+    leituras = resp.json()
+    assert len(leituras) > 0
+    assert all(leitura["autor"] == "H.P. Lovecraft" for leitura in leituras)
+
+def test_leituras_filter_by_influencia():
+    """Testa filtro de leituras por influência."""
+    resp = client.get("/leituras?influencia=Forgotten Realms")
+    assert resp.status_code == 200
+    leituras = resp.json()
+    assert len(leituras) > 0
+    assert all("Forgotten Realms" in leitura["influencia"] for leitura in leituras)
+
+def test_leituras_multiple_filters():
+    """Testa filtros múltiplos de leituras."""
+    resp = client.get("/leituras?categoria=Terror&autor=H.P. Lovecraft")
+    assert resp.status_code == 200
+    leituras = resp.json()
+    assert len(leituras) > 0
+    assert all(leitura["categoria"] == "Terror" and leitura["autor"] == "H.P. Lovecraft" for leitura in leituras)
+
+def test_get_leituras_by_category():
+    """Testa endpoint específico de leituras por categoria."""
+    resp = client.get("/leituras/categorias/Mitologia")
+    assert resp.status_code == 200
+    leituras = resp.json()
+    assert len(leituras) > 0
+    assert all(leitura["categoria"] == "Mitologia" for leitura in leituras)
+
+def test_get_leituras_by_category_not_found():
+    """Testa endpoint de leituras por categoria inexistente."""
+    resp = client.get("/leituras/categorias/CategoriaInexistente")
+    assert resp.status_code == 404
+
+def test_get_leituras_by_author():
+    """Testa endpoint específico de leituras por autor."""
+    resp = client.get("/leituras/autores/J.R.R. Tolkien")
+    assert resp.status_code == 200
+    leituras = resp.json()
+    assert len(leituras) > 0
+    assert all(leitura["autor"] == "J.R.R. Tolkien" for leitura in leituras)
+
+def test_get_leituras_by_author_not_found():
+    """Testa endpoint de leituras por autor inexistente."""
+    resp = client.get("/leituras/autores/AutorInexistente")
+    assert resp.status_code == 404
+
+def test_leituras_data_structure():
+    """Testa a estrutura de dados das leituras."""
+    resp = client.get("/leituras")
+    assert resp.status_code == 200
+    leituras = resp.json()
+    
+    for leitura in leituras:
+        # Campos obrigatórios
+        assert "id" in leitura
+        assert "titulo" in leitura
+        assert "autor" in leitura
+        assert "categoria" in leitura
+        
+        # Campos opcionais
+        if "descricao" in leitura:
+            assert isinstance(leitura["descricao"], str)
+        if "influencia" in leitura:
+            assert isinstance(leitura["influencia"], str)
+        
+        # Validação de tipos
+        assert isinstance(leitura["id"], str)
+        assert isinstance(leitura["titulo"], str)
+        assert isinstance(leitura["autor"], str)
+        assert isinstance(leitura["categoria"], str)
+        
+        # Validação de conteúdo
+        assert len(leitura["id"]) > 0
+        assert len(leitura["titulo"]) > 0
+        assert len(leitura["autor"]) > 0
+        assert len(leitura["categoria"]) > 0
+
+def test_leituras_categoria_distribution():
+    """Testa a distribuição de categorias de leituras."""
+    resp = client.get("/leituras")
+    assert resp.status_code == 200
+    leituras = resp.json()
+    
+    categorias = [leitura["categoria"] for leitura in leituras]
+    categorias_unicas = set(categorias)
+    
+    # Verifica se temos as categorias esperadas
+    assert "Fantasia" in categorias_unicas
+    assert "Mitologia" in categorias_unicas
+    assert "Terror" in categorias_unicas
+    assert "Espada e Feitiçaria" in categorias_unicas
+    
+    # Verifica se a maioria são mitologias (conforme dados)
+    mitologias = [l for l in leituras if l["categoria"] == "Mitologia"]
+    assert len(mitologias) > len(leituras) * 0.6  # Mais de 60% são mitologias
+
+def test_leituras_autor_distribution():
+    """Testa a distribuição de autores de leituras."""
+    resp = client.get("/leituras")
+    assert resp.status_code == 200
+    leituras = resp.json()
+    
+    autores = [leitura["autor"] for leitura in leituras]
+    autores_unicos = set(autores)
+    
+    # Verifica se temos autores esperados
+    assert "J.R.R. Tolkien" in autores_unicos
+    assert "H.P. Lovecraft" in autores_unicos
+    assert "Vários" in autores_unicos  # Para mitologias
+    
+    # Verifica se a maioria são "Vários" (mitologias)
+    varios = [l for l in leituras if l["autor"] == "Vários"]
+    assert len(varios) > len(leituras) * 0.6  # Mais de 60% são "Vários"
+
+def test_leituras_search_case_insensitive():
+    """Testa busca case-insensitive de leituras."""
+    resp = client.get("/leituras?categoria=fantasia")
+    assert resp.status_code == 200
+    leituras = resp.json()
+    assert len(leituras) > 0
+    assert all(leitura["categoria"] == "Fantasia" for leitura in leituras)
+
+def test_leituras_empty_filters():
+    """Testa filtros vazios de leituras."""
+    resp = client.get("/leituras?categoria=")
+    assert resp.status_code == 200
+    leituras = resp.json()
+    assert len(leituras) > 0  # Deve retornar todas as leituras
+
+def test_leituras_invalid_filters():
+    """Testa filtros inválidos de leituras."""
+    resp = client.get("/leituras?categoria=CategoriaInexistente")
+    assert resp.status_code == 200
+    leituras = resp.json()
+    assert len(leituras) == 0  # Deve retornar lista vazia
+
+def test_leituras_special_characters():
+    """Testa caracteres especiais em filtros de leituras."""
+    resp = client.get("/leituras?autor=H.P. Lovecraft")
+    assert resp.status_code == 200
+    leituras = resp.json()
+    assert len(leituras) > 0
+    assert all(leitura["autor"] == "H.P. Lovecraft" for leitura in leituras)
+
+# ============================================================================
 # ATUALIZAÇÃO DOS ENDPOINTS PARA TESTAR
 # ============================================================================
 
@@ -2877,6 +3064,7 @@ print("   - Divindades: ✅")
 print("   - Magias: ✅")
 print("   - Planos de Existência: ✅")
 print("   - Criaturas: ✅")
+print("   - Leituras Inspiradoras: ✅")
 print("   - Changelog: ✅")
 print("   - Filtros avançados: ✅")
 print("   - Casos de erro: ✅")
@@ -2886,5 +3074,5 @@ print("   - Segurança: ✅")
 print("   - Estabilidade: ✅")
 print("   - Documentação: ✅")
 print("")
-print("🎯 Total de testes: 220+")
+print("🎯 Total de testes: 240+")
 print("🚀 Execute com: pytest test_api.py -v") 
