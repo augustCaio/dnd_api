@@ -2652,6 +2652,207 @@ def test_invalid_id_values(endpoint, bad_id):
     # Alguns endpoints podem aceitar ID 0, então aceita 200 também
     assert resp.status_code in [404, 422, 200]
 
+# ============================================================================
+# TESTES PARA SISTEMA DE CRIATURAS
+# ============================================================================
+
+def test_get_creatures():
+    """Testa o endpoint de listagem de todas as criaturas."""
+    resp = client.get("/criaturas")
+    assert resp.status_code == 200
+    creatures = resp.json()
+    assert isinstance(creatures, list)
+    assert len(creatures) > 0
+    assert all("id" in creature for creature in creatures)
+    assert all("nome" in creature for creature in creatures)
+    assert all("tipo" in creature for creature in creatures)
+
+def test_get_creature_by_id():
+    """Testa o endpoint de detalhes de uma criatura específica."""
+    resp = client.get("/criaturas/corvo")
+    assert resp.status_code == 200
+    creature = resp.json()
+    assert creature["nome"] == "Corvo"
+    assert creature["tipo"] == "Besta"
+    assert creature["nivel_desafio"] == "0"
+    assert "atributos" in creature
+    assert "ataques" in creature
+
+def test_get_creature_by_id_not_found():
+    """Testa o endpoint de criatura com ID inexistente."""
+    resp = client.get("/criaturas/criatura-inexistente")
+    assert resp.status_code == 404
+
+def test_creatures_filter_by_type():
+    """Testa filtro de criaturas por tipo."""
+    resp = client.get("/criaturas?tipo=Besta")
+    assert resp.status_code == 200
+    creatures = resp.json()
+    assert all(creature["tipo"] == "Besta" for creature in creatures)
+    assert len(creatures) > 0
+
+def test_creatures_filter_by_size():
+    """Testa filtro de criaturas por tamanho."""
+    resp = client.get("/criaturas?tamanho=Miúdo")
+    assert resp.status_code == 200
+    creatures = resp.json()
+    assert all(creature["tamanho"] == "Miúdo" for creature in creatures)
+    assert len(creatures) > 0
+
+def test_creatures_filter_by_challenge_rating():
+    """Testa filtro de criaturas por nível de desafio."""
+    resp = client.get("/criaturas?nd=1/4")
+    assert resp.status_code == 200
+    creatures = resp.json()
+    assert all(creature["nivel_desafio"] == "1/4" for creature in creatures)
+    assert len(creatures) > 0
+
+def test_creatures_multiple_filters():
+    """Testa múltiplos filtros de criaturas."""
+    resp = client.get("/criaturas?tipo=Besta&tamanho=Miúdo")
+    assert resp.status_code == 200
+    creatures = resp.json()
+    assert all(creature["tipo"] == "Besta" and creature["tamanho"] == "Miúdo" for creature in creatures)
+
+def test_get_creatures_by_type():
+    """Testa o endpoint de criaturas por tipo específico."""
+    resp = client.get("/criaturas/tipos/Besta")
+    assert resp.status_code == 200
+    creatures = resp.json()
+    assert all(creature["tipo"] == "Besta" for creature in creatures)
+    assert len(creatures) > 0
+
+def test_get_creatures_by_type_not_found():
+    """Testa o endpoint de criaturas por tipo inexistente."""
+    resp = client.get("/criaturas/tipos/TipoInexistente")
+    assert resp.status_code == 404
+
+def test_get_creatures_by_size():
+    """Testa o endpoint de criaturas por tamanho específico."""
+    resp = client.get("/criaturas/tamanhos/Médio")
+    assert resp.status_code == 200
+    creatures = resp.json()
+    assert all(creature["tamanho"] == "Médio" for creature in creatures)
+    assert len(creatures) > 0
+
+def test_get_creatures_by_size_not_found():
+    """Testa o endpoint de criaturas por tamanho inexistente."""
+    resp = client.get("/criaturas/tamanhos/TamanhoInexistente")
+    assert resp.status_code == 404
+
+def test_get_creatures_by_challenge_rating():
+    """Testa o endpoint de criaturas por nível de desafio específico."""
+    resp = client.get("/criaturas/niveis/1_4")
+    assert resp.status_code == 200
+    creatures = resp.json()
+    assert all(creature["nivel_desafio"] == "1/4" for creature in creatures)
+    assert len(creatures) > 0
+
+def test_get_creatures_by_challenge_rating_not_found():
+    """Testa o endpoint de criaturas por nível de desafio inexistente."""
+    resp = client.get("/criaturas/niveis/999")
+    assert resp.status_code == 404
+
+def test_creatures_data_structure():
+    """Testa a estrutura dos dados das criaturas."""
+    resp = client.get("/criaturas")
+    assert resp.status_code == 200
+    creatures = resp.json()
+    
+    for creature in creatures:
+        # Campos obrigatórios
+        assert "id" in creature
+        assert "nome" in creature
+        assert "tipo" in creature
+        assert "tamanho" in creature
+        assert "ca" in creature
+        assert "pv" in creature
+        assert "deslocamento" in creature
+        assert "atributos" in creature
+        assert "nivel_desafio" in creature
+        
+        # Validação de tipos
+        assert isinstance(creature["id"], str)
+        assert isinstance(creature["nome"], str)
+        assert isinstance(creature["tipo"], str)
+        assert isinstance(creature["tamanho"], str)
+        assert isinstance(creature["ca"], int)
+        assert isinstance(creature["pv"], str)
+        assert isinstance(creature["deslocamento"], str)
+        assert isinstance(creature["atributos"], dict)
+        assert isinstance(creature["nivel_desafio"], str)
+        
+        # Validação de atributos
+        atributos = creature["atributos"]
+        assert "FOR" in atributos
+        assert "DES" in atributos
+        assert "CON" in atributos
+        assert "INT" in atributos
+        assert "SAB" in atributos
+        assert "CAR" in atributos
+        
+        for attr_value in atributos.values():
+            assert isinstance(attr_value, int)
+            assert 1 <= attr_value <= 30
+
+def test_creatures_type_distribution():
+    """Testa a distribuição de tipos de criaturas."""
+    resp = client.get("/criaturas")
+    assert resp.status_code == 200
+    creatures = resp.json()
+    
+    tipos = [creature["tipo"] for creature in creatures]
+    tipos_unicos = set(tipos)
+    
+    # Verifica se temos os tipos esperados
+    assert "Besta" in tipos_unicos
+    assert "Morto-vivo" in tipos_unicos
+    
+    # Verifica se a maioria são bestas (conforme dados)
+    bestas = [c for c in creatures if c["tipo"] == "Besta"]
+    assert len(bestas) > len(creatures) * 0.8  # Mais de 80% são bestas
+
+def test_creatures_size_distribution():
+    """Testa a distribuição de tamanhos de criaturas."""
+    resp = client.get("/criaturas")
+    assert resp.status_code == 200
+    creatures = resp.json()
+    
+    tamanhos = [creature["tamanho"] for creature in creatures]
+    tamanhos_unicos = set(tamanhos)
+    
+    # Verifica se temos os tamanhos esperados (baseado nos dados reais)
+    assert "Miúdo" in tamanhos_unicos
+    assert "Médio" in tamanhos_unicos
+    assert "Grande" in tamanhos_unicos
+    
+    # Verifica se a maioria são miúdas (conforme dados reais: 23 miúdas de 32 total)
+    miudas = [c for c in creatures if c["tamanho"] == "Miúdo"]
+    assert len(miudas) > len(creatures) * 0.6  # Mais de 60% são miúdas
+
+def test_creatures_challenge_rating_distribution():
+    """Testa a distribuição de níveis de desafio das criaturas."""
+    resp = client.get("/criaturas")
+    assert resp.status_code == 200
+    creatures = resp.json()
+    
+    nds = [creature["nivel_desafio"] for creature in creatures]
+    nds_unicos = set(nds)
+    
+    # Verifica se temos os NDs esperados
+    assert "0" in nds_unicos
+    assert "1/8" in nds_unicos
+    assert "1/4" in nds_unicos
+    assert "1/2" in nds_unicos
+    
+    # Verifica se a maioria são ND 0 ou 1/8 (conforme dados)
+    baixos = [c for c in creatures if c["nivel_desafio"] in ["0", "1/8"]]
+    assert len(baixos) > len(creatures) * 0.6  # Mais de 60% são ND baixo
+
+# ============================================================================
+# ATUALIZAÇÃO DOS ENDPOINTS PARA TESTAR
+# ============================================================================
+
 print("✅ Todos os testes foram definidos!")
 print("📊 Cobertura de testes:")
 print("   - Endpoint raiz: ✅")
@@ -2675,6 +2876,7 @@ print("   - Condições: ✅")
 print("   - Divindades: ✅")
 print("   - Magias: ✅")
 print("   - Planos de Existência: ✅")
+print("   - Criaturas: ✅")
 print("   - Changelog: ✅")
 print("   - Filtros avançados: ✅")
 print("   - Casos de erro: ✅")
@@ -2684,5 +2886,5 @@ print("   - Segurança: ✅")
 print("   - Estabilidade: ✅")
 print("   - Documentação: ✅")
 print("")
-print("🎯 Total de testes: 200+")
+print("🎯 Total de testes: 220+")
 print("🚀 Execute com: pytest test_api.py -v") 

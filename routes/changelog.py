@@ -29,6 +29,60 @@ def get_changelog_data() -> List[Version]:
     """Retorna os dados do changelog."""
     return [
         Version(
+            version="2.1.0",
+            release_date="2024-12-27",
+            codename="Sistema de Criaturas e Planos de Existência",
+            description="Feature release com sistema completo de criaturas do PHB e planos de existência, além de testes abrangentes.",
+            changes=[
+                VersionChange(
+                    type="feature",
+                    description="Sistema de Criaturas Completo",
+                    details=[
+                        "32 criaturas do PHB com estatísticas completas",
+                        "Filtros por tipo, tamanho e nível de desafio",
+                        "Endpoints especializados para categorias de criaturas",
+                        "Dados estruturados com ataques, sentidos e atributos"
+                    ]
+                ),
+                VersionChange(
+                    type="feature",
+                    description="Sistema de Planos de Existência",
+                    details=[
+                        "30 planos de existência com tipos e alinhamentos",
+                        "Filtros por tipo (Material, Interior, Exterior, Transitivo)",
+                        "Busca por alinhamento e associações divinas",
+                        "Criaturas típicas de cada plano documentadas"
+                    ]
+                ),
+                VersionChange(
+                    type="improvement",
+                    description="Cobertura de Testes Expandida",
+                    details=[
+                        "220+ testes cobrindo todos os sistemas da API",
+                        "Testes específicos para criaturas e planos",
+                        "Validação de estrutura de dados e distribuições",
+                        "Testes de filtros e casos de erro"
+                    ]
+                ),
+                VersionChange(
+                    type="improvement",
+                    description="Documentação e Estatísticas Atualizadas",
+                    details=[
+                        "Estatísticas atualizadas para incluir criaturas e planos",
+                        "Documentação Swagger aprimorada para novos sistemas",
+                        "Exemplos práticos para todos os novos endpoints",
+                        "Guias de uso para mestres e jogadores"
+                    ]
+                )
+            ],
+            statistics={
+                "endpoints": "30+",
+                "creatures": "32",
+                "planes": "30",
+                "tests": "220+"
+            }
+        ),
+        Version(
             version="2.0.0",
             release_date="2024-12-27",
             codename="Sistema de Condições e Magias Aprimorado",
@@ -219,6 +273,7 @@ def get_changelog_data() -> List[Version]:
 - Planejamento de migrações
 
 **Versões disponíveis:**
+- **v2.1.0:** Sistema de Criaturas e Planos de Existência
 - **v2.0.0:** Sistema de Condições e Magias Aprimorado
 - **v1.5.0:** Sistema de Regras e Combate
 - **v1.0.0:** Fundação da API"""
@@ -227,7 +282,7 @@ def get_changelog():
     """Retorna o changelog completo da API."""
     versions = get_changelog_data()
     return ChangelogResponse(
-        current_version="2.0.0",
+        current_version="2.1.0",
         total_versions=len(versions),
         versions=versions
     )
@@ -270,7 +325,8 @@ def get_latest_version():
 - Estatísticas da versão
 
 **Exemplos de uso:**
-- `GET /changelog/2.0.0` - Detalhes da versão atual
+- `GET /changelog/2.1.0` - Detalhes da versão atual
+- `GET /changelog/2.0.0` - Detalhes da versão anterior
 - `GET /changelog/1.5.0` - Detalhes da versão anterior
 - `GET /changelog/1.0.0` - Detalhes da versão inicial
 

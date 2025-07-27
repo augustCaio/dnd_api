@@ -1,0 +1,772 @@
+[
+  {
+    "id": "aguia-gigante",
+    "nome": "Águia Gigante",
+    "tipo": "Besta",
+    "tamanho": "Grande",
+    "ca": 13,
+    "pv": "26 (4d10 + 4)",
+    "deslocamento": "3 m, voo 24 m",
+    "atributos": {
+      "FOR": 16,
+      "DES": 17,
+      "CON": 13,
+      "INT": 8,
+      "SAB": 14,
+      "CAR": 10
+    },
+    "sentidos": ["Visão no escuro 18 m", "Percepção passiva 14"],
+    "idiomas": "Entende Comum e Élfico, mas não fala",
+    "nivel_desafio": "1/4",
+    "ataques": [
+      "Garras. Ataque Corpo a Cor com Arma: +5 para atingir, alcance 1,5 m, um alvo. Acerto: 8 (2d6 + 3) dano de corte."
+    ],
+    "notas": "Águias gigantes são criaturas majestosas e inteligentes, frequentemente usadas como montarias por elfos e outras criaturas voadoras."
+  },
+  {
+    "id": "cavalo-guerra",
+    "nome": "Cavalo de Guerra",
+    "tipo": "Besta",
+    "tamanho": "Grande",
+    "ca": 11,
+    "pv": "19 (3d10 + 3)",
+    "deslocamento": "18 m",
+    "atributos": {
+      "FOR": 18,
+      "DES": 12,
+      "CON": 13,
+      "INT": 2,
+      "SAB": 12,
+      "CAR": 7
+    },
+    "sentidos": ["Percepção passiva 11"],
+    "idiomas": "-",
+    "nivel_desafio": "1/2",
+    "ataques": [
+      "Coice. Ataque Corpo a Cor com Arma: +6 para atingir, alcance 1,5 m, um alvo. Acerto: 11 (2d6 + 4) dano de concussão."
+    ],
+    "notas": "Cavalos de guerra são criaturas treinadas para combate, capazes de carregar cavaleiros pesadamente armados e atacar inimigos com seus cascos poderosos."
+  },
+  {
+    "id": "corvo",
+    "nome": "Corvo",
+    "tipo": "Besta",
+    "tamanho": "Miúdo",
+    "ca": 12,
+    "pv": "1 (1d4 - 1)",
+    "deslocamento": "3 m, voo 12 m",
+    "atributos": {
+      "FOR": 2,
+      "DES": 14,
+      "CON": 8,
+      "INT": 2,
+      "SAB": 12,
+      "CAR": 6
+    },
+    "sentidos": ["Visão no escuro 18 m", "Percepção passiva 13"],
+    "idiomas": "-",
+    "nivel_desafio": "0",
+    "ataques": [
+      "Bico. Ataque Corpo a Cor com Arma: +4 para atingir, alcance 1,5 m, um alvo. Acerto: 1 dano de perfuração."
+    ],
+    "notas": "Corvos são aves inteligentes conhecidas por sua capacidade de imitar sons e vozes humanas. São frequentemente usados como mensageiros ou companheiros por magos e feiticeiros."
+  },
+  {
+    "id": "cao-guarda",
+    "nome": "Cão de Guarda",
+    "tipo": "Besta",
+    "tamanho": "Médio",
+    "ca": 12,
+    "pv": "11 (2d8 + 2)",
+    "deslocamento": "12 m",
+    "atributos": {
+      "FOR": 12,
+      "DES": 15,
+      "CON": 12,
+      "INT": 3,
+      "SAB": 12,
+      "CAR": 6
+    },
+    "sentidos": ["Faro aguçado", "Percepção passiva 13"],
+    "idiomas": "-",
+    "nivel_desafio": "1/8",
+    "ataques": [
+      "Mordida. Ataque Corpo a Cor com Arma: +3 para atingir, alcance 1,5 m, um alvo. Acerto: 4 (1d6 + 1) dano de perfuração."
+    ],
+    "notas": "Cães de guarda são leais e protetores, frequentemente usados para proteger propriedades e alertar sobre intrusos. Seu faro aguçado os torna excelentes rastreadores."
+  },
+  {
+    "id": "cavalo-ponei",
+    "nome": "Cavalo Ponei",
+    "tipo": "Besta",
+    "tamanho": "Médio",
+    "ca": 10,
+    "pv": "11 (2d8 + 2)",
+    "deslocamento": "12 m",
+    "atributos": {
+      "FOR": 15,
+      "DES": 10,
+      "CON": 13,
+      "INT": 2,
+      "SAB": 11,
+      "CAR": 7
+    },
+    "sentidos": ["Percepção passiva 10"],
+    "idiomas": "-",
+    "nivel_desafio": "1/8",
+    "ataques": [
+      "Coice. Ataque Corpo a Cor com Arma: +4 para atingir, alcance 1,5 m, um alvo. Acerto: 8 (2d4 + 3) dano de concussão."
+    ],
+    "notas": "Cavalos poneis são versões menores dos cavalos, ideais para crianças ou criaturas pequenas. São mais dóceis e fáceis de treinar que cavalos de guerra."
+  },
+  {
+    "id": "lagarto-gigante",
+    "nome": "Lagarto Gigante",
+    "tipo": "Besta",
+    "tamanho": "Médio",
+    "ca": 12,
+    "pv": "19 (3d8 + 6)",
+    "deslocamento": "9 m, escalar 9 m",
+    "atributos": {
+      "FOR": 15,
+      "DES": 12,
+      "CON": 13,
+      "INT": 2,
+      "SAB": 10,
+      "CAR": 5
+    },
+    "sentidos": ["Visão no escuro 18 m", "Percepção passiva 10"],
+    "idiomas": "-",
+    "nivel_desafio": "1/4",
+    "ataques": [
+      "Mordida. Ataque Corpo a Cor com Arma: +4 para atingir, alcance 1,5 m, um alvo. Acerto: 6 (1d8 + 2) dano de perfuração."
+    ],
+    "notas": "Lagartos gigantes são répteis predadores que habitam regiões quentes e úmidas. Sua capacidade de escalar os torna perigosos tanto em terra quanto em árvores."
+  },
+  {
+    "id": "servo",
+    "nome": "Servo",
+    "tipo": "Besta",
+    "tamanho": "Médio",
+    "ca": 10,
+    "pv": "11 (2d8 + 2)",
+    "deslocamento": "12 m",
+    "atributos": {
+      "FOR": 14,
+      "DES": 10,
+      "CON": 13,
+      "INT": 2,
+      "SAB": 11,
+      "CAR": 6
+    },
+    "sentidos": ["Percepção passiva 10"],
+    "idiomas": "-",
+    "nivel_desafio": "1/8",
+    "ataques": [
+      "Coice. Ataque Corpo a Cor com Arma: +4 para atingir, alcance 1,5 m, um alvo. Acerto: 8 (2d4 + 3) dano de concussão."
+    ],
+    "notas": "Servos são animais de carga e trabalho, frequentemente usados para transportar mercadorias e puxar carroças. São mais fortes que cavalos normais mas menos ágeis."
+  },
+  {
+    "id": "morcego",
+    "nome": "Morcego",
+    "tipo": "Besta",
+    "tamanho": "Miúdo",
+    "ca": 12,
+    "pv": "1 (1d4 - 1)",
+    "deslocamento": "3 m, voo 9 m",
+    "atributos": {
+      "FOR": 2,
+      "DES": 15,
+      "CON": 8,
+      "INT": 2,
+      "SAB": 12,
+      "CAR": 4
+    },
+    "sentidos": ["Visão no escuro 18 m", "Percepção passiva 11"],
+    "idiomas": "-",
+    "nivel_desafio": "0",
+    "ataques": [
+      "Mordida. Ataque Corpo a Cor com Arma: +4 para atingir, alcance 1,5 m, um alvo. Acerto: 1 dano de perfuração."
+    ],
+    "notas": "Morcegos são criaturas noturnas que usam ecolocalização para navegar no escuro. São frequentemente associados a lugares sombrios e misteriosos."
+  },
+  {
+    "id": "gato",
+    "nome": "Gato",
+    "tipo": "Besta",
+    "tamanho": "Miúdo",
+    "ca": 12,
+    "pv": "2 (1d4)",
+    "deslocamento": "12 m, escalar 9 m",
+    "atributos": {
+      "FOR": 3,
+      "DES": 15,
+      "CON": 10,
+      "INT": 3,
+      "SAB": 12,
+      "CAR": 7
+    },
+    "sentidos": ["Visão no escuro 18 m", "Percepção passiva 12"],
+    "idiomas": "-",
+    "nivel_desafio": "0",
+    "ataques": [
+      "Mordida. Ataque Corpo a Cor com Arma: +4 para atingir, alcance 1,5 m, um alvo. Acerto: 1 dano de perfuração.",
+      "Garra. Ataque Corpo a Cor com Arma: +4 para atingir, alcance 1,5 m, um alvo. Acerto: 1 dano de corte."
+    ],
+    "notas": "Gatos são criaturas ágeis e independentes, frequentemente mantidas como animais de estimação. Sua capacidade de escalar e visão noturna os torna excelentes caçadores."
+  },
+  {
+    "id": "lobo",
+    "nome": "Lobo",
+    "tipo": "Besta",
+    "tamanho": "Médio",
+    "ca": 13,
+    "pv": "11 (2d8 + 2)",
+    "deslocamento": "12 m",
+    "atributos": {
+      "FOR": 12,
+      "DES": 15,
+      "CON": 12,
+      "INT": 3,
+      "SAB": 12,
+      "CAR": 6
+    },
+    "sentidos": ["Faro aguçado", "Percepção passiva 13"],
+    "idiomas": "-",
+    "nivel_desafio": "1/4",
+    "ataques": [
+      "Mordida. Ataque Corpo a Cor com Arma: +4 para atingir, alcance 1,5 m, um alvo. Acerto: 7 (2d4 + 2) dano de perfuração. Se o alvo for uma criatura, deve ser bem-sucedida em um teste de resistência de Força CD 12 ou será derrubada."
+    ],
+    "notas": "Lobos são predadores sociais que caçam em matilhas. Sua tática de derrubar presas os torna perigosos mesmo para criaturas maiores."
+  },
+  {
+    "id": "lemure",
+    "nome": "Lêmure",
+    "tipo": "Besta",
+    "tamanho": "Miúdo",
+    "ca": 12,
+    "pv": "3 (1d6)",
+    "deslocamento": "9 m, escalar 9 m",
+    "atributos": {
+      "FOR": 4,
+      "DES": 15,
+      "CON": 10,
+      "INT": 3,
+      "SAB": 12,
+      "CAR": 5
+    },
+    "sentidos": ["Visão no escuro 18 m", "Percepção passiva 11"],
+    "idiomas": "-",
+    "nivel_desafio": "0",
+    "ataques": [
+      "Mordida. Ataque Corpo a Cor com Arma: +4 para atingir, alcance 1,5 m, um alvo. Acerto: 1 dano de perfuração."
+    ],
+    "notas": "Lêmures são primatas noturnos que habitam florestas tropicais. Sua capacidade de escalar e visão noturna os torna excelentes para explorar áreas escuras."
+  },
+  {
+    "id": "falcao",
+    "nome": "Falcão",
+    "tipo": "Besta",
+    "tamanho": "Miúdo",
+    "ca": 13,
+    "pv": "1 (1d4 - 1)",
+    "deslocamento": "3 m, voo 18 m",
+    "atributos": {
+      "FOR": 5,
+      "DES": 16,
+      "CON": 8,
+      "INT": 2,
+      "SAB": 14,
+      "CAR": 6
+    },
+    "sentidos": ["Visão aguçada", "Percepção passiva 14"],
+    "idiomas": "-",
+    "nivel_desafio": "0",
+    "ataques": [
+      "Garras. Ataque Corpo a Cor com Arma: +5 para atingir, alcance 1,5 m, um alvo. Acerto: 1 dano de corte."
+    ],
+    "notas": "Falcões são aves de rapina com visão excepcional. São frequentemente usados para caça e mensagens, sendo treinados para retornar aos seus donos."
+  },
+  {
+    "id": "sapo",
+    "nome": "Sapo",
+    "tipo": "Besta",
+    "tamanho": "Miúdo",
+    "ca": 11,
+    "pv": "1 (1d4 - 1)",
+    "deslocamento": "6 m, natação 6 m",
+    "atributos": {
+      "FOR": 1,
+      "DES": 13,
+      "CON": 8,
+      "INT": 1,
+      "SAB": 10,
+      "CAR": 3
+    },
+    "sentidos": ["Visão no escuro 9 m", "Percepção passiva 10"],
+    "idiomas": "-",
+    "nivel_desafio": "0",
+    "ataques": [
+      "Mordida. Ataque Corpo a Cor com Arma: +3 para atingir, alcance 1,5 m, um alvo. Acerto: 1 dano de perfuração."
+    ],
+    "notas": "Sapos são anfíbios que habitam áreas úmidas. Sua capacidade de nadar e pular os torna úteis para explorar pântanos e riachos."
+  },
+  {
+    "id": "esqueleto",
+    "nome": "Esqueleto",
+    "tipo": "Morto-vivo",
+    "tamanho": "Médio",
+    "ca": 13,
+    "pv": "13 (2d8 + 4)",
+    "deslocamento": "9 m",
+    "atributos": {
+      "FOR": 10,
+      "DES": 14,
+      "CON": 15,
+      "INT": 6,
+      "SAB": 8,
+      "CAR": 5
+    },
+    "sentidos": ["Visão no escuro 18 m", "Percepção passiva 9"],
+    "idiomas": "Entende todos os idiomas que conhecia em vida, mas não pode falar",
+    "nivel_desafio": "1/4",
+    "ataques": [
+      "Espada curta. Ataque Corpo a Cor com Arma: +4 para atingir, alcance 1,5 m, um alvo. Acerto: 5 (1d6 + 2) dano de corte.",
+      "Arco curto. Ataque à Distância com Arma: +4 para atingir, alcance 18/72 m, um alvo. Acerto: 5 (1d6 + 2) dano de perfuração."
+    ],
+    "notas": "Esqueletos são mortos-vivos criados por magia necromântica. Eles são controlados por seus criadores e não sentem dor ou medo."
+  },
+  {
+    "id": "zumbi",
+    "nome": "Zumbi",
+    "tipo": "Morto-vivo",
+    "tamanho": "Médio",
+    "ca": 8,
+    "pv": "22 (3d8 + 9)",
+    "deslocamento": "6 m",
+    "atributos": {
+      "FOR": 13,
+      "DES": 6,
+      "CON": 16,
+      "INT": 3,
+      "SAB": 6,
+      "CAR": 5
+    },
+    "sentidos": ["Visão no escuro 18 m", "Percepção passiva 8"],
+    "idiomas": "Entende todos os idiomas que conhecia em vida, mas não pode falar",
+    "nivel_desafio": "1/4",
+    "ataques": [
+      "Soco. Ataque Corpo a Cor com Arma: +3 para atingir, alcance 1,5 m, um alvo. Acerto: 3 (1d6) dano de concussão."
+    ],
+    "notas": "Zumbis são mortos-vivos lentos e resistentes, criados por magia necromântica. Eles são implacáveis e difíceis de destruir."
+  },
+  {
+    "id": "rato",
+    "nome": "Rato",
+    "tipo": "Besta",
+    "tamanho": "Miúdo",
+    "ca": 10,
+    "pv": "1 (1d4 - 1)",
+    "deslocamento": "6 m",
+    "atributos": {
+      "FOR": 2,
+      "DES": 11,
+      "CON": 9,
+      "INT": 2,
+      "SAB": 10,
+      "CAR": 4
+    },
+    "sentidos": ["Visão no escuro 9 m", "Percepção passiva 10"],
+    "idiomas": "-",
+    "nivel_desafio": "0",
+    "ataques": [
+      "Mordida. Ataque Corpo a Cor com Arma: +0 para atingir, alcance 1,5 m, um alvo. Acerto: 1 dano de perfuração."
+    ],
+    "notas": "Ratos são criaturas pequenas e ágeis que habitam áreas urbanas e subterrâneas. São frequentemente usados como mensageiros ou espiões."
+  },
+  {
+    "id": "aranha",
+    "nome": "Aranha",
+    "tipo": "Besta",
+    "tamanho": "Miúdo",
+    "ca": 12,
+    "pv": "1 (1d4 - 1)",
+    "deslocamento": "6 m, escalar 6 m",
+    "atributos": {
+      "FOR": 2,
+      "DES": 14,
+      "CON": 8,
+      "INT": 1,
+      "SAB": 10,
+      "CAR": 2
+    },
+    "sentidos": ["Visão no escuro 9 m", "Percepção passiva 10"],
+    "idiomas": "-",
+    "nivel_desafio": "0",
+    "ataques": [
+      "Mordida. Ataque Corpo a Cor com Arma: +4 para atingir, alcance 1,5 m, um alvo. Acerto: 1 dano de perfuração, e o alvo deve ser bem-sucedido em um teste de resistência de Constituição CD 9 ou sofrerá 2 (1d4) dano de veneno."
+    ],
+    "notas": "Aranhas são criaturas venenosas que tecem teias para capturar presas. Sua capacidade de escalar e veneno as torna perigosas mesmo sendo pequenas."
+  },
+  {
+    "id": "cobra",
+    "nome": "Cobra",
+    "tipo": "Besta",
+    "tamanho": "Miúdo",
+    "ca": 12,
+    "pv": "2 (1d4)",
+    "deslocamento": "9 m, natação 9 m",
+    "atributos": {
+      "FOR": 2,
+      "DES": 16,
+      "CON": 11,
+      "INT": 1,
+      "SAB": 10,
+      "CAR": 3
+    },
+    "sentidos": ["Visão no escuro 9 m", "Percepção passiva 10"],
+    "idiomas": "-",
+    "nivel_desafio": "1/8",
+    "ataques": [
+      "Mordida. Ataque Corpo a Cor com Arma: +5 para atingir, alcance 1,5 m, um alvo. Acerto: 1 dano de perfuração, e o alvo deve ser bem-sucedido em um teste de resistência de Constituição CD 10 ou sofrerá 5 (2d4) dano de veneno."
+    ],
+    "notas": "Cobras são répteis venenosos que podem nadar e se mover silenciosamente. Seu veneno as torna perigosas mesmo sendo pequenas."
+  },
+  {
+    "id": "peixe",
+    "nome": "Peixe",
+    "tipo": "Besta",
+    "tamanho": "Miúdo",
+    "ca": 13,
+    "pv": "1 (1d4 - 1)",
+    "deslocamento": "0 m, natação 12 m",
+    "atributos": {
+      "FOR": 2,
+      "DES": 16,
+      "CON": 9,
+      "INT": 1,
+      "SAB": 7,
+      "CAR": 2
+    },
+    "sentidos": ["Visão no escuro 9 m", "Percepção passiva 8"],
+    "idiomas": "-",
+    "nivel_desafio": "0",
+    "ataques": [
+      "Mordida. Ataque Corpo a Cor com Arma: +5 para atingir, alcance 1,5 m, um alvo. Acerto: 1 dano de perfuração."
+    ],
+    "notas": "Peixes são criaturas aquáticas que habitam rios, lagos e oceanos. Sua capacidade de nadar os torna úteis para explorar ambientes subaquáticos."
+  },
+  {
+    "id": "crab",
+    "nome": "Caranguejo",
+    "tipo": "Besta",
+    "tamanho": "Miúdo",
+    "ca": 11,
+    "pv": "2 (1d4)",
+    "deslocamento": "6 m, natação 6 m",
+    "atributos": {
+      "FOR": 2,
+      "DES": 11,
+      "CON": 10,
+      "INT": 1,
+      "SAB": 8,
+      "CAR": 2
+    },
+    "sentidos": ["Visão no escuro 9 m", "Percepção passiva 9"],
+    "idiomas": "-",
+    "nivel_desafio": "0",
+    "ataques": [
+      "Pinça. Ataque Corpo a Cor com Arma: +0 para atingir, alcance 1,5 m, um alvo. Acerto: 1 dano de concussão."
+    ],
+    "notas": "Caranguejos são criaturas crustáceas que habitam praias e águas rasas. Suas pinças podem ser perigosas mesmo sendo pequenas."
+  },
+  {
+    "id": "formiga",
+    "nome": "Formiga",
+    "tipo": "Besta",
+    "tamanho": "Miúdo",
+    "ca": 13,
+    "pv": "1 (1d4 - 1)",
+    "deslocamento": "6 m, escalar 6 m",
+    "atributos": {
+      "FOR": 2,
+      "DES": 16,
+      "CON": 9,
+      "INT": 1,
+      "SAB": 7,
+      "CAR": 2
+    },
+    "sentidos": ["Visão no escuro 9 m", "Percepção passiva 8"],
+    "idiomas": "-",
+    "nivel_desafio": "0",
+    "ataques": [
+      "Mordida. Ataque Corpo a Cor com Arma: +5 para atingir, alcance 1,5 m, um alvo. Acerto: 1 dano de perfuração."
+    ],
+    "notas": "Formigas são insetos sociais que trabalham em colônias. Sua capacidade de escalar e trabalhar em grupo as torna úteis para tarefas complexas."
+  },
+  {
+    "id": "abelha",
+    "nome": "Abelha",
+    "tipo": "Besta",
+    "tamanho": "Miúdo",
+    "ca": 12,
+    "pv": "1 (1d4 - 1)",
+    "deslocamento": "0 m, voo 12 m",
+    "atributos": {
+      "FOR": 1,
+      "DES": 14,
+      "CON": 8,
+      "INT": 1,
+      "SAB": 10,
+      "CAR": 3
+    },
+    "sentidos": ["Visão no escuro 9 m", "Percepção passiva 10"],
+    "idiomas": "-",
+    "nivel_desafio": "0",
+    "ataques": [
+      "Ferrão. Ataque Corpo a Cor com Arma: +4 para atingir, alcance 1,5 m, um alvo. Acerto: 1 dano de perfuração, e o alvo deve ser bem-sucedido em um teste de resistência de Constituição CD 10 ou sofrerá 2 (1d4) dano de veneno."
+    ],
+    "notas": "Abelhas são insetos voadores que produzem mel e polinizam plantas. Seu ferrão venenoso as torna perigosas quando ameaçadas."
+  },
+  {
+    "id": "borboleta",
+    "nome": "Borboleta",
+    "tipo": "Besta",
+    "tamanho": "Miúdo",
+    "ca": 10,
+    "pv": "1 (1d4 - 1)",
+    "deslocamento": "0 m, voo 6 m",
+    "atributos": {
+      "FOR": 1,
+      "DES": 12,
+      "CON": 8,
+      "INT": 1,
+      "SAB": 8,
+      "CAR": 4
+    },
+    "sentidos": ["Visão no escuro 9 m", "Percepção passiva 9"],
+    "idiomas": "-",
+    "nivel_desafio": "0",
+    "ataques": [
+      "Tromba. Ataque Corpo a Cor com Arma: +3 para atingir, alcance 1,5 m, um alvo. Acerto: 1 dano de perfuração."
+    ],
+    "notas": "Borboletas são insetos voadores coloridos que se alimentam de néctar. Sua beleza e fragilidade as tornam símbolos de transformação e liberdade."
+  },
+  {
+    "id": "grilo",
+    "nome": "Grilo",
+    "tipo": "Besta",
+    "tamanho": "Miúdo",
+    "ca": 11,
+    "pv": "1 (1d4 - 1)",
+    "deslocamento": "3 m",
+    "atributos": {
+      "FOR": 1,
+      "DES": 12,
+      "CON": 8,
+      "INT": 1,
+      "SAB": 8,
+      "CAR": 2
+    },
+    "sentidos": ["Visão no escuro 9 m", "Percepção passiva 9"],
+    "idiomas": "-",
+    "nivel_desafio": "0",
+    "ataques": [
+      "Mordida. Ataque Corpo a Cor com Arma: +3 para atingir, alcance 1,5 m, um alvo. Acerto: 1 dano de perfuração."
+    ],
+    "notas": "Grilos são insetos que produzem sons característicos. Sua capacidade de pular e se esconder os torna difíceis de capturar."
+  },
+  {
+    "id": "minhoca",
+    "nome": "Minhoca",
+    "tipo": "Besta",
+    "tamanho": "Miúdo",
+    "ca": 8,
+    "pv": "1 (1d4 - 1)",
+    "deslocamento": "3 m, escavar 3 m",
+    "atributos": {
+      "FOR": 1,
+      "DES": 8,
+      "CON": 9,
+      "INT": 1,
+      "SAB": 6,
+      "CAR": 2
+    },
+    "sentidos": ["Visão no escuro 9 m", "Percepção passiva 8"],
+    "idiomas": "-",
+    "nivel_desafio": "0",
+    "ataques": [
+      "Mordida. Ataque Corpo a Cor com Arma: +1 para atingir, alcance 1,5 m, um alvo. Acerto: 1 dano de perfuração."
+    ],
+    "notas": "Minhocas são criaturas que habitam o solo e ajudam a fertilizar a terra. Sua capacidade de escavar as torna úteis para explorar túneis subterrâneos."
+  },
+  {
+    "id": "lesma",
+    "nome": "Lesma",
+    "tipo": "Besta",
+    "tamanho": "Miúdo",
+    "ca": 9,
+    "pv": "1 (1d4 - 1)",
+    "deslocamento": "3 m",
+    "atributos": {
+      "FOR": 1,
+      "DES": 8,
+      "CON": 9,
+      "INT": 1,
+      "SAB": 6,
+      "CAR": 2
+    },
+    "sentidos": ["Visão no escuro 9 m", "Percepção passiva 8"],
+    "idiomas": "-",
+    "nivel_desafio": "0",
+    "ataques": [
+      "Mordida. Ataque Corpo a Cor com Arma: +1 para atingir, alcance 1,5 m, um alvo. Acerto: 1 dano de perfuração."
+    ],
+    "notas": "Lesmas são moluscos que se movem lentamente e deixam rastros de muco. Sua lentidão as torna fáceis de capturar."
+  },
+  {
+    "id": "caracol",
+    "nome": "Caracol",
+    "tipo": "Besta",
+    "tamanho": "Miúdo",
+    "ca": 10,
+    "pv": "1 (1d4 - 1)",
+    "deslocamento": "3 m",
+    "atributos": {
+      "FOR": 1,
+      "DES": 8,
+      "CON": 9,
+      "INT": 1,
+      "SAB": 6,
+      "CAR": 2
+    },
+    "sentidos": ["Visão no escuro 9 m", "Percepção passiva 8"],
+    "idiomas": "-",
+    "nivel_desafio": "0",
+    "ataques": [
+      "Mordida. Ataque Corpo a Cor com Arma: +1 para atingir, alcance 1,5 m, um alvo. Acerto: 1 dano de perfuração."
+    ],
+    "notas": "Caracóis são moluscos com conchas que se movem lentamente. Sua concha os protege de ataques, mas os torna ainda mais lentos."
+  },
+  {
+    "id": "lagartixa",
+    "nome": "Lagartixa",
+    "tipo": "Besta",
+    "tamanho": "Miúdo",
+    "ca": 12,
+    "pv": "1 (1d4 - 1)",
+    "deslocamento": "6 m, escalar 6 m",
+    "atributos": {
+      "FOR": 2,
+      "DES": 14,
+      "CON": 8,
+      "INT": 1,
+      "SAB": 10,
+      "CAR": 3
+    },
+    "sentidos": ["Visão no escuro 9 m", "Percepção passiva 10"],
+    "idiomas": "-",
+    "nivel_desafio": "0",
+    "ataques": [
+      "Mordida. Ataque Corpo a Cor com Arma: +4 para atingir, alcance 1,5 m, um alvo. Acerto: 1 dano de perfuração."
+    ],
+    "notas": "Lagartixas são répteis pequenos que podem escalar paredes e tetos. Sua capacidade de se esconder e se mover rapidamente as torna difíceis de capturar."
+  },
+  {
+    "id": "salamandra",
+    "nome": "Salamandra",
+    "tipo": "Besta",
+    "tamanho": "Miúdo",
+    "ca": 11,
+    "pv": "2 (1d4)",
+    "deslocamento": "6 m, natação 6 m",
+    "atributos": {
+      "FOR": 2,
+      "DES": 12,
+      "CON": 10,
+      "INT": 1,
+      "SAB": 8,
+      "CAR": 3
+    },
+    "sentidos": ["Visão no escuro 9 m", "Percepção passiva 9"],
+    "idiomas": "-",
+    "nivel_desafio": "0",
+    "ataques": [
+      "Mordida. Ataque Corpo a Cor com Arma: +3 para atingir, alcance 1,5 m, um alvo. Acerto: 1 dano de perfuração."
+    ],
+    "notas": "Salamandras são anfíbios que podem viver tanto em terra quanto na água. Sua capacidade de regenerar membros perdidos as torna criaturas fascinantes."
+  },
+  {
+    "id": "tartaruga",
+    "nome": "Tartaruga",
+    "tipo": "Besta",
+    "tamanho": "Miúdo",
+    "ca": 15,
+    "pv": "3 (1d6)",
+    "deslocamento": "3 m, natação 6 m",
+    "atributos": {
+      "FOR": 2,
+      "DES": 8,
+      "CON": 12,
+      "INT": 1,
+      "SAB": 8,
+      "CAR": 2
+    },
+    "sentidos": ["Visão no escuro 9 m", "Percepção passiva 9"],
+    "idiomas": "-",
+    "nivel_desafio": "0",
+    "ataques": [
+      "Mordida. Ataque Corpo a Cor com Arma: +1 para atingir, alcance 1,5 m, um alvo. Acerto: 1 dano de perfuração."
+    ],
+    "notas": "Tartarugas são répteis com carapaças duras que as protegem de ataques. Sua lentidão é compensada por sua longevidade e resistência."
+  },
+  {
+    "id": "pombo",
+    "nome": "Pombo",
+    "tipo": "Besta",
+    "tamanho": "Miúdo",
+    "ca": 12,
+    "pv": "1 (1d4 - 1)",
+    "deslocamento": "3 m, voo 15 m",
+    "atributos": {
+      "FOR": 2,
+      "DES": 14,
+      "CON": 8,
+      "INT": 2,
+      "SAB": 12,
+      "CAR": 6
+    },
+    "sentidos": ["Visão no escuro 18 m", "Percepção passiva 12"],
+    "idiomas": "-",
+    "nivel_desafio": "0",
+    "ataques": [
+      "Bico. Ataque Corpo a Cor com Arma: +4 para atingir, alcance 1,5 m, um alvo. Acerto: 1 dano de perfuração."
+    ],
+    "notas": "Pombos são aves comuns em áreas urbanas, frequentemente usadas como mensageiros. Sua capacidade de voar e encontrar o caminho de volta os torna úteis para comunicação."
+  },
+  {
+    "id": "pardal",
+    "nome": "Pardal",
+    "tipo": "Besta",
+    "tamanho": "Miúdo",
+    "ca": 12,
+    "pv": "1 (1d4 - 1)",
+    "deslocamento": "3 m, voo 12 m",
+    "atributos": {
+      "FOR": 2,
+      "DES": 14,
+      "CON": 8,
+      "INT": 2,
+      "SAB": 12,
+      "CAR": 6
+    },
+    "sentidos": ["Visão no escuro 18 m", "Percepção passiva 12"],
+    "idiomas": "-",
+    "nivel_desafio": "0",
+    "ataques": [
+      "Bico. Ataque Corpo a Cor com Arma: +4 para atingir, alcance 1,5 m, um alvo. Acerto: 1 dano de perfuração."
+    ],
+    "notas": "Pardais são pequenas aves comuns que se alimentam de sementes e insetos. Sua capacidade de voar e se esconder os torna difíceis de capturar."
+  }
+]
